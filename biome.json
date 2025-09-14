@@ -14,7 +14,8 @@
       "!.wrangler",
       "!**/components/ui/*",
       "!**/hooks/use-mobile.ts",
-      "!**/route-tree.gen.ts"
+      "!**/route-tree.gen.ts",
+      "!dist"
     ]
   },
   "formatter": {

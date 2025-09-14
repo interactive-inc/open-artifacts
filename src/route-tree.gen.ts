@@ -11,20 +11,56 @@
 import { createServerRootRoute } from '@tanstack/react-start/server'
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ErrorRouteImport } from './routes/error'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ShopIndexRouteImport } from './routes/shop/index'
+import { Route as ShopProductsRouteImport } from './routes/shop/products'
+import { Route as ShopOrdersRouteImport } from './routes/shop/orders'
+import { Route as ShopCheckoutRouteImport } from './routes/shop/checkout'
+import { Route as ShopCartRouteImport } from './routes/shop/cart'
+import { Route as ShopProductsProductRouteImport } from './routes/shop/products.$product'
+import { Route as ShopCategoryCategoryRouteImport } from './routes/shop/category.$category'
 import { ServerRoute as ApiServerRouteImport } from './routes/api'
 
 const rootServerRouteImport = createServerRootRoute()
 
-const ErrorRoute = ErrorRouteImport.update({
-  id: '/error',
-  path: '/error',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopIndexRoute = ShopIndexRouteImport.update({
+  id: '/shop/',
+  path: '/shop/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopProductsRoute = ShopProductsRouteImport.update({
+  id: '/shop/products',
+  path: '/shop/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopOrdersRoute = ShopOrdersRouteImport.update({
+  id: '/shop/orders',
+  path: '/shop/orders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopCheckoutRoute = ShopCheckoutRouteImport.update({
+  id: '/shop/checkout',
+  path: '/shop/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopCartRoute = ShopCartRouteImport.update({
+  id: '/shop/cart',
+  path: '/shop/cart',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopProductsProductRoute = ShopProductsProductRouteImport.update({
+  id: '/$product',
+  path: '/$product',
+  getParentRoute: () => ShopProductsRoute,
+} as any)
+const ShopCategoryCategoryRoute = ShopCategoryCategoryRouteImport.update({
+  id: '/shop/category/$category',
+  path: '/shop/category/$category',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiServerRoute = ApiServerRouteImport.update({
@@ -35,28 +71,76 @@ const ApiServerRoute = ApiServerRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/error': typeof ErrorRoute
+  '/shop/cart': typeof ShopCartRoute
+  '/shop/checkout': typeof ShopCheckoutRoute
+  '/shop/orders': typeof ShopOrdersRoute
+  '/shop/products': typeof ShopProductsRouteWithChildren
+  '/shop': typeof ShopIndexRoute
+  '/shop/category/$category': typeof ShopCategoryCategoryRoute
+  '/shop/products/$product': typeof ShopProductsProductRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/error': typeof ErrorRoute
+  '/shop/cart': typeof ShopCartRoute
+  '/shop/checkout': typeof ShopCheckoutRoute
+  '/shop/orders': typeof ShopOrdersRoute
+  '/shop/products': typeof ShopProductsRouteWithChildren
+  '/shop': typeof ShopIndexRoute
+  '/shop/category/$category': typeof ShopCategoryCategoryRoute
+  '/shop/products/$product': typeof ShopProductsProductRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/error': typeof ErrorRoute
+  '/shop/cart': typeof ShopCartRoute
+  '/shop/checkout': typeof ShopCheckoutRoute
+  '/shop/orders': typeof ShopOrdersRoute
+  '/shop/products': typeof ShopProductsRouteWithChildren
+  '/shop/': typeof ShopIndexRoute
+  '/shop/category/$category': typeof ShopCategoryCategoryRoute
+  '/shop/products/$product': typeof ShopProductsProductRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/error'
+  fullPaths:
+    | '/'
+    | '/shop/cart'
+    | '/shop/checkout'
+    | '/shop/orders'
+    | '/shop/products'
+    | '/shop'
+    | '/shop/category/$category'
+    | '/shop/products/$product'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/error'
-  id: '__root__' | '/' | '/error'
+  to:
+    | '/'
+    | '/shop/cart'
+    | '/shop/checkout'
+    | '/shop/orders'
+    | '/shop/products'
+    | '/shop'
+    | '/shop/category/$category'
+    | '/shop/products/$product'
+  id:
+    | '__root__'
+    | '/'
+    | '/shop/cart'
+    | '/shop/checkout'
+    | '/shop/orders'
+    | '/shop/products'
+    | '/shop/'
+    | '/shop/category/$category'
+    | '/shop/products/$product'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ErrorRoute: typeof ErrorRoute
+  ShopCartRoute: typeof ShopCartRoute
+  ShopCheckoutRoute: typeof ShopCheckoutRoute
+  ShopOrdersRoute: typeof ShopOrdersRoute
+  ShopProductsRoute: typeof ShopProductsRouteWithChildren
+  ShopIndexRoute: typeof ShopIndexRoute
+  ShopCategoryCategoryRoute: typeof ShopCategoryCategoryRoute
 }
 export interface FileServerRoutesByFullPath {
   '/api': typeof ApiServerRoute
@@ -82,18 +166,60 @@ export interface RootServerRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/error': {
-      id: '/error'
-      path: '/error'
-      fullPath: '/error'
-      preLoaderRoute: typeof ErrorRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop/': {
+      id: '/shop/'
+      path: '/shop'
+      fullPath: '/shop'
+      preLoaderRoute: typeof ShopIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop/products': {
+      id: '/shop/products'
+      path: '/shop/products'
+      fullPath: '/shop/products'
+      preLoaderRoute: typeof ShopProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop/orders': {
+      id: '/shop/orders'
+      path: '/shop/orders'
+      fullPath: '/shop/orders'
+      preLoaderRoute: typeof ShopOrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop/checkout': {
+      id: '/shop/checkout'
+      path: '/shop/checkout'
+      fullPath: '/shop/checkout'
+      preLoaderRoute: typeof ShopCheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop/cart': {
+      id: '/shop/cart'
+      path: '/shop/cart'
+      fullPath: '/shop/cart'
+      preLoaderRoute: typeof ShopCartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop/products/$product': {
+      id: '/shop/products/$product'
+      path: '/$product'
+      fullPath: '/shop/products/$product'
+      preLoaderRoute: typeof ShopProductsProductRouteImport
+      parentRoute: typeof ShopProductsRoute
+    }
+    '/shop/category/$category': {
+      id: '/shop/category/$category'
+      path: '/shop/category/$category'
+      fullPath: '/shop/category/$category'
+      preLoaderRoute: typeof ShopCategoryCategoryRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -110,9 +236,26 @@ declare module '@tanstack/react-start/server' {
   }
 }
 
+interface ShopProductsRouteChildren {
+  ShopProductsProductRoute: typeof ShopProductsProductRoute
+}
+
+const ShopProductsRouteChildren: ShopProductsRouteChildren = {
+  ShopProductsProductRoute: ShopProductsProductRoute,
+}
+
+const ShopProductsRouteWithChildren = ShopProductsRoute._addFileChildren(
+  ShopProductsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ErrorRoute: ErrorRoute,
+  ShopCartRoute: ShopCartRoute,
+  ShopCheckoutRoute: ShopCheckoutRoute,
+  ShopOrdersRoute: ShopOrdersRoute,
+  ShopProductsRoute: ShopProductsRouteWithChildren,
+  ShopIndexRoute: ShopIndexRoute,
+  ShopCategoryCategoryRoute: ShopCategoryCategoryRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -3,7 +3,7 @@ import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router"
 import type * as React from "react"
 import { CustomErrorComponent } from "@/components/custom-error-component"
 import { NotFoundComponent } from "@/components/not-found-component"
-import appCss from "@/styles/app.css?url"
+import appCss from "@/styles.css?url"
 import { seo } from "@/utils/seo"
 
 export const Route = createRootRoute({

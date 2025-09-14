@@ -1,19 +1,19 @@
 import { resolve } from "node:path"
 import tailwindcss from "@tailwindcss/vite"
 import { tanstackStart } from "@tanstack/react-start/plugin/vite"
+import viteReact from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
 
 export default defineConfig({
-  server: {
-    port: 3000,
-  },
+  resolve: { alias: { "@": resolve(__dirname, "./src") } },
   plugins: [
     tanstackStart({
-      tsr: { generatedRouteTree: "src/route-tree.gen.ts" },
       spa: { enabled: false },
       target: "cloudflare-module",
+      tsr: { generatedRouteTree: "src/route-tree.gen.ts" },
+      customViteReactPlugin: true,
     }),
+    viteReact(),
     tailwindcss(),
   ],
-  resolve: { alias: { "@": resolve(__dirname, "./src") } },
 })

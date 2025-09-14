@@ -1,6 +1,7 @@
 {
   "permissions": {
-    "defaultMode": "bypassPermissions"
+    "defaultMode": "bypassPermissions",
+    "deny": ["Read(.docs)"]
   },
   "enableAllProjectMcpServers": true,
   "outputStyle": "ts",

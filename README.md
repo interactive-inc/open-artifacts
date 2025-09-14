@@ -1,72 +1,54 @@
-# Welcome to TanStack.com!
+# サンドボックス
 
-This site is built with TanStack Router!
+このリポジトリは[TanStack Start](https://tanstack.com/start/latest/docs/framework/react/overview)を用いたテンプレートです。
 
-- [TanStack Router Docs](https://tanstack.com/router)
+## 開発
 
-It's deployed automagically with Netlify!
-
-- [Netlify](https://netlify.com/)
-
-## Development
-
-From your terminal:
-
-```sh
-pnpm install
-pnpm dev
+```
+bun i
+bun run dev
 ```
 
-This starts your app in development mode, rebuilding assets on file changes.
+UIライブラリは以下で最新に保つ事ができます。
 
-## Editing and previewing the docs of TanStack projects locally
-
-The documentations for all TanStack projects except for `React Charts` are hosted on [https://tanstack.com](https://tanstack.com), powered by this TanStack Router app.
-In production, the markdown doc pages are fetched from the GitHub repos of the projects, but in development they are read from the local file system.
-
-Follow these steps if you want to edit the doc pages of a project (in these steps we'll assume it's [`TanStack/form`](https://github.com/tanstack/form)) and preview them locally :
-
-1. Create a new directory called `tanstack`.
-
-```sh
-mkdir tanstack
+```
+make update
 ```
 
-2. Enter the directory and clone this repo and the repo of the project there.
+## システムプロンプト
 
-```sh
-cd tanstack
-git clone git@github.com:TanStack/tanstack.com.git
-git clone git@github.com:TanStack/form.git
+ClaudeCodeでは、常にCLAUDE.mdがシステムプロンプトとして読み込まれます。そのファイルでは `@.github/**/*.md` のファイルが読み込まれています。
+
+- `copilot-instructions.md` - プロジェクトの概要
+- `instructions/core.instructions.md` - 基本的なルール
+- `instructions/docs.instructions.md` - 資料のルール
+- `instructions/ts.instructions.md` - コードのルール
+
+### Vibe Coding
+
+このリポジトリには `.docs` フォルダが存在し、製品の仕様などの情報が記録されています。この資料を使用する場合は、コマンド `/output-style` で出力スタイルを変更できます。
+
+- `/output-style vibes` - 資料を整備しながら開発する
+- `/output-style docs` - 資料を整備する
+
+完全に必要ない場合はCLAUDE.mdから  `@.github/instructions/docs.instructions.md` を削除することで、資料管理に関するシステムプロンプトを削除できます。
+
+初期の状態では `.docs` にはサンプルの資料が置かれているので、ClaudeCodeには初期化するように指示してください。
+
+## 機能
+
+### SPA
+
+開発する製品の内容が管理画面などSPAの適している場合は、[vite.config.ts](vite.config.ts)の `spa.enable` の設定を `true` にします。
+
+```
+spa: { enabled: true },
 ```
 
-> [!NOTE]
-> Your `tanstack` directory should look like this:
->
-> ```
-> tanstack/
->    |
->    +-- form/
->    |
->    +-- tanstack.com/
-> ```
+### ページ
 
-> [!WARNING]
-> Make sure the name of the directory in your local file system matches the name of the project's repo. For example, `tanstack/form` must be cloned into `form` (this is the default) instead of `some-other-name`, because that way, the doc pages won't be found.
+サンプルとして以下のページが存在します。
 
-3. Enter the `tanstack/tanstack.com` directory, install the dependencies and run the app in dev mode:
-
-```sh
-cd tanstack.com
-pnpm i
-# The app will run on https://localhost:3000 by default
-pnpm dev
-```
-
-4. Now you can visit http://localhost:3000/form/latest/docs/overview in the browser and see the changes you make in `tanstack/form/docs`.
-
-> [!NOTE]
-> The updated pages need to be manually reloaded in the browser.
-
-> [!WARNING]
-> You will need to update the `docs/config.json` file (in the project's repo) if you add a new doc page!
+- `/` - ホーム
+- `/canvas` - Canvasのサンプル
+- `/error` - エラーのページの確認

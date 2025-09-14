@@ -1,0 +1,30 @@
+[
+  {
+    "id": "cat-001",
+    "name": "エレクトロニクス",
+    "slug": "electronics",
+    "description": "最新のテクノロジー製品。スマートフォン、PC周辺機器、オーディオ機器など。",
+    "image": "/images/categories/electronics.jpg"
+  },
+  {
+    "id": "cat-002",
+    "name": "ファッション",
+    "slug": "fashion",
+    "description": "トレンドのアパレルとアクセサリー。メンズ・レディース・ユニセックス商品を豊富に取り揃え。",
+    "image": "/images/categories/fashion.jpg"
+  },
+  {
+    "id": "cat-003",
+    "name": "ホーム＆リビング",
+    "slug": "home",
+    "description": "快適な暮らしを演出するインテリアと生活雑貨。",
+    "image": "/images/categories/home.jpg"
+  },
+  {
+    "id": "cat-004",
+    "name": "スポーツ＆アウトドア",
+    "slug": "sports",
+    "description": "アクティブなライフスタイルをサポートするスポーツ用品とフィットネス機器。",
+    "image": "/images/categories/sports.jpg"
+  }
+]

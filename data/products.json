@@ -1,0 +1,149 @@
+[
+  {
+    "id": "prod-001",
+    "name": "プレミアム ワイヤレスヘッドホン",
+    "description": "高音質ノイズキャンセリング機能搭載。最大30時間の連続再生が可能な次世代ワイヤレスヘッドホン。",
+    "price": 29800,
+    "category": "electronics",
+    "images": [
+      "/images/products/headphones-1.jpg",
+      "/images/products/headphones-2.jpg"
+    ],
+    "stock": 50,
+    "featured": true
+  },
+  {
+    "id": "prod-002",
+    "name": "スマートウォッチ Pro",
+    "description": "健康管理から通知確認まで。あなたの生活をサポートする多機能スマートウォッチ。",
+    "price": 45000,
+    "category": "electronics",
+    "images": [
+      "/images/products/smartwatch-1.jpg",
+      "/images/products/smartwatch-2.jpg"
+    ],
+    "stock": 30,
+    "featured": true
+  },
+  {
+    "id": "prod-003",
+    "name": "オーガニックコットン Tシャツ",
+    "description": "肌に優しい100%オーガニックコットン使用。シンプルで着回しやすいデザイン。",
+    "price": 3900,
+    "category": "fashion",
+    "images": [
+      "/images/products/tshirt-1.jpg",
+      "/images/products/tshirt-2.jpg"
+    ],
+    "stock": 100,
+    "featured": false
+  },
+  {
+    "id": "prod-004",
+    "name": "レザービジネスバッグ",
+    "description": "本革使用の高級ビジネスバッグ。PC収納スペース付きで機能性も抜群。",
+    "price": 38000,
+    "category": "fashion",
+    "images": ["/images/products/bag-1.jpg", "/images/products/bag-2.jpg"],
+    "stock": 20,
+    "featured": true
+  },
+  {
+    "id": "prod-005",
+    "name": "アロマディフューザー",
+    "description": "超音波式で静音設計。7色のLEDライト付きでリラックス空間を演出。",
+    "price": 5800,
+    "category": "home",
+    "images": [
+      "/images/products/diffuser-1.jpg",
+      "/images/products/diffuser-2.jpg"
+    ],
+    "stock": 60,
+    "featured": false
+  },
+  {
+    "id": "prod-006",
+    "name": "セラミックコーヒーカップセット",
+    "description": "職人手作りのセラミックカップ4個セット。毎日のコーヒータイムを特別に。",
+    "price": 8500,
+    "category": "home",
+    "images": ["/images/products/cups-1.jpg", "/images/products/cups-2.jpg"],
+    "stock": 40,
+    "featured": false
+  },
+  {
+    "id": "prod-007",
+    "name": "フィットネスヨガマット",
+    "description": "厚さ6mmで快適なクッション性。滑り止め加工で安全にエクササイズ。",
+    "price": 4200,
+    "category": "sports",
+    "images": [
+      "/images/products/yogamat-1.jpg",
+      "/images/products/yogamat-2.jpg"
+    ],
+    "stock": 80,
+    "featured": false
+  },
+  {
+    "id": "prod-008",
+    "name": "プロテインシェイカー",
+    "description": "BPAフリー素材使用。漏れ防止設計で持ち運びも安心。",
+    "price": 1800,
+    "category": "sports",
+    "images": [
+      "/images/products/shaker-1.jpg",
+      "/images/products/shaker-2.jpg"
+    ],
+    "stock": 150,
+    "featured": false
+  },
+  {
+    "id": "prod-009",
+    "name": "4K ウェブカメラ",
+    "description": "高画質4K対応。オートフォーカス機能搭載でクリアな映像を実現。",
+    "price": 12800,
+    "category": "electronics",
+    "images": [
+      "/images/products/webcam-1.jpg",
+      "/images/products/webcam-2.jpg"
+    ],
+    "stock": 45,
+    "featured": true
+  },
+  {
+    "id": "prod-010",
+    "name": "ワイヤレス充電器",
+    "description": "最大15W急速充電対応。スマートフォンとイヤホンを同時充電可能。",
+    "price": 6500,
+    "category": "electronics",
+    "images": [
+      "/images/products/charger-1.jpg",
+      "/images/products/charger-2.jpg"
+    ],
+    "stock": 70,
+    "featured": false
+  },
+  {
+    "id": "prod-011",
+    "name": "デニムジャケット",
+    "description": "ヴィンテージ加工のクラシックデニムジャケット。オールシーズン活躍。",
+    "price": 12000,
+    "category": "fashion",
+    "images": ["/images/products/denim-1.jpg", "/images/products/denim-2.jpg"],
+    "stock": 35,
+    "featured": false
+  },
+  {
+    "id": "prod-012",
+    "name": "スニーカー エアマックス",
+    "description": "快適なクッション性と洗練されたデザイン。毎日の街歩きに最適。",
+    "price": 15800,
+    "category": "fashion",
+    "images": [
+      "/images/products/sneakers-1.jpg",
+      "/images/products/sneakers-2.jpg"
+    ],
+    "stock": 55,
+    "featured": true
+  }
+]

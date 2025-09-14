@@ -1,16 +1,16 @@
-import { createFileRoute } from "@tanstack/react-router"
+import { createFileRoute, Link } from "@tanstack/react-router"
 import { Button } from "@/components/ui/button"
 
 export const Route = createFileRoute("/")({
-  component: Home,
+  component: RouteComponent,
 })
 
-function Home() {
-  if (Math.random() < 0) {
-  }
+function RouteComponent() {
   return (
-    <div className="p-2">
-      <Button>{"Hello"}</Button>
+    <div className="p-4">
+      <Link to="/shop">
+        <Button>{"shop"}</Button>
+      </Link>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import { createServerFileRoute } from "@tanstack/react-start/server"
-import { hono } from "@/lib/hono"
+import { hono } from "@/lib/system"
 
 export const ServerRoute = createServerFileRoute("/api").methods({
   GET(props) {

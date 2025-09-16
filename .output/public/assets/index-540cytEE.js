@@ -1,0 +1,1 @@
+import{j as s,L as t,B as e}from"./main-BfoRTIPg.js";function o(){return s.jsxs("div",{className:"p-4",children:[s.jsx("h1",{className:"mb-4 font-bold text-3xl",children:"こんにちは"}),s.jsx("p",{className:"mb-6 text-lg",children:"こんにちは"}),s.jsx(t,{to:"/shop",children:s.jsx(e,{children:"shop"})})]})}export{o as component};

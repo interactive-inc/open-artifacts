@@ -15,6 +15,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as SnsIndexRouteImport } from './routes/sns/index'
 import { Route as ShopIndexRouteImport } from './routes/shop/index'
 import { Route as CorporateIndexRouteImport } from './routes/corporate/index'
+import { Route as CafeIndexRouteImport } from './routes/cafe/index'
 import { Route as SnsNotificationsRouteImport } from './routes/sns/notifications'
 import { Route as SnsMessagesRouteImport } from './routes/sns/messages'
 import { Route as SnsExploreRouteImport } from './routes/sns/explore'
@@ -36,7 +37,11 @@ import { Route as CorporateCaseStudiesRouteImport } from './routes/corporate/cas
 import { Route as CorporateCareersRouteImport } from './routes/corporate/careers'
 import { Route as CorporateBenefitsRouteImport } from './routes/corporate/benefits'
 import { Route as CorporateAboutRouteImport } from './routes/corporate/about'
-import { Route as SnsProfileUsernameRouteImport } from './routes/sns/profile/$username'
+import { Route as CafeShopRouteImport } from './routes/cafe/shop'
+import { Route as CafeNewsRouteImport } from './routes/cafe/news'
+import { Route as CafeMenuRouteImport } from './routes/cafe/menu'
+import { Route as CafeConceptRouteImport } from './routes/cafe/concept'
+import { Route as SnsProfileUsernameRouteImport } from './routes/sns/profile.$username'
 import { Route as ShopProductsProductRouteImport } from './routes/shop/products.$product'
 import { Route as ShopCategoryCategoryRouteImport } from './routes/shop/category.$category'
 import { ServerRoute as ApiServerRouteImport } from './routes/api'
@@ -61,6 +66,11 @@ const ShopIndexRoute = ShopIndexRouteImport.update({
 const CorporateIndexRoute = CorporateIndexRouteImport.update({
   id: '/corporate/',
   path: '/corporate/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CafeIndexRoute = CafeIndexRouteImport.update({
+  id: '/cafe/',
+  path: '/cafe/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SnsNotificationsRoute = SnsNotificationsRouteImport.update({
@@ -168,6 +178,26 @@ const CorporateAboutRoute = CorporateAboutRouteImport.update({
   path: '/corporate/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CafeShopRoute = CafeShopRouteImport.update({
+  id: '/cafe/shop',
+  path: '/cafe/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CafeNewsRoute = CafeNewsRouteImport.update({
+  id: '/cafe/news',
+  path: '/cafe/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CafeMenuRoute = CafeMenuRouteImport.update({
+  id: '/cafe/menu',
+  path: '/cafe/menu',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CafeConceptRoute = CafeConceptRouteImport.update({
+  id: '/cafe/concept',
+  path: '/cafe/concept',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SnsProfileUsernameRoute = SnsProfileUsernameRouteImport.update({
   id: '/sns/profile/$username',
   path: '/sns/profile/$username',
@@ -191,6 +221,10 @@ const ApiServerRoute = ApiServerRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cafe/concept': typeof CafeConceptRoute
+  '/cafe/menu': typeof CafeMenuRoute
+  '/cafe/news': typeof CafeNewsRoute
+  '/cafe/shop': typeof CafeShopRoute
   '/corporate/about': typeof CorporateAboutRoute
   '/corporate/benefits': typeof CorporateBenefitsRoute
   '/corporate/careers': typeof CorporateCareersRoute
@@ -212,6 +246,7 @@ export interface FileRoutesByFullPath {
   '/sns/explore': typeof SnsExploreRoute
   '/sns/messages': typeof SnsMessagesRoute
   '/sns/notifications': typeof SnsNotificationsRoute
+  '/cafe': typeof CafeIndexRoute
   '/corporate': typeof CorporateIndexRoute
   '/shop': typeof ShopIndexRoute
   '/sns': typeof SnsIndexRoute
@@ -221,6 +256,10 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cafe/concept': typeof CafeConceptRoute
+  '/cafe/menu': typeof CafeMenuRoute
+  '/cafe/news': typeof CafeNewsRoute
+  '/cafe/shop': typeof CafeShopRoute
   '/corporate/about': typeof CorporateAboutRoute
   '/corporate/benefits': typeof CorporateBenefitsRoute
   '/corporate/careers': typeof CorporateCareersRoute
@@ -242,6 +281,7 @@ export interface FileRoutesByTo {
   '/sns/explore': typeof SnsExploreRoute
   '/sns/messages': typeof SnsMessagesRoute
   '/sns/notifications': typeof SnsNotificationsRoute
+  '/cafe': typeof CafeIndexRoute
   '/corporate': typeof CorporateIndexRoute
   '/shop': typeof ShopIndexRoute
   '/sns': typeof SnsIndexRoute
@@ -252,6 +292,10 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cafe/concept': typeof CafeConceptRoute
+  '/cafe/menu': typeof CafeMenuRoute
+  '/cafe/news': typeof CafeNewsRoute
+  '/cafe/shop': typeof CafeShopRoute
   '/corporate/about': typeof CorporateAboutRoute
   '/corporate/benefits': typeof CorporateBenefitsRoute
   '/corporate/careers': typeof CorporateCareersRoute
@@ -273,6 +317,7 @@ export interface FileRoutesById {
   '/sns/explore': typeof SnsExploreRoute
   '/sns/messages': typeof SnsMessagesRoute
   '/sns/notifications': typeof SnsNotificationsRoute
+  '/cafe/': typeof CafeIndexRoute
   '/corporate/': typeof CorporateIndexRoute
   '/shop/': typeof ShopIndexRoute
   '/sns/': typeof SnsIndexRoute
@@ -284,6 +329,10 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/cafe/concept'
+    | '/cafe/menu'
+    | '/cafe/news'
+    | '/cafe/shop'
     | '/corporate/about'
     | '/corporate/benefits'
     | '/corporate/careers'
@@ -305,6 +354,7 @@ export interface FileRouteTypes {
     | '/sns/explore'
     | '/sns/messages'
     | '/sns/notifications'
+    | '/cafe'
     | '/corporate'
     | '/shop'
     | '/sns'
@@ -314,6 +364,10 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/cafe/concept'
+    | '/cafe/menu'
+    | '/cafe/news'
+    | '/cafe/shop'
     | '/corporate/about'
     | '/corporate/benefits'
     | '/corporate/careers'
@@ -335,6 +389,7 @@ export interface FileRouteTypes {
     | '/sns/explore'
     | '/sns/messages'
     | '/sns/notifications'
+    | '/cafe'
     | '/corporate'
     | '/shop'
     | '/sns'
@@ -344,6 +399,10 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/cafe/concept'
+    | '/cafe/menu'
+    | '/cafe/news'
+    | '/cafe/shop'
     | '/corporate/about'
     | '/corporate/benefits'
     | '/corporate/careers'
@@ -365,6 +424,7 @@ export interface FileRouteTypes {
     | '/sns/explore'
     | '/sns/messages'
     | '/sns/notifications'
+    | '/cafe/'
     | '/corporate/'
     | '/shop/'
     | '/sns/'
@@ -375,6 +435,10 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CafeConceptRoute: typeof CafeConceptRoute
+  CafeMenuRoute: typeof CafeMenuRoute
+  CafeNewsRoute: typeof CafeNewsRoute
+  CafeShopRoute: typeof CafeShopRoute
   CorporateAboutRoute: typeof CorporateAboutRoute
   CorporateBenefitsRoute: typeof CorporateBenefitsRoute
   CorporateCareersRoute: typeof CorporateCareersRoute
@@ -396,6 +460,7 @@ export interface RootRouteChildren {
   SnsExploreRoute: typeof SnsExploreRoute
   SnsMessagesRoute: typeof SnsMessagesRoute
   SnsNotificationsRoute: typeof SnsNotificationsRoute
+  CafeIndexRoute: typeof CafeIndexRoute
   CorporateIndexRoute: typeof CorporateIndexRoute
   ShopIndexRoute: typeof ShopIndexRoute
   SnsIndexRoute: typeof SnsIndexRoute
@@ -452,6 +517,13 @@ declare module '@tanstack/react-router' {
       path: '/corporate'
       fullPath: '/corporate'
       preLoaderRoute: typeof CorporateIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cafe/': {
+      id: '/cafe/'
+      path: '/cafe'
+      fullPath: '/cafe'
+      preLoaderRoute: typeof CafeIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sns/notifications': {
@@ -601,6 +673,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CorporateAboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cafe/shop': {
+      id: '/cafe/shop'
+      path: '/cafe/shop'
+      fullPath: '/cafe/shop'
+      preLoaderRoute: typeof CafeShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cafe/news': {
+      id: '/cafe/news'
+      path: '/cafe/news'
+      fullPath: '/cafe/news'
+      preLoaderRoute: typeof CafeNewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cafe/menu': {
+      id: '/cafe/menu'
+      path: '/cafe/menu'
+      fullPath: '/cafe/menu'
+      preLoaderRoute: typeof CafeMenuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cafe/concept': {
+      id: '/cafe/concept'
+      path: '/cafe/concept'
+      fullPath: '/cafe/concept'
+      preLoaderRoute: typeof CafeConceptRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sns/profile/$username': {
       id: '/sns/profile/$username'
       path: '/sns/profile/$username'
@@ -650,6 +750,10 @@ const ShopProductsRouteWithChildren = ShopProductsRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CafeConceptRoute: CafeConceptRoute,
+  CafeMenuRoute: CafeMenuRoute,
+  CafeNewsRoute: CafeNewsRoute,
+  CafeShopRoute: CafeShopRoute,
   CorporateAboutRoute: CorporateAboutRoute,
   CorporateBenefitsRoute: CorporateBenefitsRoute,
   CorporateCareersRoute: CorporateCareersRoute,
@@ -671,6 +775,7 @@ const rootRouteChildren: RootRouteChildren = {
   SnsExploreRoute: SnsExploreRoute,
   SnsMessagesRoute: SnsMessagesRoute,
   SnsNotificationsRoute: SnsNotificationsRoute,
+  CafeIndexRoute: CafeIndexRoute,
   CorporateIndexRoute: CorporateIndexRoute,
   ShopIndexRoute: ShopIndexRoute,
   SnsIndexRoute: SnsIndexRoute,

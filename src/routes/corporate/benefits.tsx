@@ -1,31 +1,36 @@
-import { createFileRoute } from "@tanstack/react-router"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { createFileRoute, Link } from "@tanstack/react-router"
 import {
+  ArrowRight,
+  Baby,
+  BookOpen,
+  Building,
+  Calendar,
+  Car,
+  Clock,
+  Coffee,
+  Coins,
+  Dumbbell,
+  Gift,
+  GraduationCap,
   Heart,
   Home,
-  Stethoscope,
-  Baby,
-  GraduationCap,
-  Plane,
-  Gift,
-  Clock,
-  Calendar,
-  Shield,
-  Coins,
-  Users,
   Laptop,
-  Dumbbell,
-  BookOpen,
+  Plane,
+  Shield,
+  Sparkles,
+  Stethoscope,
   Trophy,
-  Coffee,
-  Car,
-  Building,
-  Sparkles
+  Users,
 } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Link } from "@tanstack/react-router"
-import { ArrowRight } from "lucide-react"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 
 type Props = {}
 
@@ -42,26 +47,46 @@ function BenefitsPage(_props: Props) {
       icon: Stethoscope,
       title: "健康診断・人間ドック",
       description: "年1回の健康診断と35歳以上は人間ドック費用を全額負担",
-      details: ["年1回の定期健康診断", "35歳以上人間ドック全額補助", "婦人科検診オプション", "歯科検診年2回"]
+      details: [
+        "年1回の定期健康診断",
+        "35歳以上人間ドック全額補助",
+        "婦人科検診オプション",
+        "歯科検診年2回",
+      ],
     },
     {
       icon: Shield,
       title: "健康保険・医療サポート",
       description: "充実した健康保険と医療費補助制度",
-      details: ["関東ITソフトウェア健康保険組合", "医療費自己負担額補助", "薬代補助制度", "セカンドオピニオンサービス"]
+      details: [
+        "関東ITソフトウェア健康保険組合",
+        "医療費自己負担額補助",
+        "薬代補助制度",
+        "セカンドオピニオンサービス",
+      ],
     },
     {
       icon: Heart,
       title: "メンタルヘルスケア",
       description: "心の健康を守る充実のサポート体制",
-      details: ["産業医・カウンセラー常駐", "24時間電話相談窓口", "ストレスチェック年2回", "メンタルヘルス研修"]
+      details: [
+        "産業医・カウンセラー常駐",
+        "24時間電話相談窓口",
+        "ストレスチェック年2回",
+        "メンタルヘルス研修",
+      ],
     },
     {
       icon: Dumbbell,
       title: "フィットネス・運動支援",
       description: "社内ジム完備とスポーツクラブ補助",
-      details: ["社内ジム24時間利用可", "提携スポーツクラブ割引", "ヨガ・ピラティス教室", "マラソン大会参加費補助"]
-    }
+      details: [
+        "社内ジム24時間利用可",
+        "提携スポーツクラブ割引",
+        "ヨガ・ピラティス教室",
+        "マラソン大会参加費補助",
+      ],
+    },
   ]
 
   const workLifeBalance = [
@@ -74,8 +99,8 @@ function BenefitsPage(_props: Props) {
         "有給休暇初年度15日",
         "リフレッシュ休暇（5日連続）",
         "誕生日休暇",
-        "ボランティア休暇"
-      ]
+        "ボランティア休暇",
+      ],
     },
     {
       icon: Clock,
@@ -86,8 +111,8 @@ function BenefitsPage(_props: Props) {
         "コアタイム10:00-15:00",
         "リモートワーク週3日まで",
         "時短勤務制度",
-        "副業許可制度"
-      ]
+        "副業許可制度",
+      ],
     },
     {
       icon: Home,
@@ -97,8 +122,8 @@ function BenefitsPage(_props: Props) {
         "在宅勤務手当月1万円",
         "PC・モニター貸与",
         "エルゴノミクスチェア補助",
-        "光熱費補助"
-      ]
+        "光熱費補助",
+      ],
     },
     {
       icon: Plane,
@@ -108,9 +133,9 @@ function BenefitsPage(_props: Props) {
         "サバティカル休暇（最大3ヶ月）",
         "育児休業最大2年",
         "介護休業最大1年",
-        "留学休職制度"
-      ]
-    }
+        "留学休職制度",
+      ],
+    },
   ]
 
   const familySupport = [
@@ -123,8 +148,8 @@ function BenefitsPage(_props: Props) {
         "ベビーシッター費用補助",
         "学童保育費補助",
         "子の看護休暇（年10日）",
-        "育児時短勤務（小学6年まで）"
-      ]
+        "育児時短勤務（小学6年まで）",
+      ],
     },
     {
       icon: Users,
@@ -134,8 +159,8 @@ function BenefitsPage(_props: Props) {
         "家族の医療費補助",
         "配偶者健康診断",
         "家族参加型イベント",
-        "子供向けプログラミング教室"
-      ]
+        "子供向けプログラミング教室",
+      ],
     },
     {
       icon: Home,
@@ -145,8 +170,8 @@ function BenefitsPage(_props: Props) {
         "家賃補助制度（月5万円まで）",
         "住宅ローン優遇金利",
         "社宅・寮完備",
-        "引越し費用全額負担"
-      ]
+        "引越し費用全額負担",
+      ],
     },
     {
       icon: Car,
@@ -156,9 +181,9 @@ function BenefitsPage(_props: Props) {
         "交通費全額支給",
         "駐車場代補助",
         "自転車通勤手当",
-        "新幹線通勤可能"
-      ]
-    }
+        "新幹線通勤可能",
+      ],
+    },
   ]
 
   const careerGrowth = [
@@ -171,8 +196,8 @@ function BenefitsPage(_props: Props) {
         "資格取得費用全額補助",
         "オンライン学習プラットフォーム",
         "海外カンファレンス参加支援",
-        "社内勉強会・技術共有会"
-      ]
+        "社内勉強会・技術共有会",
+      ],
     },
     {
       icon: BookOpen,
@@ -182,8 +207,8 @@ function BenefitsPage(_props: Props) {
         "技術書購入費無制限",
         "電子書籍サービス提供",
         "社内ライブラリー",
-        "学会・セミナー参加費補助"
-      ]
+        "学会・セミナー参加費補助",
+      ],
     },
     {
       icon: Trophy,
@@ -193,8 +218,8 @@ function BenefitsPage(_props: Props) {
         "年間MVP表彰",
         "プロジェクト成功報奨金",
         "特許取得報奨金",
-        "改善提案報奨制度"
-      ]
+        "改善提案報奨制度",
+      ],
     },
     {
       icon: Laptop,
@@ -204,9 +229,9 @@ function BenefitsPage(_props: Props) {
         "最新マシン選択可能",
         "開発ツール費用負担",
         "クラウド利用料補助",
-        "個人開発プロジェクト支援"
-      ]
-    }
+        "個人開発プロジェクト支援",
+      ],
+    },
   ]
 
   const financialBenefits = [
@@ -218,8 +243,8 @@ function BenefitsPage(_props: Props) {
         "確定拠出年金制度",
         "退職金制度",
         "マッチング拠出",
-        "ライフプラン相談"
-      ]
+        "ライフプラン相談",
+      ],
     },
     {
       icon: Shield,
@@ -229,8 +254,8 @@ function BenefitsPage(_props: Props) {
         "団体生命保険",
         "団体傷害保険",
         "所得補償保険",
-        "がん保険団体割引"
-      ]
+        "がん保険団体割引",
+      ],
     },
     {
       icon: Gift,
@@ -240,8 +265,8 @@ function BenefitsPage(_props: Props) {
         "結婚祝い金10万円",
         "出産祝い金5万円",
         "入学祝い金",
-        "慶弔見舞金"
-      ]
+        "慶弔見舞金",
+      ],
     },
     {
       icon: Building,
@@ -251,9 +276,9 @@ function BenefitsPage(_props: Props) {
         "財形貯蓄制度",
         "社員持株会",
         "投資セミナー開催",
-        "FP相談サービス"
-      ]
-    }
+        "FP相談サービス",
+      ],
+    },
   ]
 
   const officePerks = [
@@ -265,8 +290,8 @@ function BenefitsPage(_props: Props) {
         "フリードリンク（コーヒー、紅茶、ジュース）",
         "フリースナック",
         "社内カフェ（朝食・昼食無料）",
-        "バリスタマシン完備"
-      ]
+        "バリスタマシン完備",
+      ],
     },
     {
       icon: Sparkles,
@@ -277,60 +302,60 @@ function BenefitsPage(_props: Props) {
         "昇降デスク",
         "集中ブース",
         "仮眠室",
-        "マッサージルーム"
-      ]
-    }
+        "マッサージルーム",
+      ],
+    },
   ]
 
   const uniqueBenefits = [
     {
       title: "20%ルール",
       description: "業務時間の20%を自己研鑽や新規プロジェクトに使用可能",
-      badge: "イノベーション"
+      badge: "イノベーション",
     },
     {
       title: "ワーケーション制度",
       description: "国内外のリゾート地で働きながら休暇を楽しめる",
-      badge: "働き方"
+      badge: "働き方",
     },
     {
       title: "ペット同伴出社",
       description: "ペット同伴可能なオフィスフロアを設置",
-      badge: "ペット"
+      badge: "ペット",
     },
     {
       title: "副業支援制度",
       description: "副業を通じたスキルアップを積極支援",
-      badge: "キャリア"
+      badge: "キャリア",
     },
     {
       title: "社内起業制度",
       description: "新規事業アイデアに最大1000万円の投資",
-      badge: "起業"
+      badge: "起業",
     },
     {
       title: "グローバル研修",
       description: "海外オフィスでの短期勤務プログラム",
-      badge: "グローバル"
-    }
+      badge: "グローバル",
+    },
   ]
 
   return (
     <div className="py-12 lg:py-16">
       <div className="container">
         <div className="mb-12 text-center">
-          <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl mb-4">
+          <h1 className="mb-4 font-bold text-4xl tracking-tighter sm:text-5xl">
             福利厚生
           </h1>
-          <p className="text-muted-foreground max-w-[700px] mx-auto">
+          <p className="mx-auto max-w-[700px] text-muted-foreground">
             社員一人ひとりが最高のパフォーマンスを発揮できる環境を提供します
           </p>
         </div>
 
         <section className="mb-16">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold mb-4">健康・医療</h2>
-            <p className="text-muted-foreground max-w-[600px] mx-auto">
+          <div className="mb-8 text-center">
+            <h2 className="mb-4 font-bold text-3xl">健康・医療</h2>
+            <p className="mx-auto max-w-[600px] text-muted-foreground">
               社員とその家族の健康を第一に考えた充実のサポート
             </p>
           </div>
@@ -349,8 +374,11 @@ function BenefitsPage(_props: Props) {
                   <CardContent>
                     <ul className="space-y-2">
                       {benefit.details.map((detail) => (
-                        <li key={detail} className="text-sm text-muted-foreground flex items-start gap-2">
-                          <span className="text-primary mt-0.5">•</span>
+                        <li
+                          key={detail}
+                          className="flex items-start gap-2 text-muted-foreground text-sm"
+                        >
+                          <span className="mt-0.5 text-primary">•</span>
                           <span>{detail}</span>
                         </li>
                       ))}
@@ -363,9 +391,9 @@ function BenefitsPage(_props: Props) {
         </section>
 
         <section className="mb-16">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold mb-4">ワークライフバランス</h2>
-            <p className="text-muted-foreground max-w-[600px] mx-auto">
+          <div className="mb-8 text-center">
+            <h2 className="mb-4 font-bold text-3xl">ワークライフバランス</h2>
+            <p className="mx-auto max-w-[600px] text-muted-foreground">
               仕事と生活の調和を大切にする働き方改革
             </p>
           </div>
@@ -384,8 +412,11 @@ function BenefitsPage(_props: Props) {
                   <CardContent>
                     <ul className="space-y-2">
                       {benefit.details.map((detail) => (
-                        <li key={detail} className="text-sm text-muted-foreground flex items-start gap-2">
-                          <span className="text-primary mt-0.5">•</span>
+                        <li
+                          key={detail}
+                          className="flex items-start gap-2 text-muted-foreground text-sm"
+                        >
+                          <span className="mt-0.5 text-primary">•</span>
                           <span>{detail}</span>
                         </li>
                       ))}
@@ -398,9 +429,9 @@ function BenefitsPage(_props: Props) {
         </section>
 
         <section className="mb-16">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold mb-4">家族・生活支援</h2>
-            <p className="text-muted-foreground max-w-[600px] mx-auto">
+          <div className="mb-8 text-center">
+            <h2 className="mb-4 font-bold text-3xl">家族・生活支援</h2>
+            <p className="mx-auto max-w-[600px] text-muted-foreground">
               社員とその家族の生活を総合的にサポート
             </p>
           </div>
@@ -419,8 +450,11 @@ function BenefitsPage(_props: Props) {
                   <CardContent>
                     <ul className="space-y-2">
                       {benefit.details.map((detail) => (
-                        <li key={detail} className="text-sm text-muted-foreground flex items-start gap-2">
-                          <span className="text-primary mt-0.5">•</span>
+                        <li
+                          key={detail}
+                          className="flex items-start gap-2 text-muted-foreground text-sm"
+                        >
+                          <span className="mt-0.5 text-primary">•</span>
                           <span>{detail}</span>
                         </li>
                       ))}
@@ -433,9 +467,9 @@ function BenefitsPage(_props: Props) {
         </section>
 
         <section className="mb-16">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold mb-4">成長・キャリア支援</h2>
-            <p className="text-muted-foreground max-w-[600px] mx-auto">
+          <div className="mb-8 text-center">
+            <h2 className="mb-4 font-bold text-3xl">成長・キャリア支援</h2>
+            <p className="mx-auto max-w-[600px] text-muted-foreground">
               プロフェッショナルとしての成長を全面バックアップ
             </p>
           </div>
@@ -454,8 +488,11 @@ function BenefitsPage(_props: Props) {
                   <CardContent>
                     <ul className="space-y-2">
                       {benefit.details.map((detail) => (
-                        <li key={detail} className="text-sm text-muted-foreground flex items-start gap-2">
-                          <span className="text-primary mt-0.5">•</span>
+                        <li
+                          key={detail}
+                          className="flex items-start gap-2 text-muted-foreground text-sm"
+                        >
+                          <span className="mt-0.5 text-primary">•</span>
                           <span>{detail}</span>
                         </li>
                       ))}
@@ -468,9 +505,9 @@ function BenefitsPage(_props: Props) {
         </section>
 
         <section className="mb-16">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold mb-4">経済的支援</h2>
-            <p className="text-muted-foreground max-w-[600px] mx-auto">
+          <div className="mb-8 text-center">
+            <h2 className="mb-4 font-bold text-3xl">経済的支援</h2>
+            <p className="mx-auto max-w-[600px] text-muted-foreground">
               現在と将来の経済的安定をサポート
             </p>
           </div>
@@ -486,10 +523,15 @@ function BenefitsPage(_props: Props) {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-muted-foreground mb-3">{benefit.description}</p>
+                    <p className="mb-3 text-muted-foreground text-sm">
+                      {benefit.description}
+                    </p>
                     <ul className="space-y-1">
                       {benefit.details.map((detail) => (
-                        <li key={detail} className="text-xs text-muted-foreground">
+                        <li
+                          key={detail}
+                          className="text-muted-foreground text-xs"
+                        >
                           • {detail}
                         </li>
                       ))}
@@ -504,25 +546,33 @@ function BenefitsPage(_props: Props) {
         <section className="mb-16">
           <Card className="bg-gradient-to-r from-primary/5 to-primary/10">
             <CardContent className="py-12">
-              <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold mb-4">オフィス環境・特典</h2>
-                <p className="text-muted-foreground max-w-[600px] mx-auto">
+              <div className="mb-8 text-center">
+                <h2 className="mb-4 font-bold text-3xl">オフィス環境・特典</h2>
+                <p className="mx-auto max-w-[600px] text-muted-foreground">
                   快適で創造的なオフィス環境を提供
                 </p>
               </div>
-              <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
+              <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
                 {officePerks.map((perk) => {
                   const Icon = perk.icon
                   return (
-                    <div key={perk.title} className="bg-background rounded-lg p-6">
-                      <h3 className="font-semibold mb-3 flex items-center gap-2">
+                    <div
+                      key={perk.title}
+                      className="rounded-lg bg-background p-6"
+                    >
+                      <h3 className="mb-3 flex items-center gap-2 font-semibold">
                         <Icon className="h-5 w-5 text-primary" />
                         {perk.title}
                       </h3>
-                      <p className="text-sm text-muted-foreground mb-3">{perk.description}</p>
+                      <p className="mb-3 text-muted-foreground text-sm">
+                        {perk.description}
+                      </p>
                       <ul className="space-y-1">
                         {perk.details.map((detail) => (
-                          <li key={detail} className="text-sm text-muted-foreground">
+                          <li
+                            key={detail}
+                            className="text-muted-foreground text-sm"
+                          >
                             • {detail}
                           </li>
                         ))}
@@ -536,14 +586,21 @@ function BenefitsPage(_props: Props) {
         </section>
 
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-center">ユニークな制度</h2>
+          <h2 className="mb-8 text-center font-bold text-3xl">
+            ユニークな制度
+          </h2>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {uniqueBenefits.map((benefit) => (
-              <Card key={benefit.title} className="hover:shadow-lg transition-shadow">
+              <Card
+                key={benefit.title}
+                className="transition-shadow hover:shadow-lg"
+              >
                 <CardContent className="pt-6">
                   <Badge className="mb-3">{benefit.badge}</Badge>
-                  <h3 className="font-semibold mb-2">{benefit.title}</h3>
-                  <p className="text-sm text-muted-foreground">{benefit.description}</p>
+                  <h3 className="mb-2 font-semibold">{benefit.title}</h3>
+                  <p className="text-muted-foreground text-sm">
+                    {benefit.description}
+                  </p>
                 </CardContent>
               </Card>
             ))}
@@ -553,22 +610,24 @@ function BenefitsPage(_props: Props) {
         <section className="mb-16">
           <Card>
             <CardContent className="py-12">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              <div className="grid grid-cols-2 gap-8 text-center md:grid-cols-4">
                 <div>
-                  <p className="text-4xl font-bold text-primary mb-2">125日</p>
-                  <p className="text-sm text-muted-foreground">年間休日</p>
+                  <p className="mb-2 font-bold text-4xl text-primary">125日</p>
+                  <p className="text-muted-foreground text-sm">年間休日</p>
                 </div>
                 <div>
-                  <p className="text-4xl font-bold text-primary mb-2">95%</p>
-                  <p className="text-sm text-muted-foreground">有給取得率</p>
+                  <p className="mb-2 font-bold text-4xl text-primary">95%</p>
+                  <p className="text-muted-foreground text-sm">有給取得率</p>
                 </div>
                 <div>
-                  <p className="text-4xl font-bold text-primary mb-2">50万円</p>
-                  <p className="text-sm text-muted-foreground">年間研修予算/人</p>
+                  <p className="mb-2 font-bold text-4xl text-primary">50万円</p>
+                  <p className="text-muted-foreground text-sm">
+                    年間研修予算/人
+                  </p>
                 </div>
                 <div>
-                  <p className="text-4xl font-bold text-primary mb-2">98%</p>
-                  <p className="text-sm text-muted-foreground">育休復帰率</p>
+                  <p className="mb-2 font-bold text-4xl text-primary">98%</p>
+                  <p className="text-muted-foreground text-sm">育休復帰率</p>
                 </div>
               </div>
             </CardContent>
@@ -578,10 +637,10 @@ function BenefitsPage(_props: Props) {
         <section>
           <Card className="bg-primary text-primary-foreground">
             <CardContent className="py-12 text-center">
-              <h2 className="text-3xl font-bold mb-4">
+              <h2 className="mb-4 font-bold text-3xl">
                 充実した福利厚生で、あなたの成長を支援
               </h2>
-              <p className="max-w-[600px] mx-auto mb-8">
+              <p className="mx-auto mb-8 max-w-[600px]">
                 TechCorpは、社員一人ひとりが最高のパフォーマンスを発揮し、
                 充実した人生を送れるよう、業界トップクラスの福利厚生制度を提供しています。
               </p>

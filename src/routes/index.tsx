@@ -7,9 +7,15 @@ export const Route = createFileRoute("/")({
 
 function RouteComponent() {
   return (
-    <div className="p-4">
+    <div className="flex gap-2 p-4">
       <Link to="/shop">
         <Button>{"shop"}</Button>
+      </Link>
+      <Link to="/corporate">
+        <Button>{"会社サイト"}</Button>
+      </Link>
+      <Link to="/sns">
+        <Button>{"SNS"}</Button>
       </Link>
     </div>
   )

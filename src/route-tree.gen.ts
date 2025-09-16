@@ -12,11 +12,31 @@ import { createServerRootRoute } from '@tanstack/react-start/server'
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SnsIndexRouteImport } from './routes/sns/index'
 import { Route as ShopIndexRouteImport } from './routes/shop/index'
+import { Route as CorporateIndexRouteImport } from './routes/corporate/index'
+import { Route as SnsNotificationsRouteImport } from './routes/sns/notifications'
+import { Route as SnsMessagesRouteImport } from './routes/sns/messages'
+import { Route as SnsExploreRouteImport } from './routes/sns/explore'
+import { Route as SnsBookmarksRouteImport } from './routes/sns/bookmarks'
 import { Route as ShopProductsRouteImport } from './routes/shop/products'
 import { Route as ShopOrdersRouteImport } from './routes/shop/orders'
 import { Route as ShopCheckoutRouteImport } from './routes/shop/checkout'
 import { Route as ShopCartRouteImport } from './routes/shop/cart'
+import { Route as CorporateTermsRouteImport } from './routes/corporate/terms'
+import { Route as CorporateSolutionsRouteImport } from './routes/corporate/solutions'
+import { Route as CorporateServicesRouteImport } from './routes/corporate/services'
+import { Route as CorporatePrivacyRouteImport } from './routes/corporate/privacy'
+import { Route as CorporateNewsRouteImport } from './routes/corporate/news'
+import { Route as CorporateMessageRouteImport } from './routes/corporate/message'
+import { Route as CorporateHistoryRouteImport } from './routes/corporate/history'
+import { Route as CorporateCultureRouteImport } from './routes/corporate/culture'
+import { Route as CorporateContactRouteImport } from './routes/corporate/contact'
+import { Route as CorporateCaseStudiesRouteImport } from './routes/corporate/case-studies'
+import { Route as CorporateCareersRouteImport } from './routes/corporate/careers'
+import { Route as CorporateBenefitsRouteImport } from './routes/corporate/benefits'
+import { Route as CorporateAboutRouteImport } from './routes/corporate/about'
+import { Route as SnsProfileUsernameRouteImport } from './routes/sns/profile/$username'
 import { Route as ShopProductsProductRouteImport } from './routes/shop/products.$product'
 import { Route as ShopCategoryCategoryRouteImport } from './routes/shop/category.$category'
 import { ServerRoute as ApiServerRouteImport } from './routes/api'
@@ -28,9 +48,39 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SnsIndexRoute = SnsIndexRouteImport.update({
+  id: '/sns/',
+  path: '/sns/',
+  getParentRoute: () => rootRouteImport,
+} as any).lazy(() => import('./routes/sns/index.lazy').then((d) => d.Route))
 const ShopIndexRoute = ShopIndexRouteImport.update({
   id: '/shop/',
   path: '/shop/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CorporateIndexRoute = CorporateIndexRouteImport.update({
+  id: '/corporate/',
+  path: '/corporate/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SnsNotificationsRoute = SnsNotificationsRouteImport.update({
+  id: '/sns/notifications',
+  path: '/sns/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SnsMessagesRoute = SnsMessagesRouteImport.update({
+  id: '/sns/messages',
+  path: '/sns/messages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SnsExploreRoute = SnsExploreRouteImport.update({
+  id: '/sns/explore',
+  path: '/sns/explore',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SnsBookmarksRoute = SnsBookmarksRouteImport.update({
+  id: '/sns/bookmarks',
+  path: '/sns/bookmarks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ShopProductsRoute = ShopProductsRouteImport.update({
@@ -53,6 +103,76 @@ const ShopCartRoute = ShopCartRouteImport.update({
   path: '/shop/cart',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CorporateTermsRoute = CorporateTermsRouteImport.update({
+  id: '/corporate/terms',
+  path: '/corporate/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CorporateSolutionsRoute = CorporateSolutionsRouteImport.update({
+  id: '/corporate/solutions',
+  path: '/corporate/solutions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CorporateServicesRoute = CorporateServicesRouteImport.update({
+  id: '/corporate/services',
+  path: '/corporate/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CorporatePrivacyRoute = CorporatePrivacyRouteImport.update({
+  id: '/corporate/privacy',
+  path: '/corporate/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CorporateNewsRoute = CorporateNewsRouteImport.update({
+  id: '/corporate/news',
+  path: '/corporate/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CorporateMessageRoute = CorporateMessageRouteImport.update({
+  id: '/corporate/message',
+  path: '/corporate/message',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CorporateHistoryRoute = CorporateHistoryRouteImport.update({
+  id: '/corporate/history',
+  path: '/corporate/history',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CorporateCultureRoute = CorporateCultureRouteImport.update({
+  id: '/corporate/culture',
+  path: '/corporate/culture',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CorporateContactRoute = CorporateContactRouteImport.update({
+  id: '/corporate/contact',
+  path: '/corporate/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CorporateCaseStudiesRoute = CorporateCaseStudiesRouteImport.update({
+  id: '/corporate/case-studies',
+  path: '/corporate/case-studies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CorporateCareersRoute = CorporateCareersRouteImport.update({
+  id: '/corporate/careers',
+  path: '/corporate/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CorporateBenefitsRoute = CorporateBenefitsRouteImport.update({
+  id: '/corporate/benefits',
+  path: '/corporate/benefits',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CorporateAboutRoute = CorporateAboutRouteImport.update({
+  id: '/corporate/about',
+  path: '/corporate/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SnsProfileUsernameRoute = SnsProfileUsernameRouteImport.update({
+  id: '/sns/profile/$username',
+  path: '/sns/profile/$username',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShopProductsProductRoute = ShopProductsProductRouteImport.update({
   id: '/$product',
   path: '/$product',
@@ -71,76 +191,216 @@ const ApiServerRoute = ApiServerRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/corporate/about': typeof CorporateAboutRoute
+  '/corporate/benefits': typeof CorporateBenefitsRoute
+  '/corporate/careers': typeof CorporateCareersRoute
+  '/corporate/case-studies': typeof CorporateCaseStudiesRoute
+  '/corporate/contact': typeof CorporateContactRoute
+  '/corporate/culture': typeof CorporateCultureRoute
+  '/corporate/history': typeof CorporateHistoryRoute
+  '/corporate/message': typeof CorporateMessageRoute
+  '/corporate/news': typeof CorporateNewsRoute
+  '/corporate/privacy': typeof CorporatePrivacyRoute
+  '/corporate/services': typeof CorporateServicesRoute
+  '/corporate/solutions': typeof CorporateSolutionsRoute
+  '/corporate/terms': typeof CorporateTermsRoute
   '/shop/cart': typeof ShopCartRoute
   '/shop/checkout': typeof ShopCheckoutRoute
   '/shop/orders': typeof ShopOrdersRoute
   '/shop/products': typeof ShopProductsRouteWithChildren
+  '/sns/bookmarks': typeof SnsBookmarksRoute
+  '/sns/explore': typeof SnsExploreRoute
+  '/sns/messages': typeof SnsMessagesRoute
+  '/sns/notifications': typeof SnsNotificationsRoute
+  '/corporate': typeof CorporateIndexRoute
   '/shop': typeof ShopIndexRoute
+  '/sns': typeof SnsIndexRoute
   '/shop/category/$category': typeof ShopCategoryCategoryRoute
   '/shop/products/$product': typeof ShopProductsProductRoute
+  '/sns/profile/$username': typeof SnsProfileUsernameRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/corporate/about': typeof CorporateAboutRoute
+  '/corporate/benefits': typeof CorporateBenefitsRoute
+  '/corporate/careers': typeof CorporateCareersRoute
+  '/corporate/case-studies': typeof CorporateCaseStudiesRoute
+  '/corporate/contact': typeof CorporateContactRoute
+  '/corporate/culture': typeof CorporateCultureRoute
+  '/corporate/history': typeof CorporateHistoryRoute
+  '/corporate/message': typeof CorporateMessageRoute
+  '/corporate/news': typeof CorporateNewsRoute
+  '/corporate/privacy': typeof CorporatePrivacyRoute
+  '/corporate/services': typeof CorporateServicesRoute
+  '/corporate/solutions': typeof CorporateSolutionsRoute
+  '/corporate/terms': typeof CorporateTermsRoute
   '/shop/cart': typeof ShopCartRoute
   '/shop/checkout': typeof ShopCheckoutRoute
   '/shop/orders': typeof ShopOrdersRoute
   '/shop/products': typeof ShopProductsRouteWithChildren
+  '/sns/bookmarks': typeof SnsBookmarksRoute
+  '/sns/explore': typeof SnsExploreRoute
+  '/sns/messages': typeof SnsMessagesRoute
+  '/sns/notifications': typeof SnsNotificationsRoute
+  '/corporate': typeof CorporateIndexRoute
   '/shop': typeof ShopIndexRoute
+  '/sns': typeof SnsIndexRoute
   '/shop/category/$category': typeof ShopCategoryCategoryRoute
   '/shop/products/$product': typeof ShopProductsProductRoute
+  '/sns/profile/$username': typeof SnsProfileUsernameRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/corporate/about': typeof CorporateAboutRoute
+  '/corporate/benefits': typeof CorporateBenefitsRoute
+  '/corporate/careers': typeof CorporateCareersRoute
+  '/corporate/case-studies': typeof CorporateCaseStudiesRoute
+  '/corporate/contact': typeof CorporateContactRoute
+  '/corporate/culture': typeof CorporateCultureRoute
+  '/corporate/history': typeof CorporateHistoryRoute
+  '/corporate/message': typeof CorporateMessageRoute
+  '/corporate/news': typeof CorporateNewsRoute
+  '/corporate/privacy': typeof CorporatePrivacyRoute
+  '/corporate/services': typeof CorporateServicesRoute
+  '/corporate/solutions': typeof CorporateSolutionsRoute
+  '/corporate/terms': typeof CorporateTermsRoute
   '/shop/cart': typeof ShopCartRoute
   '/shop/checkout': typeof ShopCheckoutRoute
   '/shop/orders': typeof ShopOrdersRoute
   '/shop/products': typeof ShopProductsRouteWithChildren
+  '/sns/bookmarks': typeof SnsBookmarksRoute
+  '/sns/explore': typeof SnsExploreRoute
+  '/sns/messages': typeof SnsMessagesRoute
+  '/sns/notifications': typeof SnsNotificationsRoute
+  '/corporate/': typeof CorporateIndexRoute
   '/shop/': typeof ShopIndexRoute
+  '/sns/': typeof SnsIndexRoute
   '/shop/category/$category': typeof ShopCategoryCategoryRoute
   '/shop/products/$product': typeof ShopProductsProductRoute
+  '/sns/profile/$username': typeof SnsProfileUsernameRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/corporate/about'
+    | '/corporate/benefits'
+    | '/corporate/careers'
+    | '/corporate/case-studies'
+    | '/corporate/contact'
+    | '/corporate/culture'
+    | '/corporate/history'
+    | '/corporate/message'
+    | '/corporate/news'
+    | '/corporate/privacy'
+    | '/corporate/services'
+    | '/corporate/solutions'
+    | '/corporate/terms'
     | '/shop/cart'
     | '/shop/checkout'
     | '/shop/orders'
     | '/shop/products'
+    | '/sns/bookmarks'
+    | '/sns/explore'
+    | '/sns/messages'
+    | '/sns/notifications'
+    | '/corporate'
     | '/shop'
+    | '/sns'
     | '/shop/category/$category'
     | '/shop/products/$product'
+    | '/sns/profile/$username'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/corporate/about'
+    | '/corporate/benefits'
+    | '/corporate/careers'
+    | '/corporate/case-studies'
+    | '/corporate/contact'
+    | '/corporate/culture'
+    | '/corporate/history'
+    | '/corporate/message'
+    | '/corporate/news'
+    | '/corporate/privacy'
+    | '/corporate/services'
+    | '/corporate/solutions'
+    | '/corporate/terms'
     | '/shop/cart'
     | '/shop/checkout'
     | '/shop/orders'
     | '/shop/products'
+    | '/sns/bookmarks'
+    | '/sns/explore'
+    | '/sns/messages'
+    | '/sns/notifications'
+    | '/corporate'
     | '/shop'
+    | '/sns'
     | '/shop/category/$category'
     | '/shop/products/$product'
+    | '/sns/profile/$username'
   id:
     | '__root__'
     | '/'
+    | '/corporate/about'
+    | '/corporate/benefits'
+    | '/corporate/careers'
+    | '/corporate/case-studies'
+    | '/corporate/contact'
+    | '/corporate/culture'
+    | '/corporate/history'
+    | '/corporate/message'
+    | '/corporate/news'
+    | '/corporate/privacy'
+    | '/corporate/services'
+    | '/corporate/solutions'
+    | '/corporate/terms'
     | '/shop/cart'
     | '/shop/checkout'
     | '/shop/orders'
     | '/shop/products'
+    | '/sns/bookmarks'
+    | '/sns/explore'
+    | '/sns/messages'
+    | '/sns/notifications'
+    | '/corporate/'
     | '/shop/'
+    | '/sns/'
     | '/shop/category/$category'
     | '/shop/products/$product'
+    | '/sns/profile/$username'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CorporateAboutRoute: typeof CorporateAboutRoute
+  CorporateBenefitsRoute: typeof CorporateBenefitsRoute
+  CorporateCareersRoute: typeof CorporateCareersRoute
+  CorporateCaseStudiesRoute: typeof CorporateCaseStudiesRoute
+  CorporateContactRoute: typeof CorporateContactRoute
+  CorporateCultureRoute: typeof CorporateCultureRoute
+  CorporateHistoryRoute: typeof CorporateHistoryRoute
+  CorporateMessageRoute: typeof CorporateMessageRoute
+  CorporateNewsRoute: typeof CorporateNewsRoute
+  CorporatePrivacyRoute: typeof CorporatePrivacyRoute
+  CorporateServicesRoute: typeof CorporateServicesRoute
+  CorporateSolutionsRoute: typeof CorporateSolutionsRoute
+  CorporateTermsRoute: typeof CorporateTermsRoute
   ShopCartRoute: typeof ShopCartRoute
   ShopCheckoutRoute: typeof ShopCheckoutRoute
   ShopOrdersRoute: typeof ShopOrdersRoute
   ShopProductsRoute: typeof ShopProductsRouteWithChildren
+  SnsBookmarksRoute: typeof SnsBookmarksRoute
+  SnsExploreRoute: typeof SnsExploreRoute
+  SnsMessagesRoute: typeof SnsMessagesRoute
+  SnsNotificationsRoute: typeof SnsNotificationsRoute
+  CorporateIndexRoute: typeof CorporateIndexRoute
   ShopIndexRoute: typeof ShopIndexRoute
+  SnsIndexRoute: typeof SnsIndexRoute
   ShopCategoryCategoryRoute: typeof ShopCategoryCategoryRoute
+  SnsProfileUsernameRoute: typeof SnsProfileUsernameRoute
 }
 export interface FileServerRoutesByFullPath {
   '/api': typeof ApiServerRoute
@@ -173,11 +433,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sns/': {
+      id: '/sns/'
+      path: '/sns'
+      fullPath: '/sns'
+      preLoaderRoute: typeof SnsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shop/': {
       id: '/shop/'
       path: '/shop'
       fullPath: '/shop'
       preLoaderRoute: typeof ShopIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/corporate/': {
+      id: '/corporate/'
+      path: '/corporate'
+      fullPath: '/corporate'
+      preLoaderRoute: typeof CorporateIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sns/notifications': {
+      id: '/sns/notifications'
+      path: '/sns/notifications'
+      fullPath: '/sns/notifications'
+      preLoaderRoute: typeof SnsNotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sns/messages': {
+      id: '/sns/messages'
+      path: '/sns/messages'
+      fullPath: '/sns/messages'
+      preLoaderRoute: typeof SnsMessagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sns/explore': {
+      id: '/sns/explore'
+      path: '/sns/explore'
+      fullPath: '/sns/explore'
+      preLoaderRoute: typeof SnsExploreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sns/bookmarks': {
+      id: '/sns/bookmarks'
+      path: '/sns/bookmarks'
+      fullPath: '/sns/bookmarks'
+      preLoaderRoute: typeof SnsBookmarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/shop/products': {
@@ -206,6 +508,104 @@ declare module '@tanstack/react-router' {
       path: '/shop/cart'
       fullPath: '/shop/cart'
       preLoaderRoute: typeof ShopCartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/corporate/terms': {
+      id: '/corporate/terms'
+      path: '/corporate/terms'
+      fullPath: '/corporate/terms'
+      preLoaderRoute: typeof CorporateTermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/corporate/solutions': {
+      id: '/corporate/solutions'
+      path: '/corporate/solutions'
+      fullPath: '/corporate/solutions'
+      preLoaderRoute: typeof CorporateSolutionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/corporate/services': {
+      id: '/corporate/services'
+      path: '/corporate/services'
+      fullPath: '/corporate/services'
+      preLoaderRoute: typeof CorporateServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/corporate/privacy': {
+      id: '/corporate/privacy'
+      path: '/corporate/privacy'
+      fullPath: '/corporate/privacy'
+      preLoaderRoute: typeof CorporatePrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/corporate/news': {
+      id: '/corporate/news'
+      path: '/corporate/news'
+      fullPath: '/corporate/news'
+      preLoaderRoute: typeof CorporateNewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/corporate/message': {
+      id: '/corporate/message'
+      path: '/corporate/message'
+      fullPath: '/corporate/message'
+      preLoaderRoute: typeof CorporateMessageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/corporate/history': {
+      id: '/corporate/history'
+      path: '/corporate/history'
+      fullPath: '/corporate/history'
+      preLoaderRoute: typeof CorporateHistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/corporate/culture': {
+      id: '/corporate/culture'
+      path: '/corporate/culture'
+      fullPath: '/corporate/culture'
+      preLoaderRoute: typeof CorporateCultureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/corporate/contact': {
+      id: '/corporate/contact'
+      path: '/corporate/contact'
+      fullPath: '/corporate/contact'
+      preLoaderRoute: typeof CorporateContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/corporate/case-studies': {
+      id: '/corporate/case-studies'
+      path: '/corporate/case-studies'
+      fullPath: '/corporate/case-studies'
+      preLoaderRoute: typeof CorporateCaseStudiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/corporate/careers': {
+      id: '/corporate/careers'
+      path: '/corporate/careers'
+      fullPath: '/corporate/careers'
+      preLoaderRoute: typeof CorporateCareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/corporate/benefits': {
+      id: '/corporate/benefits'
+      path: '/corporate/benefits'
+      fullPath: '/corporate/benefits'
+      preLoaderRoute: typeof CorporateBenefitsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/corporate/about': {
+      id: '/corporate/about'
+      path: '/corporate/about'
+      fullPath: '/corporate/about'
+      preLoaderRoute: typeof CorporateAboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sns/profile/$username': {
+      id: '/sns/profile/$username'
+      path: '/sns/profile/$username'
+      fullPath: '/sns/profile/$username'
+      preLoaderRoute: typeof SnsProfileUsernameRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/shop/products/$product': {
@@ -250,12 +650,32 @@ const ShopProductsRouteWithChildren = ShopProductsRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CorporateAboutRoute: CorporateAboutRoute,
+  CorporateBenefitsRoute: CorporateBenefitsRoute,
+  CorporateCareersRoute: CorporateCareersRoute,
+  CorporateCaseStudiesRoute: CorporateCaseStudiesRoute,
+  CorporateContactRoute: CorporateContactRoute,
+  CorporateCultureRoute: CorporateCultureRoute,
+  CorporateHistoryRoute: CorporateHistoryRoute,
+  CorporateMessageRoute: CorporateMessageRoute,
+  CorporateNewsRoute: CorporateNewsRoute,
+  CorporatePrivacyRoute: CorporatePrivacyRoute,
+  CorporateServicesRoute: CorporateServicesRoute,
+  CorporateSolutionsRoute: CorporateSolutionsRoute,
+  CorporateTermsRoute: CorporateTermsRoute,
   ShopCartRoute: ShopCartRoute,
   ShopCheckoutRoute: ShopCheckoutRoute,
   ShopOrdersRoute: ShopOrdersRoute,
   ShopProductsRoute: ShopProductsRouteWithChildren,
+  SnsBookmarksRoute: SnsBookmarksRoute,
+  SnsExploreRoute: SnsExploreRoute,
+  SnsMessagesRoute: SnsMessagesRoute,
+  SnsNotificationsRoute: SnsNotificationsRoute,
+  CorporateIndexRoute: CorporateIndexRoute,
   ShopIndexRoute: ShopIndexRoute,
+  SnsIndexRoute: SnsIndexRoute,
   ShopCategoryCategoryRoute: ShopCategoryCategoryRoute,
+  SnsProfileUsernameRoute: SnsProfileUsernameRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

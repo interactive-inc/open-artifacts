@@ -44,7 +44,10 @@ import { Route as CafeConceptRouteImport } from './routes/cafe/concept'
 import { Route as SnsProfileUsernameRouteImport } from './routes/sns/profile.$username'
 import { Route as ShopProductsProductRouteImport } from './routes/shop/products.$product'
 import { Route as ShopCategoryCategoryRouteImport } from './routes/shop/category.$category'
-import { ServerRoute as ApiServerRouteImport } from './routes/api'
+import { ServerRoute as SnsApiServerRouteImport } from './routes/sns/api'
+import { ServerRoute as ShopApiServerRouteImport } from './routes/shop/api'
+import { ServerRoute as CorporateApiServerRouteImport } from './routes/corporate/api'
+import { ServerRoute as CafeApiServerRouteImport } from './routes/cafe/api'
 
 const rootServerRouteImport = createServerRootRoute()
 
@@ -213,9 +216,24 @@ const ShopCategoryCategoryRoute = ShopCategoryCategoryRouteImport.update({
   path: '/shop/category/$category',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiServerRoute = ApiServerRouteImport.update({
-  id: '/api',
-  path: '/api',
+const SnsApiServerRoute = SnsApiServerRouteImport.update({
+  id: '/sns/api',
+  path: '/sns/api',
+  getParentRoute: () => rootServerRouteImport,
+} as any)
+const ShopApiServerRoute = ShopApiServerRouteImport.update({
+  id: '/shop/api',
+  path: '/shop/api',
+  getParentRoute: () => rootServerRouteImport,
+} as any)
+const CorporateApiServerRoute = CorporateApiServerRouteImport.update({
+  id: '/corporate/api',
+  path: '/corporate/api',
+  getParentRoute: () => rootServerRouteImport,
+} as any)
+const CafeApiServerRoute = CafeApiServerRouteImport.update({
+  id: '/cafe/api',
+  path: '/cafe/api',
   getParentRoute: () => rootServerRouteImport,
 } as any)
 
@@ -468,25 +486,37 @@ export interface RootRouteChildren {
   SnsProfileUsernameRoute: typeof SnsProfileUsernameRoute
 }
 export interface FileServerRoutesByFullPath {
-  '/api': typeof ApiServerRoute
+  '/cafe/api': typeof CafeApiServerRoute
+  '/corporate/api': typeof CorporateApiServerRoute
+  '/shop/api': typeof ShopApiServerRoute
+  '/sns/api': typeof SnsApiServerRoute
 }
 export interface FileServerRoutesByTo {
-  '/api': typeof ApiServerRoute
+  '/cafe/api': typeof CafeApiServerRoute
+  '/corporate/api': typeof CorporateApiServerRoute
+  '/shop/api': typeof ShopApiServerRoute
+  '/sns/api': typeof SnsApiServerRoute
 }
 export interface FileServerRoutesById {
   __root__: typeof rootServerRouteImport
-  '/api': typeof ApiServerRoute
+  '/cafe/api': typeof CafeApiServerRoute
+  '/corporate/api': typeof CorporateApiServerRoute
+  '/shop/api': typeof ShopApiServerRoute
+  '/sns/api': typeof SnsApiServerRoute
 }
 export interface FileServerRouteTypes {
   fileServerRoutesByFullPath: FileServerRoutesByFullPath
-  fullPaths: '/api'
+  fullPaths: '/cafe/api' | '/corporate/api' | '/shop/api' | '/sns/api'
   fileServerRoutesByTo: FileServerRoutesByTo
-  to: '/api'
-  id: '__root__' | '/api'
+  to: '/cafe/api' | '/corporate/api' | '/shop/api' | '/sns/api'
+  id: '__root__' | '/cafe/api' | '/corporate/api' | '/shop/api' | '/sns/api'
   fileServerRoutesById: FileServerRoutesById
 }
 export interface RootServerRouteChildren {
-  ApiServerRoute: typeof ApiServerRoute
+  CafeApiServerRoute: typeof CafeApiServerRoute
+  CorporateApiServerRoute: typeof CorporateApiServerRoute
+  ShopApiServerRoute: typeof ShopApiServerRoute
+  SnsApiServerRoute: typeof SnsApiServerRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -726,11 +756,32 @@ declare module '@tanstack/react-router' {
 }
 declare module '@tanstack/react-start/server' {
   interface ServerFileRoutesByPath {
-    '/api': {
-      id: '/api'
-      path: '/api'
-      fullPath: '/api'
-      preLoaderRoute: typeof ApiServerRouteImport
+    '/sns/api': {
+      id: '/sns/api'
+      path: '/sns/api'
+      fullPath: '/sns/api'
+      preLoaderRoute: typeof SnsApiServerRouteImport
+      parentRoute: typeof rootServerRouteImport
+    }
+    '/shop/api': {
+      id: '/shop/api'
+      path: '/shop/api'
+      fullPath: '/shop/api'
+      preLoaderRoute: typeof ShopApiServerRouteImport
+      parentRoute: typeof rootServerRouteImport
+    }
+    '/corporate/api': {
+      id: '/corporate/api'
+      path: '/corporate/api'
+      fullPath: '/corporate/api'
+      preLoaderRoute: typeof CorporateApiServerRouteImport
+      parentRoute: typeof rootServerRouteImport
+    }
+    '/cafe/api': {
+      id: '/cafe/api'
+      path: '/cafe/api'
+      fullPath: '/cafe/api'
+      preLoaderRoute: typeof CafeApiServerRouteImport
       parentRoute: typeof rootServerRouteImport
     }
   }
@@ -786,7 +837,10 @@ export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
 const rootServerRouteChildren: RootServerRouteChildren = {
-  ApiServerRoute: ApiServerRoute,
+  CafeApiServerRoute: CafeApiServerRoute,
+  CorporateApiServerRoute: CorporateApiServerRoute,
+  ShopApiServerRoute: ShopApiServerRoute,
+  SnsApiServerRoute: SnsApiServerRoute,
 }
 export const serverRouteTree = rootServerRouteImport
   ._addFileChildren(rootServerRouteChildren)

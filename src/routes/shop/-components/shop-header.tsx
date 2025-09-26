@@ -19,7 +19,7 @@ export function ShopHeader() {
               <span className="font-bold text-2xl">SHOP</span>
             </Link>
 
-            <NavigationMenu className="hidden md:flex">
+            <NavigationMenu className="hidden lg:flex">
               <NavigationMenuList>
                 <NavigationMenuItem>
                   <NavigationMenuLink asChild>

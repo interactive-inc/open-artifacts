@@ -1,17 +1,21 @@
-import { createServerFileRoute } from "@tanstack/react-start/server"
-import { hono } from "./-lib/hono/app"
+import { createFileRoute } from "@tanstack/react-router"
+import { hono } from "@/routes/shop/-lib/hono/app"
 
-export const ServerRoute = createServerFileRoute("/shop/api").methods({
-  GET(props) {
-    return hono.fetch(props.request)
-  },
-  POST(props) {
-    return hono.fetch(props.request)
-  },
-  DELETE(props) {
-    return hono.fetch(props.request)
-  },
-  PUT(props) {
-    return hono.fetch(props.request)
+export const Route = createFileRoute("/shop/api")({
+  server: {
+    handlers: {
+      GET(props) {
+        return hono.fetch(props.request)
+      },
+      POST(props) {
+        return hono.fetch(props.request)
+      },
+      DELETE(props) {
+        return hono.fetch(props.request)
+      },
+      PUT(props) {
+        return hono.fetch(props.request)
+      },
+    },
   },
 })

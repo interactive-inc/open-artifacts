@@ -8,8 +8,6 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { createServerRootRoute } from '@tanstack/react-start/server'
-
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SnsIndexRouteImport } from './routes/sns/index'
@@ -20,10 +18,12 @@ import { Route as SnsNotificationsRouteImport } from './routes/sns/notifications
 import { Route as SnsMessagesRouteImport } from './routes/sns/messages'
 import { Route as SnsExploreRouteImport } from './routes/sns/explore'
 import { Route as SnsBookmarksRouteImport } from './routes/sns/bookmarks'
+import { Route as SnsApiRouteImport } from './routes/sns/api'
 import { Route as ShopProductsRouteImport } from './routes/shop/products'
 import { Route as ShopOrdersRouteImport } from './routes/shop/orders'
 import { Route as ShopCheckoutRouteImport } from './routes/shop/checkout'
 import { Route as ShopCartRouteImport } from './routes/shop/cart'
+import { Route as ShopApiRouteImport } from './routes/shop/api'
 import { Route as CorporateTermsRouteImport } from './routes/corporate/terms'
 import { Route as CorporateSolutionsRouteImport } from './routes/corporate/solutions'
 import { Route as CorporateServicesRouteImport } from './routes/corporate/services'
@@ -36,20 +36,16 @@ import { Route as CorporateContactRouteImport } from './routes/corporate/contact
 import { Route as CorporateCaseStudiesRouteImport } from './routes/corporate/case-studies'
 import { Route as CorporateCareersRouteImport } from './routes/corporate/careers'
 import { Route as CorporateBenefitsRouteImport } from './routes/corporate/benefits'
+import { Route as CorporateApiRouteImport } from './routes/corporate/api'
 import { Route as CorporateAboutRouteImport } from './routes/corporate/about'
 import { Route as CafeShopRouteImport } from './routes/cafe/shop'
 import { Route as CafeNewsRouteImport } from './routes/cafe/news'
 import { Route as CafeMenuRouteImport } from './routes/cafe/menu'
 import { Route as CafeConceptRouteImport } from './routes/cafe/concept'
+import { Route as CafeApiRouteImport } from './routes/cafe/api'
 import { Route as SnsProfileUsernameRouteImport } from './routes/sns/profile.$username'
 import { Route as ShopProductsProductRouteImport } from './routes/shop/products.$product'
 import { Route as ShopCategoryCategoryRouteImport } from './routes/shop/category.$category'
-import { ServerRoute as SnsApiServerRouteImport } from './routes/sns/api'
-import { ServerRoute as ShopApiServerRouteImport } from './routes/shop/api'
-import { ServerRoute as CorporateApiServerRouteImport } from './routes/corporate/api'
-import { ServerRoute as CafeApiServerRouteImport } from './routes/cafe/api'
-
-const rootServerRouteImport = createServerRootRoute()
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -96,6 +92,11 @@ const SnsBookmarksRoute = SnsBookmarksRouteImport.update({
   path: '/sns/bookmarks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SnsApiRoute = SnsApiRouteImport.update({
+  id: '/sns/api',
+  path: '/sns/api',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShopProductsRoute = ShopProductsRouteImport.update({
   id: '/shop/products',
   path: '/shop/products',
@@ -114,6 +115,11 @@ const ShopCheckoutRoute = ShopCheckoutRouteImport.update({
 const ShopCartRoute = ShopCartRouteImport.update({
   id: '/shop/cart',
   path: '/shop/cart',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopApiRoute = ShopApiRouteImport.update({
+  id: '/shop/api',
+  path: '/shop/api',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CorporateTermsRoute = CorporateTermsRouteImport.update({
@@ -176,6 +182,11 @@ const CorporateBenefitsRoute = CorporateBenefitsRouteImport.update({
   path: '/corporate/benefits',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CorporateApiRoute = CorporateApiRouteImport.update({
+  id: '/corporate/api',
+  path: '/corporate/api',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CorporateAboutRoute = CorporateAboutRouteImport.update({
   id: '/corporate/about',
   path: '/corporate/about',
@@ -201,6 +212,11 @@ const CafeConceptRoute = CafeConceptRouteImport.update({
   path: '/cafe/concept',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CafeApiRoute = CafeApiRouteImport.update({
+  id: '/cafe/api',
+  path: '/cafe/api',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SnsProfileUsernameRoute = SnsProfileUsernameRouteImport.update({
   id: '/sns/profile/$username',
   path: '/sns/profile/$username',
@@ -216,34 +232,16 @@ const ShopCategoryCategoryRoute = ShopCategoryCategoryRouteImport.update({
   path: '/shop/category/$category',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SnsApiServerRoute = SnsApiServerRouteImport.update({
-  id: '/sns/api',
-  path: '/sns/api',
-  getParentRoute: () => rootServerRouteImport,
-} as any)
-const ShopApiServerRoute = ShopApiServerRouteImport.update({
-  id: '/shop/api',
-  path: '/shop/api',
-  getParentRoute: () => rootServerRouteImport,
-} as any)
-const CorporateApiServerRoute = CorporateApiServerRouteImport.update({
-  id: '/corporate/api',
-  path: '/corporate/api',
-  getParentRoute: () => rootServerRouteImport,
-} as any)
-const CafeApiServerRoute = CafeApiServerRouteImport.update({
-  id: '/cafe/api',
-  path: '/cafe/api',
-  getParentRoute: () => rootServerRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cafe/api': typeof CafeApiRoute
   '/cafe/concept': typeof CafeConceptRoute
   '/cafe/menu': typeof CafeMenuRoute
   '/cafe/news': typeof CafeNewsRoute
   '/cafe/shop': typeof CafeShopRoute
   '/corporate/about': typeof CorporateAboutRoute
+  '/corporate/api': typeof CorporateApiRoute
   '/corporate/benefits': typeof CorporateBenefitsRoute
   '/corporate/careers': typeof CorporateCareersRoute
   '/corporate/case-studies': typeof CorporateCaseStudiesRoute
@@ -256,10 +254,12 @@ export interface FileRoutesByFullPath {
   '/corporate/services': typeof CorporateServicesRoute
   '/corporate/solutions': typeof CorporateSolutionsRoute
   '/corporate/terms': typeof CorporateTermsRoute
+  '/shop/api': typeof ShopApiRoute
   '/shop/cart': typeof ShopCartRoute
   '/shop/checkout': typeof ShopCheckoutRoute
   '/shop/orders': typeof ShopOrdersRoute
   '/shop/products': typeof ShopProductsRouteWithChildren
+  '/sns/api': typeof SnsApiRoute
   '/sns/bookmarks': typeof SnsBookmarksRoute
   '/sns/explore': typeof SnsExploreRoute
   '/sns/messages': typeof SnsMessagesRoute
@@ -274,11 +274,13 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cafe/api': typeof CafeApiRoute
   '/cafe/concept': typeof CafeConceptRoute
   '/cafe/menu': typeof CafeMenuRoute
   '/cafe/news': typeof CafeNewsRoute
   '/cafe/shop': typeof CafeShopRoute
   '/corporate/about': typeof CorporateAboutRoute
+  '/corporate/api': typeof CorporateApiRoute
   '/corporate/benefits': typeof CorporateBenefitsRoute
   '/corporate/careers': typeof CorporateCareersRoute
   '/corporate/case-studies': typeof CorporateCaseStudiesRoute
@@ -291,10 +293,12 @@ export interface FileRoutesByTo {
   '/corporate/services': typeof CorporateServicesRoute
   '/corporate/solutions': typeof CorporateSolutionsRoute
   '/corporate/terms': typeof CorporateTermsRoute
+  '/shop/api': typeof ShopApiRoute
   '/shop/cart': typeof ShopCartRoute
   '/shop/checkout': typeof ShopCheckoutRoute
   '/shop/orders': typeof ShopOrdersRoute
   '/shop/products': typeof ShopProductsRouteWithChildren
+  '/sns/api': typeof SnsApiRoute
   '/sns/bookmarks': typeof SnsBookmarksRoute
   '/sns/explore': typeof SnsExploreRoute
   '/sns/messages': typeof SnsMessagesRoute
@@ -310,11 +314,13 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cafe/api': typeof CafeApiRoute
   '/cafe/concept': typeof CafeConceptRoute
   '/cafe/menu': typeof CafeMenuRoute
   '/cafe/news': typeof CafeNewsRoute
   '/cafe/shop': typeof CafeShopRoute
   '/corporate/about': typeof CorporateAboutRoute
+  '/corporate/api': typeof CorporateApiRoute
   '/corporate/benefits': typeof CorporateBenefitsRoute
   '/corporate/careers': typeof CorporateCareersRoute
   '/corporate/case-studies': typeof CorporateCaseStudiesRoute
@@ -327,10 +333,12 @@ export interface FileRoutesById {
   '/corporate/services': typeof CorporateServicesRoute
   '/corporate/solutions': typeof CorporateSolutionsRoute
   '/corporate/terms': typeof CorporateTermsRoute
+  '/shop/api': typeof ShopApiRoute
   '/shop/cart': typeof ShopCartRoute
   '/shop/checkout': typeof ShopCheckoutRoute
   '/shop/orders': typeof ShopOrdersRoute
   '/shop/products': typeof ShopProductsRouteWithChildren
+  '/sns/api': typeof SnsApiRoute
   '/sns/bookmarks': typeof SnsBookmarksRoute
   '/sns/explore': typeof SnsExploreRoute
   '/sns/messages': typeof SnsMessagesRoute
@@ -347,11 +355,13 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/cafe/api'
     | '/cafe/concept'
     | '/cafe/menu'
     | '/cafe/news'
     | '/cafe/shop'
     | '/corporate/about'
+    | '/corporate/api'
     | '/corporate/benefits'
     | '/corporate/careers'
     | '/corporate/case-studies'
@@ -364,10 +374,12 @@ export interface FileRouteTypes {
     | '/corporate/services'
     | '/corporate/solutions'
     | '/corporate/terms'
+    | '/shop/api'
     | '/shop/cart'
     | '/shop/checkout'
     | '/shop/orders'
     | '/shop/products'
+    | '/sns/api'
     | '/sns/bookmarks'
     | '/sns/explore'
     | '/sns/messages'
@@ -382,11 +394,13 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/cafe/api'
     | '/cafe/concept'
     | '/cafe/menu'
     | '/cafe/news'
     | '/cafe/shop'
     | '/corporate/about'
+    | '/corporate/api'
     | '/corporate/benefits'
     | '/corporate/careers'
     | '/corporate/case-studies'
@@ -399,10 +413,12 @@ export interface FileRouteTypes {
     | '/corporate/services'
     | '/corporate/solutions'
     | '/corporate/terms'
+    | '/shop/api'
     | '/shop/cart'
     | '/shop/checkout'
     | '/shop/orders'
     | '/shop/products'
+    | '/sns/api'
     | '/sns/bookmarks'
     | '/sns/explore'
     | '/sns/messages'
@@ -417,11 +433,13 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/cafe/api'
     | '/cafe/concept'
     | '/cafe/menu'
     | '/cafe/news'
     | '/cafe/shop'
     | '/corporate/about'
+    | '/corporate/api'
     | '/corporate/benefits'
     | '/corporate/careers'
     | '/corporate/case-studies'
@@ -434,10 +452,12 @@ export interface FileRouteTypes {
     | '/corporate/services'
     | '/corporate/solutions'
     | '/corporate/terms'
+    | '/shop/api'
     | '/shop/cart'
     | '/shop/checkout'
     | '/shop/orders'
     | '/shop/products'
+    | '/sns/api'
     | '/sns/bookmarks'
     | '/sns/explore'
     | '/sns/messages'
@@ -453,11 +473,13 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CafeApiRoute: typeof CafeApiRoute
   CafeConceptRoute: typeof CafeConceptRoute
   CafeMenuRoute: typeof CafeMenuRoute
   CafeNewsRoute: typeof CafeNewsRoute
   CafeShopRoute: typeof CafeShopRoute
   CorporateAboutRoute: typeof CorporateAboutRoute
+  CorporateApiRoute: typeof CorporateApiRoute
   CorporateBenefitsRoute: typeof CorporateBenefitsRoute
   CorporateCareersRoute: typeof CorporateCareersRoute
   CorporateCaseStudiesRoute: typeof CorporateCaseStudiesRoute
@@ -470,10 +492,12 @@ export interface RootRouteChildren {
   CorporateServicesRoute: typeof CorporateServicesRoute
   CorporateSolutionsRoute: typeof CorporateSolutionsRoute
   CorporateTermsRoute: typeof CorporateTermsRoute
+  ShopApiRoute: typeof ShopApiRoute
   ShopCartRoute: typeof ShopCartRoute
   ShopCheckoutRoute: typeof ShopCheckoutRoute
   ShopOrdersRoute: typeof ShopOrdersRoute
   ShopProductsRoute: typeof ShopProductsRouteWithChildren
+  SnsApiRoute: typeof SnsApiRoute
   SnsBookmarksRoute: typeof SnsBookmarksRoute
   SnsExploreRoute: typeof SnsExploreRoute
   SnsMessagesRoute: typeof SnsMessagesRoute
@@ -484,39 +508,6 @@ export interface RootRouteChildren {
   SnsIndexRoute: typeof SnsIndexRoute
   ShopCategoryCategoryRoute: typeof ShopCategoryCategoryRoute
   SnsProfileUsernameRoute: typeof SnsProfileUsernameRoute
-}
-export interface FileServerRoutesByFullPath {
-  '/cafe/api': typeof CafeApiServerRoute
-  '/corporate/api': typeof CorporateApiServerRoute
-  '/shop/api': typeof ShopApiServerRoute
-  '/sns/api': typeof SnsApiServerRoute
-}
-export interface FileServerRoutesByTo {
-  '/cafe/api': typeof CafeApiServerRoute
-  '/corporate/api': typeof CorporateApiServerRoute
-  '/shop/api': typeof ShopApiServerRoute
-  '/sns/api': typeof SnsApiServerRoute
-}
-export interface FileServerRoutesById {
-  __root__: typeof rootServerRouteImport
-  '/cafe/api': typeof CafeApiServerRoute
-  '/corporate/api': typeof CorporateApiServerRoute
-  '/shop/api': typeof ShopApiServerRoute
-  '/sns/api': typeof SnsApiServerRoute
-}
-export interface FileServerRouteTypes {
-  fileServerRoutesByFullPath: FileServerRoutesByFullPath
-  fullPaths: '/cafe/api' | '/corporate/api' | '/shop/api' | '/sns/api'
-  fileServerRoutesByTo: FileServerRoutesByTo
-  to: '/cafe/api' | '/corporate/api' | '/shop/api' | '/sns/api'
-  id: '__root__' | '/cafe/api' | '/corporate/api' | '/shop/api' | '/sns/api'
-  fileServerRoutesById: FileServerRoutesById
-}
-export interface RootServerRouteChildren {
-  CafeApiServerRoute: typeof CafeApiServerRoute
-  CorporateApiServerRoute: typeof CorporateApiServerRoute
-  ShopApiServerRoute: typeof ShopApiServerRoute
-  SnsApiServerRoute: typeof SnsApiServerRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -584,6 +575,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SnsBookmarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sns/api': {
+      id: '/sns/api'
+      path: '/sns/api'
+      fullPath: '/sns/api'
+      preLoaderRoute: typeof SnsApiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shop/products': {
       id: '/shop/products'
       path: '/shop/products'
@@ -610,6 +608,13 @@ declare module '@tanstack/react-router' {
       path: '/shop/cart'
       fullPath: '/shop/cart'
       preLoaderRoute: typeof ShopCartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop/api': {
+      id: '/shop/api'
+      path: '/shop/api'
+      fullPath: '/shop/api'
+      preLoaderRoute: typeof ShopApiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/corporate/terms': {
@@ -696,6 +701,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CorporateBenefitsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/corporate/api': {
+      id: '/corporate/api'
+      path: '/corporate/api'
+      fullPath: '/corporate/api'
+      preLoaderRoute: typeof CorporateApiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/corporate/about': {
       id: '/corporate/about'
       path: '/corporate/about'
@@ -731,6 +743,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CafeConceptRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cafe/api': {
+      id: '/cafe/api'
+      path: '/cafe/api'
+      fullPath: '/cafe/api'
+      preLoaderRoute: typeof CafeApiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sns/profile/$username': {
       id: '/sns/profile/$username'
       path: '/sns/profile/$username'
@@ -754,38 +773,6 @@ declare module '@tanstack/react-router' {
     }
   }
 }
-declare module '@tanstack/react-start/server' {
-  interface ServerFileRoutesByPath {
-    '/sns/api': {
-      id: '/sns/api'
-      path: '/sns/api'
-      fullPath: '/sns/api'
-      preLoaderRoute: typeof SnsApiServerRouteImport
-      parentRoute: typeof rootServerRouteImport
-    }
-    '/shop/api': {
-      id: '/shop/api'
-      path: '/shop/api'
-      fullPath: '/shop/api'
-      preLoaderRoute: typeof ShopApiServerRouteImport
-      parentRoute: typeof rootServerRouteImport
-    }
-    '/corporate/api': {
-      id: '/corporate/api'
-      path: '/corporate/api'
-      fullPath: '/corporate/api'
-      preLoaderRoute: typeof CorporateApiServerRouteImport
-      parentRoute: typeof rootServerRouteImport
-    }
-    '/cafe/api': {
-      id: '/cafe/api'
-      path: '/cafe/api'
-      fullPath: '/cafe/api'
-      preLoaderRoute: typeof CafeApiServerRouteImport
-      parentRoute: typeof rootServerRouteImport
-    }
-  }
-}
 
 interface ShopProductsRouteChildren {
   ShopProductsProductRoute: typeof ShopProductsProductRoute
@@ -801,11 +788,13 @@ const ShopProductsRouteWithChildren = ShopProductsRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CafeApiRoute: CafeApiRoute,
   CafeConceptRoute: CafeConceptRoute,
   CafeMenuRoute: CafeMenuRoute,
   CafeNewsRoute: CafeNewsRoute,
   CafeShopRoute: CafeShopRoute,
   CorporateAboutRoute: CorporateAboutRoute,
+  CorporateApiRoute: CorporateApiRoute,
   CorporateBenefitsRoute: CorporateBenefitsRoute,
   CorporateCareersRoute: CorporateCareersRoute,
   CorporateCaseStudiesRoute: CorporateCaseStudiesRoute,
@@ -818,10 +807,12 @@ const rootRouteChildren: RootRouteChildren = {
   CorporateServicesRoute: CorporateServicesRoute,
   CorporateSolutionsRoute: CorporateSolutionsRoute,
   CorporateTermsRoute: CorporateTermsRoute,
+  ShopApiRoute: ShopApiRoute,
   ShopCartRoute: ShopCartRoute,
   ShopCheckoutRoute: ShopCheckoutRoute,
   ShopOrdersRoute: ShopOrdersRoute,
   ShopProductsRoute: ShopProductsRouteWithChildren,
+  SnsApiRoute: SnsApiRoute,
   SnsBookmarksRoute: SnsBookmarksRoute,
   SnsExploreRoute: SnsExploreRoute,
   SnsMessagesRoute: SnsMessagesRoute,
@@ -836,12 +827,12 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-const rootServerRouteChildren: RootServerRouteChildren = {
-  CafeApiServerRoute: CafeApiServerRoute,
-  CorporateApiServerRoute: CorporateApiServerRoute,
-  ShopApiServerRoute: ShopApiServerRoute,
-  SnsApiServerRoute: SnsApiServerRoute,
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
 }
-export const serverRouteTree = rootServerRouteImport
-  ._addFileChildren(rootServerRouteChildren)
-  ._addFileTypes<FileServerRouteTypes>()

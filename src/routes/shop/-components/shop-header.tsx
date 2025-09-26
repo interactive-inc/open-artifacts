@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router"
-import { Menu, Search, ShoppingCart, User } from "lucide-react"
+import { Heart, Menu, Search, ShoppingCart, User } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
@@ -8,8 +8,11 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu"
+import { useFavorites } from "../-lib/favorites-context"
 
 export function ShopHeader() {
+  const favoriteContext = useFavorites()
+  const favoritesCount = favoriteContext.favorites.size
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="flex justify-center">
@@ -94,6 +97,17 @@ export function ShopHeader() {
             <Button size="icon" variant="ghost">
               <User className="h-5 w-5" />
             </Button>
+
+            <Link to="/shop/favorites">
+              <Button size="icon" variant="ghost" className="relative">
+                <Heart className="h-5 w-5" />
+                {favoritesCount > 0 && (
+                  <span className="-top-1 -right-1 absolute flex h-4 w-4 items-center justify-center rounded-full bg-primary font-medium text-[10px] text-primary-foreground">
+                    {favoritesCount}
+                  </span>
+                )}
+              </Button>
+            </Link>
 
             <Link to="/shop/cart">
               <Button size="icon" variant="ghost" className="relative">

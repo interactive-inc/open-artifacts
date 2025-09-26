@@ -22,6 +22,7 @@ import { Route as SnsExploreRouteImport } from './routes/sns/explore'
 import { Route as SnsBookmarksRouteImport } from './routes/sns/bookmarks'
 import { Route as ShopProductsRouteImport } from './routes/shop/products'
 import { Route as ShopOrdersRouteImport } from './routes/shop/orders'
+import { Route as ShopFavoritesRouteImport } from './routes/shop/favorites'
 import { Route as ShopCheckoutRouteImport } from './routes/shop/checkout'
 import { Route as ShopCartRouteImport } from './routes/shop/cart'
 import { Route as CorporateTermsRouteImport } from './routes/corporate/terms'
@@ -104,6 +105,11 @@ const ShopProductsRoute = ShopProductsRouteImport.update({
 const ShopOrdersRoute = ShopOrdersRouteImport.update({
   id: '/shop/orders',
   path: '/shop/orders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopFavoritesRoute = ShopFavoritesRouteImport.update({
+  id: '/shop/favorites',
+  path: '/shop/favorites',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ShopCheckoutRoute = ShopCheckoutRouteImport.update({
@@ -258,6 +264,7 @@ export interface FileRoutesByFullPath {
   '/corporate/terms': typeof CorporateTermsRoute
   '/shop/cart': typeof ShopCartRoute
   '/shop/checkout': typeof ShopCheckoutRoute
+  '/shop/favorites': typeof ShopFavoritesRoute
   '/shop/orders': typeof ShopOrdersRoute
   '/shop/products': typeof ShopProductsRouteWithChildren
   '/sns/bookmarks': typeof SnsBookmarksRoute
@@ -293,6 +300,7 @@ export interface FileRoutesByTo {
   '/corporate/terms': typeof CorporateTermsRoute
   '/shop/cart': typeof ShopCartRoute
   '/shop/checkout': typeof ShopCheckoutRoute
+  '/shop/favorites': typeof ShopFavoritesRoute
   '/shop/orders': typeof ShopOrdersRoute
   '/shop/products': typeof ShopProductsRouteWithChildren
   '/sns/bookmarks': typeof SnsBookmarksRoute
@@ -329,6 +337,7 @@ export interface FileRoutesById {
   '/corporate/terms': typeof CorporateTermsRoute
   '/shop/cart': typeof ShopCartRoute
   '/shop/checkout': typeof ShopCheckoutRoute
+  '/shop/favorites': typeof ShopFavoritesRoute
   '/shop/orders': typeof ShopOrdersRoute
   '/shop/products': typeof ShopProductsRouteWithChildren
   '/sns/bookmarks': typeof SnsBookmarksRoute
@@ -366,6 +375,7 @@ export interface FileRouteTypes {
     | '/corporate/terms'
     | '/shop/cart'
     | '/shop/checkout'
+    | '/shop/favorites'
     | '/shop/orders'
     | '/shop/products'
     | '/sns/bookmarks'
@@ -401,6 +411,7 @@ export interface FileRouteTypes {
     | '/corporate/terms'
     | '/shop/cart'
     | '/shop/checkout'
+    | '/shop/favorites'
     | '/shop/orders'
     | '/shop/products'
     | '/sns/bookmarks'
@@ -436,6 +447,7 @@ export interface FileRouteTypes {
     | '/corporate/terms'
     | '/shop/cart'
     | '/shop/checkout'
+    | '/shop/favorites'
     | '/shop/orders'
     | '/shop/products'
     | '/sns/bookmarks'
@@ -472,6 +484,7 @@ export interface RootRouteChildren {
   CorporateTermsRoute: typeof CorporateTermsRoute
   ShopCartRoute: typeof ShopCartRoute
   ShopCheckoutRoute: typeof ShopCheckoutRoute
+  ShopFavoritesRoute: typeof ShopFavoritesRoute
   ShopOrdersRoute: typeof ShopOrdersRoute
   ShopProductsRoute: typeof ShopProductsRouteWithChildren
   SnsBookmarksRoute: typeof SnsBookmarksRoute
@@ -596,6 +609,13 @@ declare module '@tanstack/react-router' {
       path: '/shop/orders'
       fullPath: '/shop/orders'
       preLoaderRoute: typeof ShopOrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop/favorites': {
+      id: '/shop/favorites'
+      path: '/shop/favorites'
+      fullPath: '/shop/favorites'
+      preLoaderRoute: typeof ShopFavoritesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/shop/checkout': {
@@ -820,6 +840,7 @@ const rootRouteChildren: RootRouteChildren = {
   CorporateTermsRoute: CorporateTermsRoute,
   ShopCartRoute: ShopCartRoute,
   ShopCheckoutRoute: ShopCheckoutRoute,
+  ShopFavoritesRoute: ShopFavoritesRoute,
   ShopOrdersRoute: ShopOrdersRoute,
   ShopProductsRoute: ShopProductsRouteWithChildren,
   SnsBookmarksRoute: SnsBookmarksRoute,

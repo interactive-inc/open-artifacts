@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router"
-import { ShoppingCart } from "lucide-react"
+import { Heart, ShoppingCart } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
+import { useFavorites } from "../-lib/favorites-context"
 
 type Props = {
   product: {
@@ -16,18 +17,40 @@ type Props = {
 
 export function ShopProductCard(props: Props) {
   const product = props.product
+  const favoritesContext = useFavorites()
+  const isFavorite = favoritesContext.isFavorite(product.id)
+
+  const handleToggleFavorite = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    favoritesContext.toggleFavorite(product.id)
+  }
 
   return (
     <Card className="overflow-hidden transition-all hover:shadow-lg">
-      <Link to="/shop/products/$product" params={{ product: product.id }}>
-        <div className="aspect-square overflow-hidden bg-gray-100">
-          <img
-            src={product.images[0] || "/placeholder.jpg"}
-            alt={product.name}
-            className="h-full w-full object-cover transition-transform hover:scale-105"
+      <div className="relative">
+        <Link to="/shop/products/$product" params={{ product: product.id }}>
+          <div className="aspect-square overflow-hidden bg-gray-100">
+            <img
+              src={product.images[0] || "/placeholder.jpg"}
+              alt={product.name}
+              className="h-full w-full object-cover transition-transform hover:scale-105"
+            />
+          </div>
+        </Link>
+        <button
+          type="button"
+          onClick={handleToggleFavorite}
+          className="absolute top-2 right-2 cursor-pointer rounded-full bg-white p-2 shadow-md transition-all hover:shadow-lg"
+          aria-label={isFavorite ? "お気に入りから削除" : "お気に入りに追加"}
+        >
+          <Heart
+            className={`h-5 w-5 transition-colors ${
+              isFavorite ? "fill-red-500 text-red-500" : "text-gray-600"
+            }`}
           />
-        </div>
-      </Link>
+        </button>
+      </div>
 
       <CardContent className="p-4">
         <Link to="/shop/products/$product" params={{ product: product.id }}>

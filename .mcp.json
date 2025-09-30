@@ -1,8 +1,9 @@
 {
   "mcpServers": {
-    "playwright": {
+    "chrome-devtools": {
+      "type": "stdio",
       "command": "bunx",
-      "args": ["@playwright/mcp"],
+      "args": ["chrome-devtools-mcp@latest"],
       "env": {}
     }
   }

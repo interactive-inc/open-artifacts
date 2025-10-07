@@ -156,15 +156,17 @@ function Category() {
 
   if (!category) {
     return (
-      <div className="flex min-h-screen flex-col">
-        <ShopHeader />
-        <main className="flex-1">
-          <div className="container py-16">
-            <p className="text-center">カテゴリが見つかりません</p>
-          </div>
-        </main>
-        <ShopFooter />
-      </div>
+      <ShopLayout>
+        <div className="flex min-h-screen flex-col">
+          <ShopHeader />
+          <main className="flex-1">
+            <div className="container py-16">
+              <p className="text-center">カテゴリが見つかりません</p>
+            </div>
+          </main>
+          <ShopFooter />
+        </div>
+      </ShopLayout>
     )
   }
 

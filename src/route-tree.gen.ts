@@ -21,6 +21,7 @@ import { Route as SnsBookmarksRouteImport } from './routes/sns/bookmarks'
 import { Route as SnsApiRouteImport } from './routes/sns/api'
 import { Route as ShopProductsRouteImport } from './routes/shop/products'
 import { Route as ShopOrdersRouteImport } from './routes/shop/orders'
+import { Route as ShopFavoritesRouteImport } from './routes/shop/favorites'
 import { Route as ShopCheckoutRouteImport } from './routes/shop/checkout'
 import { Route as ShopCartRouteImport } from './routes/shop/cart'
 import { Route as ShopApiRouteImport } from './routes/shop/api'
@@ -105,6 +106,11 @@ const ShopProductsRoute = ShopProductsRouteImport.update({
 const ShopOrdersRoute = ShopOrdersRouteImport.update({
   id: '/shop/orders',
   path: '/shop/orders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopFavoritesRoute = ShopFavoritesRouteImport.update({
+  id: '/shop/favorites',
+  path: '/shop/favorites',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ShopCheckoutRoute = ShopCheckoutRouteImport.update({
@@ -257,6 +263,7 @@ export interface FileRoutesByFullPath {
   '/shop/api': typeof ShopApiRoute
   '/shop/cart': typeof ShopCartRoute
   '/shop/checkout': typeof ShopCheckoutRoute
+  '/shop/favorites': typeof ShopFavoritesRoute
   '/shop/orders': typeof ShopOrdersRoute
   '/shop/products': typeof ShopProductsRouteWithChildren
   '/sns/api': typeof SnsApiRoute
@@ -296,6 +303,7 @@ export interface FileRoutesByTo {
   '/shop/api': typeof ShopApiRoute
   '/shop/cart': typeof ShopCartRoute
   '/shop/checkout': typeof ShopCheckoutRoute
+  '/shop/favorites': typeof ShopFavoritesRoute
   '/shop/orders': typeof ShopOrdersRoute
   '/shop/products': typeof ShopProductsRouteWithChildren
   '/sns/api': typeof SnsApiRoute
@@ -336,6 +344,7 @@ export interface FileRoutesById {
   '/shop/api': typeof ShopApiRoute
   '/shop/cart': typeof ShopCartRoute
   '/shop/checkout': typeof ShopCheckoutRoute
+  '/shop/favorites': typeof ShopFavoritesRoute
   '/shop/orders': typeof ShopOrdersRoute
   '/shop/products': typeof ShopProductsRouteWithChildren
   '/sns/api': typeof SnsApiRoute
@@ -377,6 +386,7 @@ export interface FileRouteTypes {
     | '/shop/api'
     | '/shop/cart'
     | '/shop/checkout'
+    | '/shop/favorites'
     | '/shop/orders'
     | '/shop/products'
     | '/sns/api'
@@ -416,6 +426,7 @@ export interface FileRouteTypes {
     | '/shop/api'
     | '/shop/cart'
     | '/shop/checkout'
+    | '/shop/favorites'
     | '/shop/orders'
     | '/shop/products'
     | '/sns/api'
@@ -455,6 +466,7 @@ export interface FileRouteTypes {
     | '/shop/api'
     | '/shop/cart'
     | '/shop/checkout'
+    | '/shop/favorites'
     | '/shop/orders'
     | '/shop/products'
     | '/sns/api'
@@ -495,6 +507,7 @@ export interface RootRouteChildren {
   ShopApiRoute: typeof ShopApiRoute
   ShopCartRoute: typeof ShopCartRoute
   ShopCheckoutRoute: typeof ShopCheckoutRoute
+  ShopFavoritesRoute: typeof ShopFavoritesRoute
   ShopOrdersRoute: typeof ShopOrdersRoute
   ShopProductsRoute: typeof ShopProductsRouteWithChildren
   SnsApiRoute: typeof SnsApiRoute
@@ -594,6 +607,13 @@ declare module '@tanstack/react-router' {
       path: '/shop/orders'
       fullPath: '/shop/orders'
       preLoaderRoute: typeof ShopOrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop/favorites': {
+      id: '/shop/favorites'
+      path: '/shop/favorites'
+      fullPath: '/shop/favorites'
+      preLoaderRoute: typeof ShopFavoritesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/shop/checkout': {
@@ -810,6 +830,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShopApiRoute: ShopApiRoute,
   ShopCartRoute: ShopCartRoute,
   ShopCheckoutRoute: ShopCheckoutRoute,
+  ShopFavoritesRoute: ShopFavoritesRoute,
   ShopOrdersRoute: ShopOrdersRoute,
   ShopProductsRoute: ShopProductsRouteWithChildren,
   SnsApiRoute: SnsApiRoute,

@@ -16,7 +16,7 @@ import * as ordersIdStatus from "./routes/orders.$id.status"
 import * as products from "./routes/products"
 import * as productsId from "./routes/products.$id"
 
-export const hono = new Hono()
+const app = new Hono()
 
   // Middleware
   .use("*", logger())
@@ -43,9 +43,13 @@ export const hono = new Hono()
   .get("/cart/:userId", ...cartUserId.GET)
   .delete("/cart/:userId", ...cartUserId.DELETE)
   .post("/cart/:userId/items", ...cartUserIdItems.POST)
+  .patch("/cart/:userId/items", ...cartUserIdItems.PATCH)
   .delete("/cart/:userId/items/:productId", ...cartUserIdItemsProductId.DELETE)
 
   // Health check
   .get("/health", (c) => {
     return c.json({ status: "ok", timestamp: new Date().toISOString() })
   })
+
+export const hono = app
+export type AppType = typeof app

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, type ReactNode } from "react"
 
 const STORAGE_KEY = "shop-favorites"
 
@@ -74,6 +74,10 @@ class FavoritesManager {
   private notifyListeners() {
     this.listeners.forEach(listener => listener())
   }
+}
+
+export function FavoritesProvider({ children }: { children: ReactNode }) {
+  return <>{children}</>
 }
 
 export function useFavorites() {

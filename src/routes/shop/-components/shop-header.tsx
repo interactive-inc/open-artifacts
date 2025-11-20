@@ -10,9 +10,12 @@ import {
 } from "@/components/ui/navigation-menu"
 import { useFavorites } from "../-lib/favorites-context"
 
+import { useCart } from "../-lib/cart-context"
+
 export function ShopHeader() {
   const favoriteContext = useFavorites()
   const favoritesCount = favoriteContext.favorites.size
+  const { itemCount } = useCart()
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="flex justify-center">
@@ -112,9 +115,11 @@ export function ShopHeader() {
             <Link to="/shop/cart">
               <Button size="icon" variant="ghost" className="relative">
                 <ShoppingCart className="h-5 w-5" />
-                <span className="-top-1 -right-1 absolute flex h-4 w-4 items-center justify-center rounded-full bg-primary font-medium text-[10px] text-primary-foreground">
-                  0
-                </span>
+                {itemCount > 0 && (
+                  <span className="-top-1 -right-1 absolute flex h-4 w-4 items-center justify-center rounded-full bg-primary font-medium text-[10px] text-primary-foreground">
+                    {itemCount}
+                  </span>
+                )}
               </Button>
             </Link>
 

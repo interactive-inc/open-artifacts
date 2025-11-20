@@ -1,93 +1,39 @@
 import { createFileRoute, Link } from "@tanstack/react-router"
 import { Calendar, ChevronRight, Package, Truck } from "lucide-react"
+import { useEffect, useState } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ShopFooter } from "@/routes/shop/-components/shop-footer"
-import { ShopHeader } from "@/routes/shop/-components/shop-header"
+import { useCart } from "./-lib/cart-context"
+import { client } from "./-lib/client"
 
 export const Route = createFileRoute("/shop/orders")({
   component: Orders,
 })
 
-type Order = {
-  id: string
-  orderNumber: string
-  date: string
-  status: "pending" | "processing" | "shipped" | "delivered" | "cancelled"
-  total: number
-  items: {
-    name: string
-    quantity: number
-    price: number
-    image: string
-  }[]
+type OrderItem = {
+  productId: string
+  productName: string
+  quantity: number
+  price: number
+  subtotal: number
 }
 
-const mockOrders: Order[] = [
-  {
-    id: "1",
-    orderNumber: "#2024-12345",
-    date: "2024-01-15",
-    status: "delivered",
-    total: 75600,
-    items: [
-      {
-        name: "プレミアム ワイヤレスヘッドホン",
-        quantity: 1,
-        price: 29800,
-        image: "/placeholder.jpg",
-      },
-      {
-        name: "レザービジネスバッグ",
-        quantity: 1,
-        price: 38000,
-        image: "/placeholder.jpg",
-      },
-      {
-        name: "オーガニックコットン Tシャツ",
-        quantity: 2,
-        price: 3900,
-        image: "/placeholder.jpg",
-      },
-    ],
-  },
-  {
-    id: "2",
-    orderNumber: "#2024-12344",
-    date: "2024-01-10",
-    status: "shipped",
-    total: 51600,
-    items: [
-      {
-        name: "スマートウォッチ Pro",
-        quantity: 1,
-        price: 45000,
-        image: "/placeholder.jpg",
-      },
-      {
-        name: "ワイヤレス充電器",
-        quantity: 1,
-        price: 6500,
-        image: "/placeholder.jpg",
-      },
-    ],
-  },
-  {
-    id: "3",
-    orderNumber: "#2024-12343",
-    date: "2024-01-05",
-    status: "processing",
-    total: 17380,
-    items: [
-      {
-        name: "スニーカー エアマックス",
-        quantity: 1,
-        price: 15800,
-        image: "/placeholder.jpg",
-      },
-    ],
-  },
-]
+type Order = {
+  id: string
+  userId: string
+  items: OrderItem[]
+  total: number
+  status: "pending" | "processing" | "shipped" | "delivered" | "cancelled"
+  shippingAddress: {
+    name: string
+    address: string
+    city: string
+    postalCode: string
+    phone: string
+  }
+  createdAt: string
+  updatedAt: string
+}
 
 function getStatusBadge(status: Order["status"]) {
   const statusConfig = {
@@ -103,18 +49,45 @@ function getStatusBadge(status: Order["status"]) {
 }
 
 function Orders() {
-  if (mockOrders.length === 0) {
-    return (
-      <div className="flex min-h-screen flex-col">
-        <ShopHeader />
+  const { cart } = useCart()
+  const [orders, setOrders] = useState<Order[]>([])
+  const [isLoading, setIsLoading] = useState(true)
 
+  useEffect(() => {
+    const fetchOrders = async () => {
+      if (!cart?.userId) return
+
+      try {
+        const res = await client.shop.api.orders.$get({
+          query: { userId: cart.userId },
+        })
+        if (res.ok) {
+          const data = await res.json()
+          setOrders(data)
+        }
+      } catch (error) {
+        console.error("Failed to fetch orders:", error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+    fetchOrders()
+  }, [cart?.userId])
+
+  if (isLoading) {
+    return <div className="py-16 text-center">Loading...</div>
+  }
+
+  if (orders.length === 0) {
+    return (
+      <div className="flex flex-col">
         <main className="flex flex-1 justify-center">
           <div className="w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center">
               <Package className="mx-auto h-16 w-16 text-muted-foreground" />
               <h1 className="mt-4 font-bold text-2xl">注文履歴はありません</h1>
               <p className="mt-2 text-muted-foreground">
-                まだ注文がありません。お買い物を始めましょう！
+                まだ注文がありません。お買い物を始めましょう!
               </p>
               <Link to="/shop/products">
                 <Button className="mt-6">商品を見る</Button>
@@ -122,22 +95,18 @@ function Orders() {
             </div>
           </div>
         </main>
-
-        <ShopFooter />
       </div>
     )
   }
 
   return (
-    <div className="flex min-h-screen flex-col">
-      <ShopHeader />
-
+    <div className="flex flex-col">
       <main className="flex flex-1 justify-center">
         <div className="w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
           <h1 className="mb-8 font-bold text-3xl">注文履歴</h1>
 
           <div className="space-y-6">
-            {mockOrders.map((order) => (
+            {orders.map((order) => (
               <div key={order.id} className="rounded-lg border">
                 <div className="border-b bg-gray-50 p-4">
                   <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -146,13 +115,13 @@ function Orders() {
                         <p className="text-muted-foreground text-sm">
                           注文番号
                         </p>
-                        <p className="font-semibold">{order.orderNumber}</p>
+                        <p className="font-semibold">{order.id}</p>
                       </div>
                       <div>
                         <p className="text-muted-foreground text-sm">注文日</p>
                         <p className="flex items-center gap-1">
                           <Calendar className="h-3 w-3" />
-                          {new Date(order.date).toLocaleDateString("ja-JP")}
+                          {new Date(order.createdAt).toLocaleDateString("ja-JP")}
                         </p>
                       </div>
                       <div>
@@ -178,20 +147,16 @@ function Orders() {
 
                 <div className="p-4">
                   <div className="space-y-3">
-                    {order.items.map((item) => (
+                    {order.items.map((item, index) => (
                       <div
-                        key={`${order.id}-${item.name}`}
+                        key={`${order.id}-${item.productId}-${index}`}
                         className="flex gap-4"
                       >
-                        <div className="h-16 w-16 shrink-0 overflow-hidden rounded bg-gray-100">
-                          <img
-                            src={item.image}
-                            alt={item.name}
-                            className="h-full w-full object-cover"
-                          />
+                        <div className="h-16 w-16 shrink-0 overflow-hidden rounded bg-gray-100 flex items-center justify-center text-muted-foreground text-xs">
+                          {item.productId}
                         </div>
                         <div className="flex-1">
-                          <p className="font-medium">{item.name}</p>
+                          <p className="font-medium">{item.productName}</p>
                           <p className="text-muted-foreground text-sm">
                             数量: {item.quantity} × ¥
                             {item.price.toLocaleString()}
@@ -223,8 +188,6 @@ function Orders() {
           </div>
         </div>
       </main>
-
-      <ShopFooter />
     </div>
   )
 }

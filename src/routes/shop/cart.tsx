@@ -1,92 +1,62 @@
 import { createFileRoute, Link } from "@tanstack/react-router"
 import { ArrowRight, Minus, Plus, ShoppingBag, Trash2 } from "lucide-react"
-import { useId, useState } from "react"
+import { useId, useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
-import { ShopFooter } from "@/routes/shop/-components/shop-footer"
-import { ShopHeader } from "@/routes/shop/-components/shop-header"
+import { useCart } from "./-lib/cart-context"
+import { client } from "./-lib/client"
 
 export const Route = createFileRoute("/shop/cart")({
   component: Cart,
 })
 
-type CartItem = {
+type Product = {
   id: string
-  productId: string
   name: string
   price: number
-  quantity: number
-  image: string
-  color?: string
-  size?: string
+  images: string[]
 }
-
-const mockCartItems: CartItem[] = [
-  {
-    id: "cart-1",
-    productId: "prod-001",
-    name: "プレミアム ワイヤレスヘッドホン",
-    price: 29800,
-    quantity: 1,
-    image: "/placeholder.jpg",
-    color: "ブラック",
-  },
-  {
-    id: "cart-2",
-    productId: "prod-004",
-    name: "レザービジネスバッグ",
-    price: 38000,
-    quantity: 1,
-    image: "/placeholder.jpg",
-    color: "ブラウン",
-  },
-  {
-    id: "cart-3",
-    productId: "prod-003",
-    name: "オーガニックコットン Tシャツ",
-    price: 3900,
-    quantity: 2,
-    image: "/placeholder.jpg",
-    color: "ホワイト",
-    size: "M",
-  },
-]
 
 function Cart() {
   const couponId = useId()
-  const [cartItems, setCartItems] = useState(mockCartItems)
+  const { cart, updateQuantity, removeFromCart, isLoading } = useCart()
   const [couponCode, setCouponCode] = useState("")
+  const [products, setProducts] = useState<Product[]>([])
 
-  const updateQuantity = (id: string, newQuantity: number) => {
-    if (newQuantity < 1) {
-      setCartItems(cartItems.filter((item) => item.id !== id))
-    } else {
-      setCartItems(
-        cartItems.map((item) =>
-          item.id === id ? { ...item, quantity: newQuantity } : item,
-        ),
-      )
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const res = await client.shop.api.products.$get()
+      if (res.ok) {
+        const data = await res.json()
+        setProducts(data)
+      }
     }
-  }
+    fetchProducts()
+  }, [])
 
-  const removeItem = (id: string) => {
-    setCartItems(cartItems.filter((item) => item.id !== id))
-  }
+  const cartItems = cart?.items.map((item) => {
+    const product = products.find((p) => p.id === item.productId)
+    return {
+      ...item,
+      name: product?.name || "Unknown Product",
+      image: product?.images[0] || "/placeholder.jpg",
+      color: "Standard", // Mock for now as API doesn't support variants yet
+    }
+  }) || []
 
-  const subtotal = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0,
-  )
+  const subtotal = cart?.total || 0
   const shipping = subtotal >= 5000 ? 0 : 500
   const tax = Math.floor(subtotal * 0.1)
   const total = subtotal + shipping + tax
 
-  if (cartItems.length === 0) {
-    return (
-      <div className="flex min-h-screen flex-col">
-        <ShopHeader />
+  if (isLoading) {
+    return <div className="py-16 text-center">Loading...</div>
+  }
 
+  if (!cart || cart.items.length === 0) {
+    return (
+      <div className="flex flex-col">
         <main className="flex flex-1 justify-center">
           <div className="w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center">
@@ -101,16 +71,12 @@ function Cart() {
             </div>
           </div>
         </main>
-
-        <ShopFooter />
       </div>
     )
   }
 
   return (
-    <div className="flex min-h-screen flex-col">
-      <ShopHeader />
-
+    <div className="flex flex-col">
       <main className="flex flex-1 justify-center">
         <div className="w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
           <h1 className="mb-8 font-bold text-3xl">ショッピングカート</h1>
@@ -120,7 +86,7 @@ function Cart() {
             <div className="lg:col-span-2">
               <div className="space-y-4">
                 {cartItems.map((item) => (
-                  <div key={item.id} className="rounded-lg border p-4">
+                  <div key={item.productId} className="rounded-lg border p-4">
                     <div className="flex gap-4">
                       <div className="h-24 w-24 shrink-0 overflow-hidden rounded-lg bg-gray-100">
                         <img
@@ -143,17 +109,12 @@ function Cart() {
                             </Link>
                             <div className="mt-1 text-muted-foreground text-sm">
                               {item.color && <span>カラー: {item.color}</span>}
-                              {item.size && (
-                                <span className="ml-4">
-                                  サイズ: {item.size}
-                                </span>
-                              )}
                             </div>
                           </div>
                           <Button
                             size="icon"
                             variant="ghost"
-                            onClick={() => removeItem(item.id)}
+                            onClick={() => removeFromCart(item.productId)}
                           >
                             <Trash2 className="h-4 w-4" />
                           </Button>
@@ -166,8 +127,9 @@ function Cart() {
                               variant="outline"
                               className="h-8 w-8"
                               onClick={() =>
-                                updateQuantity(item.id, item.quantity - 1)
+                                updateQuantity(item.productId, item.quantity - 1)
                               }
+                              disabled={item.quantity <= 1}
                             >
                               <Minus className="h-3 w-3" />
                             </Button>
@@ -179,7 +141,7 @@ function Cart() {
                               variant="outline"
                               className="h-8 w-8"
                               onClick={() =>
-                                updateQuantity(item.id, item.quantity + 1)
+                                updateQuantity(item.productId, item.quantity + 1)
                               }
                             >
                               <Plus className="h-3 w-3" />
@@ -277,8 +239,6 @@ function Cart() {
           </div>
         </div>
       </main>
-
-      <ShopFooter />
     </div>
   )
 }

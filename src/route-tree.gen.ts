@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ShopRouteImport } from './routes/shop'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SnsIndexRouteImport } from './routes/sns/index'
 import { Route as ShopIndexRouteImport } from './routes/shop/index'
@@ -48,6 +49,11 @@ import { Route as SnsProfileUsernameRouteImport } from './routes/sns/profile.$us
 import { Route as ShopProductsProductRouteImport } from './routes/shop/products.$product'
 import { Route as ShopCategoryCategoryRouteImport } from './routes/shop/category.$category'
 
+const ShopRoute = ShopRouteImport.update({
+  id: '/shop',
+  path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -59,9 +65,9 @@ const SnsIndexRoute = SnsIndexRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any).lazy(() => import('./routes/sns/index.lazy').then((d) => d.Route))
 const ShopIndexRoute = ShopIndexRouteImport.update({
-  id: '/shop/',
-  path: '/shop/',
-  getParentRoute: () => rootRouteImport,
+  id: '/',
+  path: '/',
+  getParentRoute: () => ShopRoute,
 } as any)
 const CorporateIndexRoute = CorporateIndexRouteImport.update({
   id: '/corporate/',
@@ -99,34 +105,34 @@ const SnsApiRoute = SnsApiRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const ShopProductsRoute = ShopProductsRouteImport.update({
-  id: '/shop/products',
-  path: '/shop/products',
-  getParentRoute: () => rootRouteImport,
+  id: '/products',
+  path: '/products',
+  getParentRoute: () => ShopRoute,
 } as any)
 const ShopOrdersRoute = ShopOrdersRouteImport.update({
-  id: '/shop/orders',
-  path: '/shop/orders',
-  getParentRoute: () => rootRouteImport,
+  id: '/orders',
+  path: '/orders',
+  getParentRoute: () => ShopRoute,
 } as any)
 const ShopFavoritesRoute = ShopFavoritesRouteImport.update({
-  id: '/shop/favorites',
-  path: '/shop/favorites',
-  getParentRoute: () => rootRouteImport,
+  id: '/favorites',
+  path: '/favorites',
+  getParentRoute: () => ShopRoute,
 } as any)
 const ShopCheckoutRoute = ShopCheckoutRouteImport.update({
-  id: '/shop/checkout',
-  path: '/shop/checkout',
-  getParentRoute: () => rootRouteImport,
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => ShopRoute,
 } as any)
 const ShopCartRoute = ShopCartRouteImport.update({
-  id: '/shop/cart',
-  path: '/shop/cart',
-  getParentRoute: () => rootRouteImport,
+  id: '/cart',
+  path: '/cart',
+  getParentRoute: () => ShopRoute,
 } as any)
 const ShopApiRoute = ShopApiRouteImport.update({
-  id: '/shop/api',
-  path: '/shop/api',
-  getParentRoute: () => rootRouteImport,
+  id: '/api',
+  path: '/api',
+  getParentRoute: () => ShopRoute,
 } as any)
 const CorporateTermsRoute = CorporateTermsRouteImport.update({
   id: '/corporate/terms',
@@ -234,13 +240,14 @@ const ShopProductsProductRoute = ShopProductsProductRouteImport.update({
   getParentRoute: () => ShopProductsRoute,
 } as any)
 const ShopCategoryCategoryRoute = ShopCategoryCategoryRouteImport.update({
-  id: '/shop/category/$category',
-  path: '/shop/category/$category',
-  getParentRoute: () => rootRouteImport,
+  id: '/category/$category',
+  path: '/category/$category',
+  getParentRoute: () => ShopRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/shop': typeof ShopRouteWithChildren
   '/cafe/api': typeof CafeApiRoute
   '/cafe/concept': typeof CafeConceptRoute
   '/cafe/menu': typeof CafeMenuRoute
@@ -273,7 +280,7 @@ export interface FileRoutesByFullPath {
   '/sns/notifications': typeof SnsNotificationsRoute
   '/cafe': typeof CafeIndexRoute
   '/corporate': typeof CorporateIndexRoute
-  '/shop': typeof ShopIndexRoute
+  '/shop/': typeof ShopIndexRoute
   '/sns': typeof SnsIndexRoute
   '/shop/category/$category': typeof ShopCategoryCategoryRoute
   '/shop/products/$product': typeof ShopProductsProductRoute
@@ -322,6 +329,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/shop': typeof ShopRouteWithChildren
   '/cafe/api': typeof CafeApiRoute
   '/cafe/concept': typeof CafeConceptRoute
   '/cafe/menu': typeof CafeMenuRoute
@@ -364,6 +372,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/shop'
     | '/cafe/api'
     | '/cafe/concept'
     | '/cafe/menu'
@@ -396,7 +405,7 @@ export interface FileRouteTypes {
     | '/sns/notifications'
     | '/cafe'
     | '/corporate'
-    | '/shop'
+    | '/shop/'
     | '/sns'
     | '/shop/category/$category'
     | '/shop/products/$product'
@@ -444,6 +453,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/shop'
     | '/cafe/api'
     | '/cafe/concept'
     | '/cafe/menu'
@@ -485,6 +495,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ShopRoute: typeof ShopRouteWithChildren
   CafeApiRoute: typeof CafeApiRoute
   CafeConceptRoute: typeof CafeConceptRoute
   CafeMenuRoute: typeof CafeMenuRoute
@@ -504,12 +515,6 @@ export interface RootRouteChildren {
   CorporateServicesRoute: typeof CorporateServicesRoute
   CorporateSolutionsRoute: typeof CorporateSolutionsRoute
   CorporateTermsRoute: typeof CorporateTermsRoute
-  ShopApiRoute: typeof ShopApiRoute
-  ShopCartRoute: typeof ShopCartRoute
-  ShopCheckoutRoute: typeof ShopCheckoutRoute
-  ShopFavoritesRoute: typeof ShopFavoritesRoute
-  ShopOrdersRoute: typeof ShopOrdersRoute
-  ShopProductsRoute: typeof ShopProductsRouteWithChildren
   SnsApiRoute: typeof SnsApiRoute
   SnsBookmarksRoute: typeof SnsBookmarksRoute
   SnsExploreRoute: typeof SnsExploreRoute
@@ -517,14 +522,19 @@ export interface RootRouteChildren {
   SnsNotificationsRoute: typeof SnsNotificationsRoute
   CafeIndexRoute: typeof CafeIndexRoute
   CorporateIndexRoute: typeof CorporateIndexRoute
-  ShopIndexRoute: typeof ShopIndexRoute
   SnsIndexRoute: typeof SnsIndexRoute
-  ShopCategoryCategoryRoute: typeof ShopCategoryCategoryRoute
   SnsProfileUsernameRoute: typeof SnsProfileUsernameRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/shop': {
+      id: '/shop'
+      path: '/shop'
+      fullPath: '/shop'
+      preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -541,10 +551,10 @@ declare module '@tanstack/react-router' {
     }
     '/shop/': {
       id: '/shop/'
-      path: '/shop'
-      fullPath: '/shop'
+      path: '/'
+      fullPath: '/shop/'
       preLoaderRoute: typeof ShopIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ShopRoute
     }
     '/corporate/': {
       id: '/corporate/'
@@ -597,45 +607,45 @@ declare module '@tanstack/react-router' {
     }
     '/shop/products': {
       id: '/shop/products'
-      path: '/shop/products'
+      path: '/products'
       fullPath: '/shop/products'
       preLoaderRoute: typeof ShopProductsRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ShopRoute
     }
     '/shop/orders': {
       id: '/shop/orders'
-      path: '/shop/orders'
+      path: '/orders'
       fullPath: '/shop/orders'
       preLoaderRoute: typeof ShopOrdersRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ShopRoute
     }
     '/shop/favorites': {
       id: '/shop/favorites'
-      path: '/shop/favorites'
+      path: '/favorites'
       fullPath: '/shop/favorites'
       preLoaderRoute: typeof ShopFavoritesRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ShopRoute
     }
     '/shop/checkout': {
       id: '/shop/checkout'
-      path: '/shop/checkout'
+      path: '/checkout'
       fullPath: '/shop/checkout'
       preLoaderRoute: typeof ShopCheckoutRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ShopRoute
     }
     '/shop/cart': {
       id: '/shop/cart'
-      path: '/shop/cart'
+      path: '/cart'
       fullPath: '/shop/cart'
       preLoaderRoute: typeof ShopCartRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ShopRoute
     }
     '/shop/api': {
       id: '/shop/api'
-      path: '/shop/api'
+      path: '/api'
       fullPath: '/shop/api'
       preLoaderRoute: typeof ShopApiRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ShopRoute
     }
     '/corporate/terms': {
       id: '/corporate/terms'
@@ -786,10 +796,10 @@ declare module '@tanstack/react-router' {
     }
     '/shop/category/$category': {
       id: '/shop/category/$category'
-      path: '/shop/category/$category'
+      path: '/category/$category'
       fullPath: '/shop/category/$category'
       preLoaderRoute: typeof ShopCategoryCategoryRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ShopRoute
     }
   }
 }
@@ -806,8 +816,33 @@ const ShopProductsRouteWithChildren = ShopProductsRoute._addFileChildren(
   ShopProductsRouteChildren,
 )
 
+interface ShopRouteChildren {
+  ShopApiRoute: typeof ShopApiRoute
+  ShopCartRoute: typeof ShopCartRoute
+  ShopCheckoutRoute: typeof ShopCheckoutRoute
+  ShopFavoritesRoute: typeof ShopFavoritesRoute
+  ShopOrdersRoute: typeof ShopOrdersRoute
+  ShopProductsRoute: typeof ShopProductsRouteWithChildren
+  ShopIndexRoute: typeof ShopIndexRoute
+  ShopCategoryCategoryRoute: typeof ShopCategoryCategoryRoute
+}
+
+const ShopRouteChildren: ShopRouteChildren = {
+  ShopApiRoute: ShopApiRoute,
+  ShopCartRoute: ShopCartRoute,
+  ShopCheckoutRoute: ShopCheckoutRoute,
+  ShopFavoritesRoute: ShopFavoritesRoute,
+  ShopOrdersRoute: ShopOrdersRoute,
+  ShopProductsRoute: ShopProductsRouteWithChildren,
+  ShopIndexRoute: ShopIndexRoute,
+  ShopCategoryCategoryRoute: ShopCategoryCategoryRoute,
+}
+
+const ShopRouteWithChildren = ShopRoute._addFileChildren(ShopRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ShopRoute: ShopRouteWithChildren,
   CafeApiRoute: CafeApiRoute,
   CafeConceptRoute: CafeConceptRoute,
   CafeMenuRoute: CafeMenuRoute,
@@ -827,12 +862,6 @@ const rootRouteChildren: RootRouteChildren = {
   CorporateServicesRoute: CorporateServicesRoute,
   CorporateSolutionsRoute: CorporateSolutionsRoute,
   CorporateTermsRoute: CorporateTermsRoute,
-  ShopApiRoute: ShopApiRoute,
-  ShopCartRoute: ShopCartRoute,
-  ShopCheckoutRoute: ShopCheckoutRoute,
-  ShopFavoritesRoute: ShopFavoritesRoute,
-  ShopOrdersRoute: ShopOrdersRoute,
-  ShopProductsRoute: ShopProductsRouteWithChildren,
   SnsApiRoute: SnsApiRoute,
   SnsBookmarksRoute: SnsBookmarksRoute,
   SnsExploreRoute: SnsExploreRoute,
@@ -840,9 +869,7 @@ const rootRouteChildren: RootRouteChildren = {
   SnsNotificationsRoute: SnsNotificationsRoute,
   CafeIndexRoute: CafeIndexRoute,
   CorporateIndexRoute: CorporateIndexRoute,
-  ShopIndexRoute: ShopIndexRoute,
   SnsIndexRoute: SnsIndexRoute,
-  ShopCategoryCategoryRoute: ShopCategoryCategoryRoute,
   SnsProfileUsernameRoute: SnsProfileUsernameRoute,
 }
 export const routeTree = rootRouteImport

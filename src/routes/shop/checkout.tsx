@@ -6,15 +6,18 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Separator } from "@/components/ui/separator"
-import { ShopFooter } from "@/routes/shop/-components/shop-footer"
-import { ShopHeader } from "@/routes/shop/-components/shop-header"
+import { useCart } from "./-lib/cart-context"
+import { client } from "./-lib/client"
 
 export const Route = createFileRoute("/shop/checkout")({
   component: Checkout,
 })
 
 function Checkout() {
+  const { cart, clearCart } = useCart()
   const [step, setStep] = useState(1)
+  const [orderId, setOrderId] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   // Generate unique IDs for form elements
   const lastNameId = useId()
@@ -46,40 +49,52 @@ function Checkout() {
   })
   const [paymentMethod, setPaymentMethod] = useState("credit")
 
-  const cartItems = [
-    {
-      id: "item-1",
-      name: "プレミアム ワイヤレスヘッドホン",
-      price: 29800,
-      quantity: 1,
-    },
-    {
-      id: "item-2",
-      name: "レザービジネスバッグ",
-      price: 38000,
-      quantity: 1,
-    },
-    {
-      id: "item-3",
-      name: "オーガニックコットン Tシャツ",
-      price: 3900,
-      quantity: 2,
-    },
-  ]
-
-  const subtotal = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0,
-  )
+  const subtotal = cart?.total || 0
   const shipping = 0
   const tax = Math.floor(subtotal * 0.1)
   const total = subtotal + shipping + tax
 
+  const handleSubmitOrder = async () => {
+    if (!cart) return
+
+    setIsSubmitting(true)
+    try {
+      const res = await client.shop.api.orders.$post({
+        // @ts-expect-error - Hono client type inference issue with json property
+        json: {
+          userId: cart.userId,
+          items: cart.items.map((item) => ({
+            productId: item.productId,
+            productName: `Product ${item.productId}`,
+            quantity: item.quantity,
+            price: item.price,
+            subtotal: item.price * item.quantity,
+          })),
+          shippingAddress: {
+            name: `${shippingInfo.lastName} ${shippingInfo.firstName}`,
+            address: `${shippingInfo.prefecture}${shippingInfo.city}${shippingInfo.address}${shippingInfo.building ? ` ${shippingInfo.building}` : ""}`,
+            city: shippingInfo.city,
+            postalCode: shippingInfo.postalCode,
+            phone: shippingInfo.phone,
+          },
+        },
+      })
+      if (res.ok) {
+        const order = await res.json()
+        setOrderId(order.id)
+        await clearCart()
+        setStep(3)
+      }
+    } catch (error) {
+      console.error("Failed to submit order:", error)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   if (step === 3) {
     return (
-      <div className="flex min-h-screen flex-col">
-        <ShopHeader />
-
+      <div className="flex flex-col">
         <main className="flex flex-1 justify-center">
           <div className="w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center">
@@ -88,7 +103,7 @@ function Checkout() {
                 ご注文ありがとうございます！
               </h1>
               <p className="mt-2 text-muted-foreground">
-                注文番号: #2024-12345
+                注文番号: {orderId || "#2024-12345"}
               </p>
               <p className="mt-4">
                 ご注文内容の確認メールをお送りしました。
@@ -107,15 +122,12 @@ function Checkout() {
             </div>
           </div>
         </main>
-
-        <ShopFooter />
       </div>
     )
   }
 
   return (
-    <div className="flex min-h-screen flex-col">
-      <ShopHeader />
+    <div className="flex flex-col">
 
       <main className="flex flex-1 justify-center">
         <div className="w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
@@ -399,9 +411,9 @@ function Checkout() {
                     >
                       戻る
                     </Button>
-                    <Button className="flex-1" onClick={() => setStep(3)}>
-                      注文を確定する
-                    </Button>
+                    <Button className="flex-1" onClick={handleSubmitOrder} disabled={isSubmitting}>
+                    {isSubmitting ? "処理中..." : "注文を確定する"}
+                  </Button>
                   </div>
                 </div>
               )}
@@ -413,16 +425,16 @@ function Checkout() {
                 <h2 className="mb-4 font-semibold text-lg">注文内容</h2>
 
                 <div className="space-y-3">
-                  {cartItems.map((item) => (
-                    <div key={item.id} className="flex justify-between text-sm">
-                      <span>
-                        {item.name} × {item.quantity}
-                      </span>
-                      <span>
-                        ¥{(item.price * item.quantity).toLocaleString()}
-                      </span>
-                    </div>
-                  ))}
+                  {cart?.items.map((item) => (
+                  <div key={item.productId} className="flex justify-between text-sm">
+                    <span>
+                      Product {item.productId} × {item.quantity}
+                    </span>
+                    <span>
+                      ¥{(item.price * item.quantity).toLocaleString()}
+                    </span>
+                  </div>
+                ))}
                 </div>
 
                 <Separator className="my-4" />
@@ -453,8 +465,6 @@ function Checkout() {
           </div>
         </div>
       </main>
-
-      <ShopFooter />
     </div>
   )
 }

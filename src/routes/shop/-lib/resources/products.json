@@ -6,8 +6,8 @@
     "price": 29800,
     "category": "electronics",
     "images": [
-      "/images/products/headphones-1.jpg",
-      "/images/products/headphones-2.jpg"
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400&h=400&fit=crop"
     ],
     "stock": 50,
     "featured": true
@@ -19,8 +19,8 @@
     "price": 45000,
     "category": "electronics",
     "images": [
-      "/images/products/smartwatch-1.jpg",
-      "/images/products/smartwatch-2.jpg"
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=400&h=400&fit=crop"
     ],
     "stock": 30,
     "featured": true
@@ -32,8 +32,8 @@
     "price": 3900,
     "category": "fashion",
     "images": [
-      "/images/products/tshirt-1.jpg",
-      "/images/products/tshirt-2.jpg"
+      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&h=400&fit=crop"
     ],
     "stock": 100,
     "featured": false
@@ -44,7 +44,10 @@
     "description": "本革使用の高級ビジネスバッグ。PC収納スペース付きで機能性も抜群。",
     "price": 38000,
     "category": "fashion",
-    "images": ["/images/products/bag-1.jpg", "/images/products/bag-2.jpg"],
+    "images": [
+      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&h=400&fit=crop"
+    ],
     "stock": 20,
     "featured": true
   },
@@ -55,8 +58,8 @@
     "price": 5800,
     "category": "home",
     "images": [
-      "/images/products/diffuser-1.jpg",
-      "/images/products/diffuser-2.jpg"
+      "https://images.unsplash.com/photo-1602874801006-94c89b17c6b6?w=400&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=400&h=400&fit=crop"
     ],
     "stock": 60,
     "featured": false
@@ -67,7 +70,10 @@
     "description": "職人手作りのセラミックカップ4個セット。毎日のコーヒータイムを特別に。",
     "price": 8500,
     "category": "home",
-    "images": ["/images/products/cups-1.jpg", "/images/products/cups-2.jpg"],
+    "images": [
+      "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=400&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?w=400&h=400&fit=crop"
+    ],
     "stock": 40,
     "featured": false
   },
@@ -78,8 +84,8 @@
     "price": 4200,
     "category": "sports",
     "images": [
-      "/images/products/yogamat-1.jpg",
-      "/images/products/yogamat-2.jpg"
+      "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=400&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1592432678016-e910b452f9a2?w=400&h=400&fit=crop"
     ],
     "stock": 80,
     "featured": false
@@ -91,8 +97,8 @@
     "price": 1800,
     "category": "sports",
     "images": [
-      "/images/products/shaker-1.jpg",
-      "/images/products/shaker-2.jpg"
+      "https://images.unsplash.com/photo-1622484211850-cc1f8f6b5c9c?w=400&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1591952851653-d6c8c2a5c9b9?w=400&h=400&fit=crop"
     ],
     "stock": 150,
     "featured": false
@@ -104,8 +110,8 @@
     "price": 12800,
     "category": "electronics",
     "images": [
-      "/images/products/webcam-1.jpg",
-      "/images/products/webcam-2.jpg"
+      "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1624823183493-ed5832f48f18?w=400&h=400&fit=crop"
     ],
     "stock": 45,
     "featured": true
@@ -117,8 +123,8 @@
     "price": 6500,
     "category": "electronics",
     "images": [
-      "/images/products/charger-1.jpg",
-      "/images/products/charger-2.jpg"
+      "https://images.unsplash.com/photo-1591290619762-c588f0e8e23f?w=400&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1625948515291-69613efd103f?w=400&h=400&fit=crop"
     ],
     "stock": 70,
     "featured": false
@@ -129,7 +135,10 @@
     "description": "ヴィンテージ加工のクラシックデニムジャケット。オールシーズン活躍。",
     "price": 12000,
     "category": "fashion",
-    "images": ["/images/products/denim-1.jpg", "/images/products/denim-2.jpg"],
+    "images": [
+      "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=400&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1543076659-9380cdf10613?w=400&h=400&fit=crop"
+    ],
     "stock": 35,
     "featured": false
   },
@@ -140,8 +149,8 @@
     "price": 15800,
     "category": "fashion",
     "images": [
-      "/images/products/sneakers-1.jpg",
-      "/images/products/sneakers-2.jpg"
+      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&h=400&fit=crop"
     ],
     "stock": 55,
     "featured": true

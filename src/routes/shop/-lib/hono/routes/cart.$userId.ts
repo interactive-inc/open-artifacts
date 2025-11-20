@@ -1,20 +1,8 @@
 import { factory } from "../factory"
 
-type Cart = {
-  id: string
-  userId: string
-  items: {
-    productId: string
-    quantity: number
-    price: number
-  }[]
-  total: number
-  createdAt: string
-  updatedAt: string
-}
+import { carts, type Cart } from "../store"
 
-// メモリ内でカート情報を管理（実際のアプリではセッションやDBを使用）
-const carts = new Map<string, Cart>()
+// GET /cart/:userId - カート取得
 
 // GET /cart/:userId - カート取得
 export const GET = factory.createHandlers((c) => {

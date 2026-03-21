@@ -278,10 +278,10 @@ export interface FileRoutesByFullPath {
   '/sns/explore': typeof SnsExploreRoute
   '/sns/messages': typeof SnsMessagesRoute
   '/sns/notifications': typeof SnsNotificationsRoute
-  '/cafe': typeof CafeIndexRoute
-  '/corporate': typeof CorporateIndexRoute
+  '/cafe/': typeof CafeIndexRoute
+  '/corporate/': typeof CorporateIndexRoute
   '/shop/': typeof ShopIndexRoute
-  '/sns': typeof SnsIndexRoute
+  '/sns/': typeof SnsIndexRoute
   '/shop/category/$category': typeof ShopCategoryCategoryRoute
   '/shop/products/$product': typeof ShopProductsProductRoute
   '/sns/profile/$username': typeof SnsProfileUsernameRoute
@@ -403,10 +403,10 @@ export interface FileRouteTypes {
     | '/sns/explore'
     | '/sns/messages'
     | '/sns/notifications'
-    | '/cafe'
-    | '/corporate'
+    | '/cafe/'
+    | '/corporate/'
     | '/shop/'
-    | '/sns'
+    | '/sns/'
     | '/shop/category/$category'
     | '/shop/products/$product'
     | '/sns/profile/$username'
@@ -545,7 +545,7 @@ declare module '@tanstack/react-router' {
     '/sns/': {
       id: '/sns/'
       path: '/sns'
-      fullPath: '/sns'
+      fullPath: '/sns/'
       preLoaderRoute: typeof SnsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
@@ -559,14 +559,14 @@ declare module '@tanstack/react-router' {
     '/corporate/': {
       id: '/corporate/'
       path: '/corporate'
-      fullPath: '/corporate'
+      fullPath: '/corporate/'
       preLoaderRoute: typeof CorporateIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cafe/': {
       id: '/cafe/'
       path: '/cafe'
-      fullPath: '/cafe'
+      fullPath: '/cafe/'
       preLoaderRoute: typeof CafeIndexRouteImport
       parentRoute: typeof rootRouteImport
     }

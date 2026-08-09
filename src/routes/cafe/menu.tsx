@@ -1,13 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router"
-import {
-  Cake,
-  Coffee,
-  Flame,
-  Leaf,
-  Sandwich,
-  Snowflake,
-  Star,
-} from "lucide-react"
+import { Cake, Coffee, Flame, Leaf, Sandwich, Snowflake, Star } from "lucide-react"
 import { useState } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -270,9 +262,7 @@ function MenuPage() {
               return (
                 <Button
                   key={category.id}
-                  variant={
-                    selectedCategory === category.id ? "default" : "outline"
-                  }
+                  variant={selectedCategory === category.id ? "default" : "outline"}
                   className={cn(
                     "flex items-center gap-2 whitespace-nowrap",
                     selectedCategory === category.id
@@ -298,9 +288,7 @@ function MenuPage() {
               {/* Coffee Section */}
               <div>
                 <div className="mb-8 text-center">
-                  <h2 className="mb-2 font-serif text-3xl text-stone-800">
-                    Coffee
-                  </h2>
+                  <h2 className="mb-2 font-serif text-3xl text-stone-800">Coffee</h2>
                   <p className="text-stone-600">定番のコーヒーメニュー</p>
                 </div>
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -313,12 +301,8 @@ function MenuPage() {
               {/* Specialty Section */}
               <div>
                 <div className="mb-8 text-center">
-                  <h2 className="mb-2 font-serif text-3xl text-stone-800">
-                    Specialty Coffee
-                  </h2>
-                  <p className="text-stone-600">
-                    こだわりのスペシャルティコーヒー
-                  </p>
+                  <h2 className="mb-2 font-serif text-3xl text-stone-800">Specialty Coffee</h2>
+                  <p className="text-stone-600">こだわりのスペシャルティコーヒー</p>
                 </div>
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                   {menuItems.specialty.map((item) => (
@@ -330,9 +314,7 @@ function MenuPage() {
               {/* Food Section */}
               <div>
                 <div className="mb-8 text-center">
-                  <h2 className="mb-2 font-serif text-3xl text-stone-800">
-                    Food
-                  </h2>
+                  <h2 className="mb-2 font-serif text-3xl text-stone-800">Food</h2>
                   <p className="text-stone-600">軽食・お食事メニュー</p>
                 </div>
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -345,9 +327,7 @@ function MenuPage() {
               {/* Sweets Section */}
               <div>
                 <div className="mb-8 text-center">
-                  <h2 className="mb-2 font-serif text-3xl text-stone-800">
-                    Sweets
-                  </h2>
+                  <h2 className="mb-2 font-serif text-3xl text-stone-800">Sweets</h2>
                   <p className="text-stone-600">自家製スイーツ</p>
                 </div>
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -360,11 +340,7 @@ function MenuPage() {
           ) : (
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {filteredItems.map((item) => (
-                <MenuCard
-                  key={item.name}
-                  item={item}
-                  showOrigin={item.category === "specialty"}
-                />
+                <MenuCard key={item.name} item={item} showOrigin={item.category === "specialty"} />
               ))}
             </div>
           )}
@@ -376,9 +352,7 @@ function MenuPage() {
         <div className="container">
           <Card className="mx-auto max-w-4xl">
             <CardContent className="p-8">
-              <h3 className="mb-4 font-serif text-2xl text-stone-800">
-                アレルギー情報
-              </h3>
+              <h3 className="mb-4 font-serif text-2xl text-stone-800">アレルギー情報</h3>
               <p className="mb-6 text-stone-600">
                 アレルギーをお持ちのお客様は、スタッフまでお気軽にお声がけください。
                 可能な限り対応させていただきます。
@@ -422,13 +396,7 @@ function MenuPage() {
   )
 }
 
-function MenuCard({
-  item,
-  showOrigin = false,
-}: {
-  item: any
-  showOrigin?: boolean
-}) {
+function MenuCard({ item, showOrigin = false }: { item: any; showOrigin?: boolean }) {
   return (
     <Card className="overflow-hidden transition-shadow hover:shadow-lg">
       <div className="aspect-[3/2] overflow-hidden">
@@ -445,11 +413,7 @@ function MenuCard({
               {item.tags.map((tag: string) => (
                 <Badge
                   key={tag}
-                  variant={
-                    tag === "人気No.1" || tag === "NEW"
-                      ? "default"
-                      : "secondary"
-                  }
+                  variant={tag === "人気No.1" || tag === "NEW" ? "default" : "secondary"}
                   className={cn(
                     tag === "人気No.1" && "bg-amber-600",
                     tag === "NEW" && "bg-red-500",
@@ -488,9 +452,7 @@ function MenuCard({
               </div>
             </div>
           ) : (
-            <span className="font-bold text-amber-600">
-              {item.price.hot || item.price.single}
-            </span>
+            <span className="font-bold text-amber-600">{item.price.hot || item.price.single}</span>
           )}
         </div>
       </CardContent>

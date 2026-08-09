@@ -33,22 +33,19 @@ function ConceptPage() {
       icon: Heart,
       title: "Hospitality",
       subtitle: "温かいおもてなし",
-      description:
-        "すべてのお客様に、心地よい時間と空間を提供することを大切にしています。",
+      description: "すべてのお客様に、心地よい時間と空間を提供することを大切にしています。",
     },
     {
       icon: Users,
       title: "Community",
       subtitle: "地域とのつながり",
-      description:
-        "地域の皆様の憩いの場として、コミュニティの中心となる場所を目指しています。",
+      description: "地域の皆様の憩いの場として、コミュニティの中心となる場所を目指しています。",
     },
     {
       icon: Leaf,
       title: "Sustainability",
       subtitle: "持続可能な取り組み",
-      description:
-        "環境に配慮した豆の調達から、エコフレンドリーな店舗運営まで実践しています。",
+      description: "環境に配慮した豆の調達から、エコフレンドリーな店舗運営まで実践しています。",
     },
   ]
 
@@ -62,14 +59,12 @@ function ConceptPage() {
     {
       year: "2019",
       title: "理想の豆との出会い",
-      description:
-        "エチオピアの小さな農園で、運命的な豆と出会い、直接取引を開始しました。",
+      description: "エチオピアの小さな農園で、運命的な豆と出会い、直接取引を開始しました。",
     },
     {
       year: "2020",
       title: "Artisan Coffee オープン",
-      description:
-        "原宿の地に、こだわりのコーヒーと温かい空間を提供する店舗をオープンしました。",
+      description: "原宿の地に、こだわりのコーヒーと温かい空間を提供する店舗をオープンしました。",
     },
     {
       year: "2024",
@@ -85,33 +80,21 @@ function ConceptPage() {
       title: "産地へのこだわり",
       description:
         "標高1,500m以上の高地で栽培された、アラビカ種100%の豆のみを使用。各産地の特性を活かした豆選びを行っています。",
-      details: [
-        "直接取引による品質管理",
-        "年2回の産地訪問",
-        "生産者との継続的な関係構築",
-      ],
+      details: ["直接取引による品質管理", "年2回の産地訪問", "生産者との継続的な関係構築"],
     },
     {
       icon: Sparkles,
       title: "焙煎への情熱",
       description:
         "豆の個性を最大限に引き出す焙煎。毎朝、その日の気温や湿度に合わせて、焙煎プロファイルを調整しています。",
-      details: [
-        "自家焙煎による鮮度管理",
-        "豆ごとの最適な焙煎度",
-        "焙煎後48時間以内の提供",
-      ],
+      details: ["自家焙煎による鮮度管理", "豆ごとの最適な焙煎度", "焙煎後48時間以内の提供"],
     },
     {
       icon: Target,
       title: "抽出の技術",
       description:
         "バリスタチャンピオンを輩出した技術力。温度、時間、圧力まで、すべてにこだわった抽出を行います。",
-      details: [
-        "豆に合わせた抽出レシピ",
-        "定期的な味覚チェック",
-        "バリスタの継続的な訓練",
-      ],
+      details: ["豆に合わせた抽出レシピ", "定期的な味覚チェック", "バリスタの継続的な訓練"],
     },
   ]
 
@@ -140,12 +123,8 @@ function ConceptPage() {
         <div className="absolute inset-0 bg-[url('/api/placeholder/1920/800')] bg-center bg-cover opacity-40" />
         <div className="relative flex h-full items-center justify-center text-white">
           <div className="max-w-3xl px-6 text-center">
-            <h1 className="mb-6 font-serif text-5xl md:text-7xl">
-              {philosophy.title}
-            </h1>
-            <p className="font-light text-2xl text-white/80 italic">
-              {philosophy.subtitle}
-            </p>
+            <h1 className="mb-6 font-serif text-5xl md:text-7xl">{philosophy.title}</h1>
+            <p className="font-light text-2xl text-white/80 italic">{philosophy.subtitle}</p>
           </div>
         </div>
       </section>
@@ -169,32 +148,21 @@ function ConceptPage() {
       <section className="bg-stone-50 py-20">
         <div className="container">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-serif text-4xl text-stone-800">
-              Our Values
-            </h2>
-            <p className="mx-auto max-w-2xl text-stone-600">
-              私たちが大切にしている4つの価値観
-            </p>
+            <h2 className="mb-4 font-serif text-4xl text-stone-800">Our Values</h2>
+            <p className="mx-auto max-w-2xl text-stone-600">私たちが大切にしている4つの価値観</p>
           </div>
           <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-2 lg:grid-cols-4">
             {values.map((value) => {
               const Icon = value.icon
               return (
-                <Card
-                  key={value.title}
-                  className="text-center transition-shadow hover:shadow-lg"
-                >
+                <Card key={value.title} className="text-center transition-shadow hover:shadow-lg">
                   <CardContent className="pt-8 pb-6">
                     <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-amber-50">
                       <Icon className="h-8 w-8 text-amber-600" />
                     </div>
                     <h3 className="mb-1 font-medium text-lg">{value.title}</h3>
-                    <p className="mb-3 text-amber-600 text-sm">
-                      {value.subtitle}
-                    </p>
-                    <p className="text-sm text-stone-600 leading-relaxed">
-                      {value.description}
-                    </p>
+                    <p className="mb-3 text-amber-600 text-sm">{value.subtitle}</p>
+                    <p className="text-sm text-stone-600 leading-relaxed">{value.description}</p>
                   </CardContent>
                 </Card>
               )
@@ -207,9 +175,7 @@ function ConceptPage() {
       <section className="bg-white py-20">
         <div className="container">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-serif text-4xl text-stone-800">
-              Craftsmanship
-            </h2>
+            <h2 className="mb-4 font-serif text-4xl text-stone-800">Craftsmanship</h2>
             <p className="mx-auto max-w-2xl text-stone-600">
               豆選びから一杯のコーヒーになるまで、すべての工程にこだわり抜いています
             </p>
@@ -232,12 +198,8 @@ function ConceptPage() {
                         </div>
                       </div>
                       <div>
-                        <h3 className="mb-3 font-serif text-2xl text-stone-800">
-                          {craft.title}
-                        </h3>
-                        <p className="mb-4 text-stone-600 leading-relaxed">
-                          {craft.description}
-                        </p>
+                        <h3 className="mb-3 font-serif text-2xl text-stone-800">{craft.title}</h3>
+                        <p className="mb-4 text-stone-600 leading-relaxed">{craft.description}</p>
                         <ul className="space-y-2">
                           {craft.details.map((detail) => (
                             <li
@@ -270,9 +232,7 @@ function ConceptPage() {
       <section className="bg-gradient-to-b from-stone-50 to-white py-20">
         <div className="container">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-serif text-4xl text-stone-800">
-              Our Story
-            </h2>
+            <h2 className="mb-4 font-serif text-4xl text-stone-800">Our Story</h2>
             <p className="mx-auto max-w-2xl text-stone-600">
               コーヒーへの情熱から始まった、私たちの物語
             </p>
@@ -292,15 +252,11 @@ function ConceptPage() {
                   >
                     <Card className="inline-block">
                       <CardContent className="p-6">
-                        <span className="font-bold text-amber-600 text-lg">
-                          {item.year}
-                        </span>
+                        <span className="font-bold text-amber-600 text-lg">{item.year}</span>
                         <h3 className="mt-2 mb-3 font-serif text-stone-800 text-xl">
                           {item.title}
                         </h3>
-                        <p className="text-sm text-stone-600 leading-relaxed">
-                          {item.description}
-                        </p>
+                        <p className="text-sm text-stone-600 leading-relaxed">{item.description}</p>
                       </CardContent>
                     </Card>
                   </div>
@@ -316,9 +272,7 @@ function ConceptPage() {
       <section className="bg-white py-20">
         <div className="container">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-serif text-4xl text-stone-800">
-              Our Team
-            </h2>
+            <h2 className="mb-4 font-serif text-4xl text-stone-800">Our Team</h2>
             <p className="mx-auto max-w-2xl text-stone-600">
               コーヒーへの情熱を共有する、プロフェッショナルなチーム
             </p>
@@ -329,14 +283,10 @@ function ConceptPage() {
                 <div className="mx-auto mb-4 h-32 w-32 rounded-full bg-stone-200" />
                 <h3 className="font-medium text-lg">田中 健太</h3>
                 <p className="mb-2 text-amber-600 text-sm">Head Roaster</p>
-                <p className="text-sm text-stone-600">
-                  15年の焙煎経験を持つスペシャリスト
-                </p>
+                <p className="text-sm text-stone-600">15年の焙煎経験を持つスペシャリスト</p>
                 <div className="mt-3 flex justify-center gap-2">
                   <Award className="h-4 w-4 text-amber-600" />
-                  <span className="text-stone-500 text-xs">
-                    Japan Roasting Champion 2022
-                  </span>
+                  <span className="text-stone-500 text-xs">Japan Roasting Champion 2022</span>
                 </div>
               </CardContent>
             </Card>
@@ -345,14 +295,10 @@ function ConceptPage() {
                 <div className="mx-auto mb-4 h-32 w-32 rounded-full bg-stone-200" />
                 <h3 className="font-medium text-lg">佐藤 美咲</h3>
                 <p className="mb-2 text-amber-600 text-sm">Head Barista</p>
-                <p className="text-sm text-stone-600">
-                  ラテアートチャンピオンの技術
-                </p>
+                <p className="text-sm text-stone-600">ラテアートチャンピオンの技術</p>
                 <div className="mt-3 flex justify-center gap-2">
                   <Award className="h-4 w-4 text-amber-600" />
-                  <span className="text-stone-500 text-xs">
-                    Latte Art Champion 2023
-                  </span>
+                  <span className="text-stone-500 text-xs">Latte Art Champion 2023</span>
                 </div>
               </CardContent>
             </Card>
@@ -361,14 +307,10 @@ function ConceptPage() {
                 <div className="mx-auto mb-4 h-32 w-32 rounded-full bg-stone-200" />
                 <h3 className="font-medium text-lg">山田 太郎</h3>
                 <p className="mb-2 text-amber-600 text-sm">Owner & Manager</p>
-                <p className="text-sm text-stone-600">
-                  コーヒーへの情熱を形にする創業者
-                </p>
+                <p className="text-sm text-stone-600">コーヒーへの情熱を形にする創業者</p>
                 <div className="mt-3 flex justify-center gap-2">
                   <Globe className="h-4 w-4 text-amber-600" />
-                  <span className="text-stone-500 text-xs">
-                    Q Grader Certified
-                  </span>
+                  <span className="text-stone-500 text-xs">Q Grader Certified</span>
                 </div>
               </CardContent>
             </Card>

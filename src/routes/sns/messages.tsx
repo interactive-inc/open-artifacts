@@ -98,9 +98,7 @@ function Messages() {
         {messages.length === 0 ? (
           <div className="p-8 text-center">
             <Mail className="mx-auto mb-4 h-12 w-12 text-muted-foreground opacity-50" />
-            <h3 className="mb-2 font-bold text-lg">
-              メッセージを送信してみましょう
-            </h3>
+            <h3 className="mb-2 font-bold text-lg">メッセージを送信してみましょう</h3>
             <p className="text-muted-foreground">
               プライベートな会話を始めて、写真やメッセージを共有しましょう。
             </p>
@@ -120,16 +118,10 @@ function Messages() {
                   <div className="flex items-start justify-between">
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2">
-                        <span className="font-semibold">
-                          {message.user.displayName}
-                        </span>
-                        <span className="text-muted-foreground">
-                          @{message.user.username}
-                        </span>
+                        <span className="font-semibold">{message.user.displayName}</span>
+                        <span className="text-muted-foreground">@{message.user.username}</span>
                         <span className="text-muted-foreground">·</span>
-                        <span className="text-muted-foreground text-sm">
-                          {message.timestamp}
-                        </span>
+                        <span className="text-muted-foreground text-sm">{message.timestamp}</span>
                       </div>
                       <p
                         className={`mt-1 truncate text-sm ${message.unread ? "font-semibold" : "text-muted-foreground"}`}

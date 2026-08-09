@@ -27,9 +27,9 @@ applyTo: "**/*"
 - Hono for backend API server
 - shadcn/ui component system
 - Tailwind CSS v4 for styling
-- Vite for build tooling
-- Bun for package management and testing
-- Biome for linting and formatting
+- Vite+ for build tooling
+- Bun runtime and package manager (managed through Vite+)
+- Vite+ for linting, formatting, and testing
 - JSON-based data persistence
 
 ## Decoupled Design

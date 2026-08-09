@@ -61,8 +61,7 @@ function Notifications() {
         displayName: "Alice Johnson",
         avatar: "https://github.com/shadcn.png",
       },
-      content:
-        "TanStack Routerは素晴らしいライブラリですよ！ドキュメントも充実しています。",
+      content: "TanStack Routerは素晴らしいライブラリですよ！ドキュメントも充実しています。",
       timestamp: "5時間前",
     },
   ]
@@ -123,26 +122,17 @@ function Notifications() {
         <TabsContent value="all" className="mt-0">
           <div className="divide-y">
             {notifications.map((notification) => (
-              <div
-                key={notification.id}
-                className="p-4 transition-colors hover:bg-muted/30"
-              >
+              <div key={notification.id} className="p-4 transition-colors hover:bg-muted/30">
                 <div className="flex gap-3">
-                  <div className="mt-1">
-                    {getNotificationIcon(notification.type)}
-                  </div>
+                  <div className="mt-1">{getNotificationIcon(notification.type)}</div>
                   <div className="flex-1">
                     <div className="mb-2 flex items-center gap-2">
                       <Avatar className="h-8 w-8">
                         <AvatarImage src={notification.user.avatar} />
-                        <AvatarFallback>
-                          {notification.user.displayName[0]}
-                        </AvatarFallback>
+                        <AvatarFallback>{notification.user.displayName[0]}</AvatarFallback>
                       </Avatar>
                       <div className="flex-1">
-                        <span className="font-semibold">
-                          {notification.user.displayName}
-                        </span>
+                        <span className="font-semibold">{notification.user.displayName}</span>
                         <span className="text-muted-foreground">
                           {getNotificationText(notification)}
                         </span>
@@ -152,9 +142,7 @@ function Notifications() {
                       </span>
                     </div>
                     {notification.content && (
-                      <p className="text-muted-foreground text-sm">
-                        {notification.content}
-                      </p>
+                      <p className="text-muted-foreground text-sm">{notification.content}</p>
                     )}
                   </div>
                 </div>

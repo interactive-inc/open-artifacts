@@ -1,12 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router"
-import {
-  Briefcase,
-  Building,
-  Calendar,
-  Globe,
-  MapPin,
-  Users,
-} from "lucide-react"
+import { Briefcase, Building, Calendar, Globe, MapPin, Users } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 type Props = {}
@@ -91,9 +84,7 @@ function AboutPage(_props: Props) {
     <div className="py-12 lg:py-16">
       <div className="container">
         <div className="mb-12 text-center">
-          <h1 className="mb-4 font-bold text-4xl tracking-tighter sm:text-5xl">
-            会社概要
-          </h1>
+          <h1 className="mb-4 font-bold text-4xl tracking-tighter sm:text-5xl">会社概要</h1>
           <p className="mx-auto max-w-[700px] text-muted-foreground">
             テクノロジーの力で、より良い未来を創造する
           </p>
@@ -111,9 +102,7 @@ function AboutPage(_props: Props) {
                     key={item.label}
                     className="grid grid-cols-1 gap-2 border-b pb-4 last:border-0 last:pb-0 sm:grid-cols-3"
                   >
-                    <dt className="font-medium text-muted-foreground">
-                      {item.label}
-                    </dt>
+                    <dt className="font-medium text-muted-foreground">{item.label}</dt>
                     <dd className="sm:col-span-2">{item.value}</dd>
                   </div>
                 ))}
@@ -123,9 +112,7 @@ function AboutPage(_props: Props) {
         </section>
 
         <section className="mb-16">
-          <h2 className="mb-8 text-center font-bold text-3xl">
-            私たちの価値観
-          </h2>
+          <h2 className="mb-8 text-center font-bold text-3xl">私たちの価値観</h2>
           <div className="grid gap-6 md:grid-cols-3">
             {values.map((value) => {
               const Icon = value.icon
@@ -136,9 +123,7 @@ function AboutPage(_props: Props) {
                     <CardTitle>{value.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-center text-muted-foreground">
-                      {value.description}
-                    </p>
+                    <p className="text-center text-muted-foreground">{value.description}</p>
                   </CardContent>
                 </Card>
               )
@@ -177,17 +162,12 @@ function AboutPage(_props: Props) {
               <div className="relative space-y-4">
                 <div className="absolute top-0 bottom-0 left-8 w-0.5 bg-border" />
                 {history.map((item, index) => (
-                  <div
-                    key={index}
-                    className="relative flex items-center space-x-4"
-                  >
+                  <div key={index} className="relative flex items-center space-x-4">
                     <div className="z-10 flex h-16 w-16 items-center justify-center rounded-full border-2 bg-background">
                       <Calendar className="h-6 w-6 text-primary" />
                     </div>
                     <div className="flex-1 rounded-lg bg-muted p-4">
-                      <p className="mb-1 font-semibold text-primary">
-                        {item.year}年
-                      </p>
+                      <p className="mb-1 font-semibold text-primary">{item.year}年</p>
                       <p className="text-sm">{item.event}</p>
                     </div>
                   </div>

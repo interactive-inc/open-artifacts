@@ -113,8 +113,7 @@ function PrivacyPage(_props: Props) {
           </CardHeader>
           <CardContent>
             <p className="mb-6 text-muted-foreground">
-              TechCorp
-              Inc.（以下「当社」といいます）は、お客様の個人情報の重要性を認識し、
+              TechCorp Inc.（以下「当社」といいます）は、お客様の個人情報の重要性を認識し、
               その保護の徹底を図ることが社会的責任であると考え、以下のプライバシーポリシーを定め、
               これを実施し、維持することを宣言いたします。
             </p>

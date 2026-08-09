@@ -24,13 +24,7 @@ import {
 } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 type Props = {}
 
@@ -177,12 +171,7 @@ function BenefitsPage(_props: Props) {
       icon: Car,
       title: "通勤支援",
       description: "快適な通勤をサポート",
-      details: [
-        "交通費全額支給",
-        "駐車場代補助",
-        "自転車通勤手当",
-        "新幹線通勤可能",
-      ],
+      details: ["交通費全額支給", "駐車場代補助", "自転車通勤手当", "新幹線通勤可能"],
     },
   ]
 
@@ -214,12 +203,7 @@ function BenefitsPage(_props: Props) {
       icon: Trophy,
       title: "表彰・インセンティブ",
       description: "成果と貢献を正当に評価",
-      details: [
-        "年間MVP表彰",
-        "プロジェクト成功報奨金",
-        "特許取得報奨金",
-        "改善提案報奨制度",
-      ],
+      details: ["年間MVP表彰", "プロジェクト成功報奨金", "特許取得報奨金", "改善提案報奨制度"],
     },
     {
       icon: Laptop,
@@ -239,45 +223,25 @@ function BenefitsPage(_props: Props) {
       icon: Coins,
       title: "退職金・年金",
       description: "将来の安心を確保",
-      details: [
-        "確定拠出年金制度",
-        "退職金制度",
-        "マッチング拠出",
-        "ライフプラン相談",
-      ],
+      details: ["確定拠出年金制度", "退職金制度", "マッチング拠出", "ライフプラン相談"],
     },
     {
       icon: Shield,
       title: "各種保険",
       description: "万が一に備える充実の保険制度",
-      details: [
-        "団体生命保険",
-        "団体傷害保険",
-        "所得補償保険",
-        "がん保険団体割引",
-      ],
+      details: ["団体生命保険", "団体傷害保険", "所得補償保険", "がん保険団体割引"],
     },
     {
       icon: Gift,
       title: "慶弔・お祝い金",
       description: "人生の節目をお祝い",
-      details: [
-        "結婚祝い金10万円",
-        "出産祝い金5万円",
-        "入学祝い金",
-        "慶弔見舞金",
-      ],
+      details: ["結婚祝い金10万円", "出産祝い金5万円", "入学祝い金", "慶弔見舞金"],
     },
     {
       icon: Building,
       title: "財形・投資支援",
       description: "資産形成をサポート",
-      details: [
-        "財形貯蓄制度",
-        "社員持株会",
-        "投資セミナー開催",
-        "FP相談サービス",
-      ],
+      details: ["財形貯蓄制度", "社員持株会", "投資セミナー開催", "FP相談サービス"],
     },
   ]
 
@@ -297,13 +261,7 @@ function BenefitsPage(_props: Props) {
       icon: Sparkles,
       title: "オフィス設備",
       description: "快適なオフィス環境",
-      details: [
-        "人間工学チェア",
-        "昇降デスク",
-        "集中ブース",
-        "仮眠室",
-        "マッサージルーム",
-      ],
+      details: ["人間工学チェア", "昇降デスク", "集中ブース", "仮眠室", "マッサージルーム"],
     },
   ]
 
@@ -344,9 +302,7 @@ function BenefitsPage(_props: Props) {
     <div className="py-12 lg:py-16">
       <div className="container">
         <div className="mb-12 text-center">
-          <h1 className="mb-4 font-bold text-4xl tracking-tighter sm:text-5xl">
-            福利厚生
-          </h1>
+          <h1 className="mb-4 font-bold text-4xl tracking-tighter sm:text-5xl">福利厚生</h1>
           <p className="mx-auto max-w-[700px] text-muted-foreground">
             社員一人ひとりが最高のパフォーマンスを発揮できる環境を提供します
           </p>
@@ -523,15 +479,10 @@ function BenefitsPage(_props: Props) {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="mb-3 text-muted-foreground text-sm">
-                      {benefit.description}
-                    </p>
+                    <p className="mb-3 text-muted-foreground text-sm">{benefit.description}</p>
                     <ul className="space-y-1">
                       {benefit.details.map((detail) => (
-                        <li
-                          key={detail}
-                          className="text-muted-foreground text-xs"
-                        >
+                        <li key={detail} className="text-muted-foreground text-xs">
                           • {detail}
                         </li>
                       ))}
@@ -556,23 +507,15 @@ function BenefitsPage(_props: Props) {
                 {officePerks.map((perk) => {
                   const Icon = perk.icon
                   return (
-                    <div
-                      key={perk.title}
-                      className="rounded-lg bg-background p-6"
-                    >
+                    <div key={perk.title} className="rounded-lg bg-background p-6">
                       <h3 className="mb-3 flex items-center gap-2 font-semibold">
                         <Icon className="h-5 w-5 text-primary" />
                         {perk.title}
                       </h3>
-                      <p className="mb-3 text-muted-foreground text-sm">
-                        {perk.description}
-                      </p>
+                      <p className="mb-3 text-muted-foreground text-sm">{perk.description}</p>
                       <ul className="space-y-1">
                         {perk.details.map((detail) => (
-                          <li
-                            key={detail}
-                            className="text-muted-foreground text-sm"
-                          >
+                          <li key={detail} className="text-muted-foreground text-sm">
                             • {detail}
                           </li>
                         ))}
@@ -586,21 +529,14 @@ function BenefitsPage(_props: Props) {
         </section>
 
         <section className="mb-16">
-          <h2 className="mb-8 text-center font-bold text-3xl">
-            ユニークな制度
-          </h2>
+          <h2 className="mb-8 text-center font-bold text-3xl">ユニークな制度</h2>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {uniqueBenefits.map((benefit) => (
-              <Card
-                key={benefit.title}
-                className="transition-shadow hover:shadow-lg"
-              >
+              <Card key={benefit.title} className="transition-shadow hover:shadow-lg">
                 <CardContent className="pt-6">
                   <Badge className="mb-3">{benefit.badge}</Badge>
                   <h3 className="mb-2 font-semibold">{benefit.title}</h3>
-                  <p className="text-muted-foreground text-sm">
-                    {benefit.description}
-                  </p>
+                  <p className="text-muted-foreground text-sm">{benefit.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -621,9 +557,7 @@ function BenefitsPage(_props: Props) {
                 </div>
                 <div>
                   <p className="mb-2 font-bold text-4xl text-primary">50万円</p>
-                  <p className="text-muted-foreground text-sm">
-                    年間研修予算/人
-                  </p>
+                  <p className="text-muted-foreground text-sm">年間研修予算/人</p>
                 </div>
                 <div>
                   <p className="mb-2 font-bold text-4xl text-primary">98%</p>
@@ -637,9 +571,7 @@ function BenefitsPage(_props: Props) {
         <section>
           <Card className="bg-primary text-primary-foreground">
             <CardContent className="py-12 text-center">
-              <h2 className="mb-4 font-bold text-3xl">
-                充実した福利厚生で、あなたの成長を支援
-              </h2>
+              <h2 className="mb-4 font-bold text-3xl">充実した福利厚生で、あなたの成長を支援</h2>
               <p className="mx-auto mb-8 max-w-[600px]">
                 TechCorpは、社員一人ひとりが最高のパフォーマンスを発揮し、
                 充実した人生を送れるよう、業界トップクラスの福利厚生制度を提供しています。

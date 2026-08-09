@@ -1,13 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router"
-import {
-  ArrowRight,
-  Calendar,
-  Clock,
-  Coffee,
-  Gift,
-  Sparkles,
-  Users,
-} from "lucide-react"
+import { ArrowRight, Calendar, Clock, Coffee, Gift, Sparkles, Users } from "lucide-react"
 import { useState } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -42,8 +34,7 @@ function NewsPage() {
       date: "2024.03.20",
       category: "イベント",
       title: "4月のコーヒーテイスティングワークショップ開催",
-      summary:
-        "プロのバリスタが教える、コーヒーの楽しみ方を学ぶワークショップを開催します。",
+      summary: "プロのバリスタが教える、コーヒーの楽しみ方を学ぶワークショップを開催します。",
       content:
         "毎月好評をいただいているテイスティングワークショップを4月も開催いたします。今回のテーマは「シングルオリジンの楽しみ方」。産地による味の違いを体験していただきます。",
       details: {
@@ -95,8 +86,7 @@ function NewsPage() {
       date: "2024.02.20",
       category: "イベント",
       title: "ラテアート体験会を開催しました",
-      summary:
-        "2月18日にラテアート体験会を開催し、多くのお客様にご参加いただきました。",
+      summary: "2月18日にラテアート体験会を開催し、多くのお客様にご参加いただきました。",
       content:
         "バリスタチャンピオンによるラテアート体験会を開催しました。参加者の皆様には、基本的なハートの描き方から応用まで、楽しく学んでいただきました。",
       image: "/api/placeholder/800/400",
@@ -186,9 +176,7 @@ function NewsPage() {
         <div className="absolute inset-0 bg-[url('/api/placeholder/1920/600')] bg-center bg-cover opacity-40" />
         <div className="relative flex h-full items-center justify-center text-white">
           <div className="text-center">
-            <h1 className="mb-4 font-serif text-5xl md:text-6xl">
-              News & Events
-            </h1>
+            <h1 className="mb-4 font-serif text-5xl md:text-6xl">News & Events</h1>
             <p className="text-white/80 text-xl">最新情報・イベント</p>
           </div>
         </div>
@@ -199,9 +187,7 @@ function NewsPage() {
         <section className="bg-gradient-to-b from-amber-50 to-white py-12">
           <div className="container">
             <div className="mx-auto max-w-5xl">
-              <h2 className="mb-6 text-center font-serif text-2xl text-stone-800">
-                Featured
-              </h2>
+              <h2 className="mb-6 text-center font-serif text-2xl text-stone-800">Featured</h2>
               {newsItems
                 .filter((item) => item.featured)
                 .map((item) => (
@@ -216,19 +202,11 @@ function NewsPage() {
                       </div>
                       <CardContent className="flex flex-col justify-center p-8">
                         <div className="mb-4 flex items-center gap-3">
-                          <span className="text-sm text-stone-500">
-                            {item.date}
-                          </span>
-                          <Badge className={getCategoryColor(item.category)}>
-                            {item.category}
-                          </Badge>
+                          <span className="text-sm text-stone-500">{item.date}</span>
+                          <Badge className={getCategoryColor(item.category)}>{item.category}</Badge>
                         </div>
-                        <h3 className="mb-3 font-serif text-2xl text-stone-800">
-                          {item.title}
-                        </h3>
-                        <p className="mb-6 text-stone-600 leading-relaxed">
-                          {item.content}
-                        </p>
+                        <h3 className="mb-3 font-serif text-2xl text-stone-800">{item.title}</h3>
+                        <p className="mb-6 text-stone-600 leading-relaxed">{item.content}</p>
                         <Button className="self-start bg-amber-600 text-white hover:bg-amber-700">
                           詳細を見る
                           <ArrowRight className="ml-2 h-4 w-4" />
@@ -258,11 +236,7 @@ function NewsPage() {
                   {categories.map((category) => (
                     <Button
                       key={category.value}
-                      variant={
-                        selectedCategory === category.value
-                          ? "default"
-                          : "outline"
-                      }
+                      variant={selectedCategory === category.value ? "default" : "outline"}
                       size="sm"
                       onClick={() => setSelectedCategory(category.value)}
                       className={
@@ -281,10 +255,7 @@ function NewsPage() {
                   {filteredNews.map((item) => {
                     const Icon = getCategoryIcon(item.category)
                     return (
-                      <Card
-                        key={item.id}
-                        className="transition-shadow hover:shadow-lg"
-                      >
+                      <Card key={item.id} className="transition-shadow hover:shadow-lg">
                         {item.image && (
                           <div className="aspect-[16/9] overflow-hidden">
                             <img
@@ -296,25 +267,16 @@ function NewsPage() {
                         )}
                         <CardHeader className="pb-4">
                           <div className="mb-2 flex items-center justify-between">
-                            <span className="text-sm text-stone-500">
-                              {item.date}
-                            </span>
-                            <Badge
-                              variant="outline"
-                              className={getCategoryColor(item.category)}
-                            >
+                            <span className="text-sm text-stone-500">{item.date}</span>
+                            <Badge variant="outline" className={getCategoryColor(item.category)}>
                               <Icon className="mr-1 h-3 w-3" />
                               {item.category}
                             </Badge>
                           </div>
-                          <h3 className="font-medium text-lg leading-tight">
-                            {item.title}
-                          </h3>
+                          <h3 className="font-medium text-lg leading-tight">{item.title}</h3>
                         </CardHeader>
                         <CardContent>
-                          <p className="mb-4 text-sm text-stone-600">
-                            {item.summary}
-                          </p>
+                          <p className="mb-4 text-sm text-stone-600">{item.summary}</p>
                           <Button
                             variant="link"
                             className="h-auto p-0 text-amber-600 hover:text-amber-700"
@@ -331,39 +293,27 @@ function NewsPage() {
 
               <TabsContent value="events" className="space-y-8">
                 <div className="mb-8 text-center">
-                  <h2 className="mb-2 font-serif text-2xl text-stone-800">
-                    今後のイベント
-                  </h2>
-                  <p className="text-stone-600">
-                    ワークショップやイベントの予定
-                  </p>
+                  <h2 className="mb-2 font-serif text-2xl text-stone-800">今後のイベント</h2>
+                  <p className="text-stone-600">ワークショップやイベントの予定</p>
                 </div>
                 <div className="grid gap-6 md:grid-cols-2">
                   {upcomingEvents.map((event, index) => (
-                    <Card
-                      key={index}
-                      className="transition-shadow hover:shadow-lg"
-                    >
+                    <Card key={index} className="transition-shadow hover:shadow-lg">
                       <CardContent className="p-6">
                         <div className="flex items-start gap-4">
                           <div className="flex-shrink-0 rounded-lg bg-amber-50 p-3 text-center">
                             <Calendar className="mx-auto mb-1 h-6 w-6 text-amber-600" />
                             <p className="font-medium text-amber-600 text-xs">
-                              {event.date.split(".")[1]}.
-                              {event.date.split(".")[2]}
+                              {event.date.split(".")[1]}.{event.date.split(".")[2]}
                             </p>
                           </div>
                           <div className="flex-1">
-                            <h3 className="mb-1 font-medium text-lg">
-                              {event.title}
-                            </h3>
+                            <h3 className="mb-1 font-medium text-lg">{event.title}</h3>
                             <div className="mb-2 flex items-center gap-2 text-sm text-stone-500">
                               <Clock className="h-3 w-3" />
                               {event.time}
                             </div>
-                            <p className="mb-4 text-sm text-stone-600">
-                              {event.description}
-                            </p>
+                            <p className="mb-4 text-sm text-stone-600">{event.description}</p>
                             <Button
                               variant="outline"
                               size="sm"
@@ -382,9 +332,7 @@ function NewsPage() {
                 <Card className="border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50">
                   <CardContent className="p-8 text-center">
                     <Users className="mx-auto mb-4 h-12 w-12 text-amber-600" />
-                    <h3 className="mb-2 font-serif text-stone-800 text-xl">
-                      イベントの参加予約
-                    </h3>
+                    <h3 className="mb-2 font-serif text-stone-800 text-xl">イベントの参加予約</h3>
                     <p className="mx-auto mb-6 max-w-md text-stone-600">
                       各種ワークショップやイベントは事前予約制となっております。
                       お電話またはご来店時にお申し込みください。
@@ -409,9 +357,7 @@ function NewsPage() {
           <Card className="mx-auto max-w-2xl bg-white">
             <CardContent className="p-8 text-center">
               <Sparkles className="mx-auto mb-4 h-12 w-12 text-amber-600" />
-              <h2 className="mb-4 font-serif text-2xl text-stone-800">
-                ニュースレター登録
-              </h2>
+              <h2 className="mb-4 font-serif text-2xl text-stone-800">ニュースレター登録</h2>
               <p className="mb-6 text-stone-600">
                 新メニューやイベント情報を、いち早くお届けします
               </p>
@@ -421,10 +367,7 @@ function NewsPage() {
                   placeholder="メールアドレス"
                   className="flex-1 rounded-md border border-stone-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500"
                 />
-                <Button
-                  type="submit"
-                  className="bg-amber-600 text-white hover:bg-amber-700"
-                >
+                <Button type="submit" className="bg-amber-600 text-white hover:bg-amber-700">
                   登録する
                 </Button>
               </form>

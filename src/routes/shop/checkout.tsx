@@ -99,12 +99,8 @@ function Checkout() {
           <div className="w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center">
               <CheckCircle className="mx-auto h-16 w-16 text-green-500" />
-              <h1 className="mt-4 font-bold text-3xl">
-                ご注文ありがとうございます！
-              </h1>
-              <p className="mt-2 text-muted-foreground">
-                注文番号: {orderId || "#2024-12345"}
-              </p>
+              <h1 className="mt-4 font-bold text-3xl">ご注文ありがとうございます！</h1>
+              <p className="mt-2 text-muted-foreground">注文番号: {orderId || "#2024-12345"}</p>
               <p className="mt-4">
                 ご注文内容の確認メールをお送りしました。
                 <br />
@@ -128,7 +124,6 @@ function Checkout() {
 
   return (
     <div className="flex flex-col">
-
       <main className="flex flex-1 justify-center">
         <div className="w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
           <h1 className="mb-8 font-bold text-3xl">チェックアウト</h1>
@@ -306,9 +301,7 @@ function Checkout() {
                     </div>
 
                     <div>
-                      <Label htmlFor={buildingId}>
-                        建物名・部屋番号（任意）
-                      </Label>
+                      <Label htmlFor={buildingId}>建物名・部屋番号（任意）</Label>
                       <Input
                         id={buildingId}
                         value={shippingInfo.building}
@@ -336,18 +329,13 @@ function Checkout() {
                     お支払い方法
                   </h2>
 
-                  <RadioGroup
-                    value={paymentMethod}
-                    onValueChange={setPaymentMethod}
-                  >
+                  <RadioGroup value={paymentMethod} onValueChange={setPaymentMethod}>
                     <div className="space-y-4">
                       <div className="flex items-start space-x-2 rounded-lg border p-4">
                         <RadioGroupItem value="credit" id={creditId} />
                         <div className="flex-1">
                           <Label htmlFor={creditId} className="cursor-pointer">
-                            <div className="font-semibold">
-                              クレジットカード
-                            </div>
+                            <div className="font-semibold">クレジットカード</div>
                             <div className="text-muted-foreground text-sm">
                               Visa, Mastercard, JCB, American Express
                             </div>
@@ -385,10 +373,7 @@ function Checkout() {
                     <div className="mt-6 space-y-4 rounded-lg bg-gray-50 p-4">
                       <div>
                         <Label htmlFor={cardNumberId}>カード番号</Label>
-                        <Input
-                          id={cardNumberId}
-                          placeholder="1234 5678 9012 3456"
-                        />
+                        <Input id={cardNumberId} placeholder="1234 5678 9012 3456" />
                       </div>
                       <div className="grid grid-cols-2 gap-4">
                         <div>
@@ -404,16 +389,12 @@ function Checkout() {
                   )}
 
                   <div className="mt-6 flex gap-4">
-                    <Button
-                      variant="outline"
-                      className="flex-1"
-                      onClick={() => setStep(1)}
-                    >
+                    <Button variant="outline" className="flex-1" onClick={() => setStep(1)}>
                       戻る
                     </Button>
                     <Button className="flex-1" onClick={handleSubmitOrder} disabled={isSubmitting}>
-                    {isSubmitting ? "処理中..." : "注文を確定する"}
-                  </Button>
+                      {isSubmitting ? "処理中..." : "注文を確定する"}
+                    </Button>
                   </div>
                 </div>
               )}
@@ -426,15 +407,13 @@ function Checkout() {
 
                 <div className="space-y-3">
                   {cart?.items.map((item) => (
-                  <div key={item.productId} className="flex justify-between text-sm">
-                    <span>
-                      Product {item.productId} × {item.quantity}
-                    </span>
-                    <span>
-                      ¥{(item.price * item.quantity).toLocaleString()}
-                    </span>
-                  </div>
-                ))}
+                    <div key={item.productId} className="flex justify-between text-sm">
+                      <span>
+                        Product {item.productId} × {item.quantity}
+                      </span>
+                      <span>¥{(item.price * item.quantity).toLocaleString()}</span>
+                    </div>
+                  ))}
                 </div>
 
                 <Separator className="my-4" />

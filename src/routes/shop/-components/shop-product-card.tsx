@@ -54,16 +54,10 @@ export function ShopProductCard(props: Props) {
 
       <CardContent className="p-4">
         <Link to="/shop/products/$product" params={{ product: product.id }}>
-          <h3 className="line-clamp-1 font-semibold hover:text-primary">
-            {product.name}
-          </h3>
+          <h3 className="line-clamp-1 font-semibold hover:text-primary">{product.name}</h3>
         </Link>
-        <p className="mt-1 line-clamp-2 text-muted-foreground text-sm">
-          {product.description}
-        </p>
-        <p className="mt-2 font-bold text-lg">
-          ¥{product.price.toLocaleString()}
-        </p>
+        <p className="mt-1 line-clamp-2 text-muted-foreground text-sm">{product.description}</p>
+        <p className="mt-2 font-bold text-lg">¥{product.price.toLocaleString()}</p>
       </CardContent>
 
       <CardFooter className="p-4 pt-0">

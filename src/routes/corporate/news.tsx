@@ -1,23 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router"
-import {
-  ArrowRight,
-  Award,
-  Building,
-  Calendar,
-  Search,
-  Tag,
-  TrendingUp,
-} from "lucide-react"
+import { ArrowRight, Award, Building, Calendar, Search, Tag, TrendingUp } from "lucide-react"
 import { useState } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
@@ -152,11 +138,8 @@ function NewsPage(_props: Props) {
     const matchesSearch =
       item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.summary.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.tags.some((tag) =>
-        tag.toLowerCase().includes(searchTerm.toLowerCase()),
-      )
-    const matchesCategory =
-      selectedCategory === "all" || item.category === selectedCategory
+      item.tags.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+    const matchesCategory = selectedCategory === "all" || item.category === selectedCategory
     return matchesSearch && matchesCategory
   })
 
@@ -196,27 +179,20 @@ function NewsPage(_props: Props) {
             <h2 className="mb-6 font-bold text-2xl">注目のニュース</h2>
             <div className="grid gap-6 md:grid-cols-2">
               {featuredNews.map((item) => (
-                <Card
-                  key={item.id}
-                  className="transition-shadow hover:shadow-lg"
-                >
+                <Card key={item.id} className="transition-shadow hover:shadow-lg">
                   <CardHeader>
                     <div className="mb-2 flex items-center gap-2">
                       <Badge variant={getCategoryBadgeVariant(item.category)}>
                         {categoryConfig[item.category].label}
                       </Badge>
-                      <span className="text-muted-foreground text-sm">
-                        {item.date}
-                      </span>
+                      <span className="text-muted-foreground text-sm">{item.date}</span>
                     </div>
                     <CardTitle className="cursor-pointer text-xl transition-colors hover:text-primary">
                       {item.title}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="mb-4">
-                      {item.summary}
-                    </CardDescription>
+                    <CardDescription className="mb-4">{item.summary}</CardDescription>
                     <div className="mb-4 flex flex-wrap gap-2">
                       {item.tags.map((tag) => (
                         <Badge key={tag} variant="outline" className="text-xs">
@@ -249,11 +225,7 @@ function NewsPage(_props: Props) {
               </div>
             </div>
 
-            <Tabs
-              value={selectedCategory}
-              onValueChange={setSelectedCategory}
-              className="w-full"
-            >
+            <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full">
               <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6">
                 {Object.entries(categoryConfig).map(([key, config]) => (
                   <TabsTrigger key={key} value={key}>
@@ -273,29 +245,18 @@ function NewsPage(_props: Props) {
                 ) : (
                   <div className="space-y-4">
                     {filteredNews.map((item) => (
-                      <Card
-                        key={item.id}
-                        className="transition-shadow hover:shadow-md"
-                      >
+                      <Card key={item.id} className="transition-shadow hover:shadow-md">
                         <CardHeader>
                           <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
                             <div className="flex items-center gap-2">
-                              <Badge
-                                variant={getCategoryBadgeVariant(item.category)}
-                              >
+                              <Badge variant={getCategoryBadgeVariant(item.category)}>
                                 {categoryConfig[item.category].label}
                               </Badge>
-                              <span className="text-muted-foreground text-sm">
-                                {item.date}
-                              </span>
+                              <span className="text-muted-foreground text-sm">{item.date}</span>
                             </div>
                             <div className="flex flex-wrap gap-2">
                               {item.tags.map((tag) => (
-                                <Badge
-                                  key={tag}
-                                  variant="outline"
-                                  className="text-xs"
-                                >
+                                <Badge key={tag} variant="outline" className="text-xs">
                                   {tag}
                                 </Badge>
                               ))}
@@ -306,9 +267,7 @@ function NewsPage(_props: Props) {
                           </CardTitle>
                         </CardHeader>
                         <CardContent>
-                          <CardDescription className="mb-4">
-                            {item.summary}
-                          </CardDescription>
+                          <CardDescription className="mb-4">{item.summary}</CardDescription>
                           <Button variant="link" className="h-auto p-0">
                             詳細を読む
                             <ArrowRight className="ml-1 h-4 w-4" />
@@ -326,9 +285,7 @@ function NewsPage(_props: Props) {
         <div className="mt-12 text-center">
           <Card className="bg-muted">
             <CardContent className="py-8">
-              <h3 className="mb-2 font-bold text-xl">
-                プレスリリース配信をご希望の方へ
-              </h3>
+              <h3 className="mb-2 font-bold text-xl">プレスリリース配信をご希望の方へ</h3>
               <p className="mb-4 text-muted-foreground">
                 メディア関係者向けのプレスリリース配信サービスをご用意しています
               </p>

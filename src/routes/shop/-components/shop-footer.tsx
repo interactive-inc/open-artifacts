@@ -17,10 +17,7 @@ export function ShopFooter() {
               <h4 className="mb-4 font-semibold text-sm">ショッピング</h4>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <Link
-                    to="/shop/products"
-                    className="text-muted-foreground hover:text-primary"
-                  >
+                  <Link to="/shop/products" className="text-muted-foreground hover:text-primary">
                     すべての商品
                   </Link>
                 </li>
@@ -58,10 +55,7 @@ export function ShopFooter() {
               <h4 className="mb-4 font-semibold text-sm">カスタマーサービス</h4>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <Link
-                    to="/shop/orders"
-                    className="text-muted-foreground hover:text-primary"
-                  >
+                  <Link to="/shop/orders" className="text-muted-foreground hover:text-primary">
                     注文履歴
                   </Link>
                 </li>

@@ -57,8 +57,7 @@ function Home() {
         displayName: "Alice Johnson",
         avatar: "https://github.com/shadcn.png",
       },
-      content:
-        "React 19がリリースされました！新機能がたくさんあって楽しみです 🎉 #React #WebDev",
+      content: "React 19がリリースされました！新機能がたくさんあって楽しみです 🎉 #React #WebDev",
       timestamp: "2時間前",
       likes: 42,
       retweets: 12,
@@ -225,9 +224,7 @@ function Home() {
                 </Button>
               </div>
               <div className="flex items-center gap-3">
-                <span className="text-muted-foreground text-sm">
-                  {280 - postContent.length}
-                </span>
+                <span className="text-muted-foreground text-sm">{280 - postContent.length}</span>
                 <Button
                   className="rounded-full"
                   disabled={!postContent.trim() || postContent.length > 280}
@@ -244,10 +241,7 @@ function Home() {
       {/* タイムライン */}
       <div>
         {posts.map((post) => (
-          <article
-            key={post.id}
-            className="border-b transition-colors hover:bg-muted/30"
-          >
+          <article key={post.id} className="border-b transition-colors hover:bg-muted/30">
             <div className="p-4">
               <div className="flex gap-3">
                 <Avatar className="h-12 w-12">
@@ -257,16 +251,10 @@ function Home() {
                 <div className="flex-1">
                   <div className="flex items-start justify-between">
                     <div>
-                      <span className="font-semibold">
-                        {post.author.displayName}
-                      </span>
-                      <span className="ml-1 text-muted-foreground">
-                        @{post.author.username}
-                      </span>
+                      <span className="font-semibold">{post.author.displayName}</span>
+                      <span className="ml-1 text-muted-foreground">@{post.author.username}</span>
                       <span className="ml-1 text-muted-foreground">·</span>
-                      <span className="ml-1 text-muted-foreground">
-                        {post.timestamp}
-                      </span>
+                      <span className="ml-1 text-muted-foreground">{post.timestamp}</span>
                     </div>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
@@ -275,12 +263,8 @@ function Home() {
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
-                        <DropdownMenuItem>
-                          フォロー解除 @{post.author.username}
-                        </DropdownMenuItem>
-                        <DropdownMenuItem>
-                          このポストを埋め込む
-                        </DropdownMenuItem>
+                        <DropdownMenuItem>フォロー解除 @{post.author.username}</DropdownMenuItem>
+                        <DropdownMenuItem>このポストを埋め込む</DropdownMenuItem>
                         <DropdownMenuItem>ポストを報告</DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
@@ -310,9 +294,7 @@ function Home() {
                       className={`gap-2 ${post.isLiked ? "text-red-600" : "text-muted-foreground"} hover:text-red-600`}
                       onClick={() => handleLike(post.id)}
                     >
-                      <Heart
-                        className={`h-4 w-4 ${post.isLiked ? "fill-current" : ""}`}
-                      />
+                      <Heart className={`h-4 w-4 ${post.isLiked ? "fill-current" : ""}`} />
                       <span className="text-sm">{post.likes}</span>
                     </Button>
                     <Button
@@ -321,9 +303,7 @@ function Home() {
                       className={`gap-2 ${post.isBookmarked ? "text-primary" : "text-muted-foreground"} hover:text-primary`}
                       onClick={() => handleBookmark(post.id)}
                     >
-                      <Bookmark
-                        className={`h-4 w-4 ${post.isBookmarked ? "fill-current" : ""}`}
-                      />
+                      <Bookmark className={`h-4 w-4 ${post.isBookmarked ? "fill-current" : ""}`} />
                     </Button>
                     <Button
                       variant="ghost"

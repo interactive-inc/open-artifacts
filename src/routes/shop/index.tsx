@@ -43,14 +43,9 @@ function Home() {
           <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl text-white">
               <h1 className="mb-4 font-bold text-5xl">新年セール開催中</h1>
-              <p className="mb-8 text-xl">
-                最大50%OFF！人気商品が期間限定価格で登場
-              </p>
+              <p className="mb-8 text-xl">最大50%OFF！人気商品が期間限定価格で登場</p>
               <Link to="/shop/products">
-                <Button
-                  size="lg"
-                  className="bg-white text-purple-600 hover:bg-gray-100"
-                >
+                <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100">
                   セール商品を見る
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
@@ -70,9 +65,7 @@ function Home() {
               </div>
               <div>
                 <h3 className="font-semibold">送料無料</h3>
-                <p className="text-muted-foreground text-sm">
-                  5,000円以上のご購入で
-                </p>
+                <p className="text-muted-foreground text-sm">5,000円以上のご購入で</p>
               </div>
             </div>
 
@@ -82,9 +75,7 @@ function Home() {
               </div>
               <div>
                 <h3 className="font-semibold">安心保証</h3>
-                <p className="text-muted-foreground text-sm">
-                  30日間返品保証
-                </p>
+                <p className="text-muted-foreground text-sm">30日間返品保証</p>
               </div>
             </div>
 
@@ -94,9 +85,7 @@ function Home() {
               </div>
               <div>
                 <h3 className="font-semibold">安全な決済</h3>
-                <p className="text-muted-foreground text-sm">
-                  SSL暗号化で安心
-                </p>
+                <p className="text-muted-foreground text-sm">SSL暗号化で安心</p>
               </div>
             </div>
           </div>
@@ -109,9 +98,7 @@ function Home() {
           <div className="mb-8 flex items-center justify-between">
             <div>
               <h2 className="font-bold text-3xl">注目の商品</h2>
-              <p className="mt-2 text-muted-foreground">
-                今週の人気アイテムをチェック
-              </p>
+              <p className="mt-2 text-muted-foreground">今週の人気アイテムをチェック</p>
             </div>
             <Link to="/shop/products">
               <Button variant="outline">
@@ -132,15 +119,10 @@ function Home() {
       {/* Categories */}
       <section className="flex justify-center bg-gray-50 py-12">
         <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="mb-8 text-center font-bold text-3xl">
-            カテゴリから探す
-          </h2>
+          <h2 className="mb-8 text-center font-bold text-3xl">カテゴリから探す</h2>
 
           <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-            <Link
-              to="/shop/category/$category"
-              params={{ category: "electronics" }}
-            >
+            <Link to="/shop/category/$category" params={{ category: "electronics" }}>
               <div className="group cursor-pointer overflow-hidden rounded-lg bg-white shadow-sm transition-all hover:shadow-md">
                 <div className="aspect-square bg-gradient-to-br from-blue-500 to-purple-500 p-8">
                   <div className="flex h-full items-center justify-center text-white">
@@ -148,17 +130,12 @@ function Home() {
                   </div>
                 </div>
                 <div className="p-4">
-                  <h3 className="font-semibold group-hover:text-primary">
-                    エレクトロニクス
-                  </h3>
+                  <h3 className="font-semibold group-hover:text-primary">エレクトロニクス</h3>
                 </div>
               </div>
             </Link>
 
-            <Link
-              to="/shop/category/$category"
-              params={{ category: "fashion" }}
-            >
+            <Link to="/shop/category/$category" params={{ category: "fashion" }}>
               <div className="group cursor-pointer overflow-hidden rounded-lg bg-white shadow-sm transition-all hover:shadow-md">
                 <div className="aspect-square bg-gradient-to-br from-pink-500 to-red-500 p-8">
                   <div className="flex h-full items-center justify-center text-white">
@@ -166,9 +143,7 @@ function Home() {
                   </div>
                 </div>
                 <div className="p-4">
-                  <h3 className="font-semibold group-hover:text-primary">
-                    ファッション
-                  </h3>
+                  <h3 className="font-semibold group-hover:text-primary">ファッション</h3>
                 </div>
               </div>
             </Link>
@@ -181,17 +156,12 @@ function Home() {
                   </div>
                 </div>
                 <div className="p-4">
-                  <h3 className="font-semibold group-hover:text-primary">
-                    ホーム＆リビング
-                  </h3>
+                  <h3 className="font-semibold group-hover:text-primary">ホーム＆リビング</h3>
                 </div>
               </div>
             </Link>
 
-            <Link
-              to="/shop/category/$category"
-              params={{ category: "sports" }}
-            >
+            <Link to="/shop/category/$category" params={{ category: "sports" }}>
               <div className="group cursor-pointer overflow-hidden rounded-lg bg-white shadow-sm transition-all hover:shadow-md">
                 <div className="aspect-square bg-gradient-to-br from-orange-500 to-yellow-500 p-8">
                   <div className="flex h-full items-center justify-center text-white">
@@ -199,9 +169,7 @@ function Home() {
                   </div>
                 </div>
                 <div className="p-4">
-                  <h3 className="font-semibold group-hover:text-primary">
-                    スポーツ
-                  </h3>
+                  <h3 className="font-semibold group-hover:text-primary">スポーツ</h3>
                 </div>
               </div>
             </Link>

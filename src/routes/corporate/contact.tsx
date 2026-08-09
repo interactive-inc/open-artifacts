@@ -6,13 +6,7 @@ import { useForm } from "react-hook-form"
 import { toast } from "sonner"
 import { z } from "zod"
 import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -121,9 +115,7 @@ function ContactPage(_props: Props) {
     <div className="py-12 lg:py-16">
       <div className="container">
         <div className="mb-12 text-center">
-          <h1 className="mb-4 font-bold text-4xl tracking-tighter sm:text-5xl">
-            お問い合わせ
-          </h1>
+          <h1 className="mb-4 font-bold text-4xl tracking-tighter sm:text-5xl">お問い合わせ</h1>
           <p className="mx-auto max-w-[700px] text-muted-foreground">
             サービスに関するご質問、ご相談など、お気軽にお問い合わせください
           </p>
@@ -144,9 +136,7 @@ function ContactPage(_props: Props) {
                     <Label htmlFor="inquiryType">お問い合わせ種別 *</Label>
                     <Select
                       value={watch("inquiryType")}
-                      onValueChange={(value) =>
-                        setValue("inquiryType", value as any)
-                      }
+                      onValueChange={(value) => setValue("inquiryType", value as any)}
                     >
                       <SelectTrigger>
                         <SelectValue placeholder="選択してください" />
@@ -160,9 +150,7 @@ function ContactPage(_props: Props) {
                       </SelectContent>
                     </Select>
                     {errors.inquiryType && (
-                      <p className="text-destructive text-sm">
-                        {errors.inquiryType.message}
-                      </p>
+                      <p className="text-destructive text-sm">{errors.inquiryType.message}</p>
                     )}
                   </div>
 
@@ -175,46 +163,28 @@ function ContactPage(_props: Props) {
                         {...register("companyName")}
                       />
                       {errors.companyName && (
-                        <p className="text-destructive text-sm">
-                          {errors.companyName.message}
-                        </p>
+                        <p className="text-destructive text-sm">{errors.companyName.message}</p>
                       )}
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="department">部署名</Label>
-                      <Input
-                        id="department"
-                        placeholder="営業部"
-                        {...register("department")}
-                      />
+                      <Input id="department" placeholder="営業部" {...register("department")} />
                     </div>
                   </div>
 
                   <div className="grid gap-4 md:grid-cols-2">
                     <div className="space-y-2">
                       <Label htmlFor="name">お名前 *</Label>
-                      <Input
-                        id="name"
-                        placeholder="山田 太郎"
-                        {...register("name")}
-                      />
+                      <Input id="name" placeholder="山田 太郎" {...register("name")} />
                       {errors.name && (
-                        <p className="text-destructive text-sm">
-                          {errors.name.message}
-                        </p>
+                        <p className="text-destructive text-sm">{errors.name.message}</p>
                       )}
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="nameKana">フリガナ *</Label>
-                      <Input
-                        id="nameKana"
-                        placeholder="ヤマダ タロウ"
-                        {...register("nameKana")}
-                      />
+                      <Input id="nameKana" placeholder="ヤマダ タロウ" {...register("nameKana")} />
                       {errors.nameKana && (
-                        <p className="text-destructive text-sm">
-                          {errors.nameKana.message}
-                        </p>
+                        <p className="text-destructive text-sm">{errors.nameKana.message}</p>
                       )}
                     </div>
                   </div>
@@ -229,9 +199,7 @@ function ContactPage(_props: Props) {
                         {...register("email")}
                       />
                       {errors.email && (
-                        <p className="text-destructive text-sm">
-                          {errors.email.message}
-                        </p>
+                        <p className="text-destructive text-sm">{errors.email.message}</p>
                       )}
                     </div>
                     <div className="space-y-2">
@@ -254,9 +222,7 @@ function ContactPage(_props: Props) {
                       {...register("message")}
                     />
                     {errors.message && (
-                      <p className="text-destructive text-sm">
-                        {errors.message.message}
-                      </p>
+                      <p className="text-destructive text-sm">{errors.message.message}</p>
                     )}
                   </div>
 
@@ -264,9 +230,7 @@ function ContactPage(_props: Props) {
                     <Checkbox
                       id="agreement"
                       checked={watch("agreement")}
-                      onCheckedChange={(checked) =>
-                        setValue("agreement", checked as boolean)
-                      }
+                      onCheckedChange={(checked) => setValue("agreement", checked as boolean)}
                     />
                     <div className="grid gap-1.5 leading-none">
                       <label
@@ -276,10 +240,7 @@ function ContactPage(_props: Props) {
                         個人情報の取り扱いに同意する *
                       </label>
                       <p className="text-muted-foreground text-sm">
-                        <a
-                          href="/corporate/privacy"
-                          className="underline hover:text-primary"
-                        >
+                        <a href="/corporate/privacy" className="underline hover:text-primary">
                           プライバシーポリシー
                         </a>
                         をご確認の上、同意してください。
@@ -287,17 +248,10 @@ function ContactPage(_props: Props) {
                     </div>
                   </div>
                   {errors.agreement && (
-                    <p className="text-destructive text-sm">
-                      {errors.agreement.message}
-                    </p>
+                    <p className="text-destructive text-sm">{errors.agreement.message}</p>
                   )}
 
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="w-full"
-                    disabled={isSubmitting}
-                  >
+                  <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
                     {isSubmitting ? (
                       "送信中..."
                     ) : (
@@ -326,9 +280,7 @@ function ContactPage(_props: Props) {
                       <div>
                         <p className="font-medium">{info.title}</p>
                         <p className="text-sm">{info.content}</p>
-                        <p className="text-muted-foreground text-sm">
-                          {info.subContent}
-                        </p>
+                        <p className="text-muted-foreground text-sm">{info.subContent}</p>
                       </div>
                     </div>
                   )
@@ -354,9 +306,7 @@ function ContactPage(_props: Props) {
                   </p>
                 </div>
                 <div>
-                  <p className="mb-1 font-medium">
-                    オンライン相談は可能ですか？
-                  </p>
+                  <p className="mb-1 font-medium">オンライン相談は可能ですか？</p>
                   <p className="text-muted-foreground text-sm">
                     はい、Zoom等でのオンライン相談も対応しております。
                   </p>

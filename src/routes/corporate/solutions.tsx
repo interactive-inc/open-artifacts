@@ -12,13 +12,7 @@ import {
 } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 type Props = {}
@@ -51,8 +45,7 @@ function SolutionsPage(_props: Props) {
       id: "dx-platform",
       title: "DXプラットフォーム",
       category: "platform",
-      description:
-        "企業のデジタルトランスフォーメーションを加速する統合プラットフォーム",
+      description: "企業のデジタルトランスフォーメーションを加速する統合プラットフォーム",
       icon: Layers,
       benefits: [
         "既存システムとのシームレスな統合",
@@ -63,8 +56,7 @@ function SolutionsPage(_props: Props) {
       features: [
         {
           title: "ローコード開発環境",
-          description:
-            "ビジュアルプログラミングで迅速なアプリケーション開発を実現",
+          description: "ビジュアルプログラミングで迅速なアプリケーション開発を実現",
         },
         {
           title: "API管理",
@@ -72,8 +64,7 @@ function SolutionsPage(_props: Props) {
         },
         {
           title: "データ統合",
-          description:
-            "異なるデータソースを一元管理し、リアルタイム分析を可能に",
+          description: "異なるデータソースを一元管理し、リアルタイム分析を可能に",
         },
         {
           title: "プロセス自動化",
@@ -86,14 +77,7 @@ function SolutionsPage(_props: Props) {
         "業務プロセスの自動化",
         "データドリブン経営の実現",
       ],
-      technologies: [
-        "Kubernetes",
-        "Docker",
-        "React",
-        "Node.js",
-        "Python",
-        "RPA",
-      ],
+      technologies: ["Kubernetes", "Docker", "React", "Node.js", "Python", "RPA"],
     },
     {
       id: "ai-analytics",
@@ -158,20 +142,8 @@ function SolutionsPage(_props: Props) {
           description: "使用状況を分析し、最適なコスト配分を提案",
         },
       ],
-      useCases: [
-        "Webサービス基盤",
-        "ビッグデータ処理",
-        "IoTプラットフォーム",
-        "開発環境構築",
-      ],
-      technologies: [
-        "AWS",
-        "Azure",
-        "GCP",
-        "Terraform",
-        "Ansible",
-        "Kubernetes",
-      ],
+      useCases: ["Webサービス基盤", "ビッグデータ処理", "IoTプラットフォーム", "開発環境構築"],
+      technologies: ["AWS", "Azure", "GCP", "Terraform", "Ansible", "Kubernetes"],
     },
     {
       id: "security-solution",
@@ -247,14 +219,7 @@ function SolutionsPage(_props: Props) {
         "IoTデータ分析",
         "カスタマー360",
       ],
-      technologies: [
-        "Hadoop",
-        "Spark",
-        "Kafka",
-        "Elasticsearch",
-        "PostgreSQL",
-        "MongoDB",
-      ],
+      technologies: ["Hadoop", "Spark", "Kafka", "Elasticsearch", "PostgreSQL", "MongoDB"],
     },
     {
       id: "collaboration-suite",
@@ -292,14 +257,7 @@ function SolutionsPage(_props: Props) {
         "社内コミュニケーション",
         "ナレッジマネジメント",
       ],
-      technologies: [
-        "Microsoft 365",
-        "Slack",
-        "Zoom",
-        "Notion",
-        "Jira",
-        "Confluence",
-      ],
+      technologies: ["Microsoft 365", "Slack", "Zoom", "Notion", "Jira", "Confluence"],
     },
   ]
 
@@ -317,9 +275,7 @@ function SolutionsPage(_props: Props) {
     <div className="py-12 lg:py-16">
       <div className="container">
         <div className="mb-12 text-center">
-          <h1 className="mb-4 font-bold text-4xl tracking-tighter sm:text-5xl">
-            ソリューション
-          </h1>
+          <h1 className="mb-4 font-bold text-4xl tracking-tighter sm:text-5xl">ソリューション</h1>
           <p className="mx-auto max-w-[700px] text-muted-foreground">
             お客様のビジネス課題に最適なソリューションをご提供します
           </p>
@@ -342,18 +298,12 @@ function SolutionsPage(_props: Props) {
                     </CardHeader>
                     <CardContent>
                       <CardDescription>
-                        {category.id === "platform" &&
-                          "ビジネスの基盤となる統合プラットフォーム"}
-                        {category.id === "ai" &&
-                          "AIを活用した高度な分析と自動化"}
-                        {category.id === "cloud" &&
-                          "柔軟でスケーラブルなクラウド基盤"}
-                        {category.id === "security" &&
-                          "包括的なセキュリティ対策"}
-                        {category.id === "data" &&
-                          "データの価値を最大化する基盤"}
-                        {category.id === "collaboration" &&
-                          "チームの生産性を向上させるツール"}
+                        {category.id === "platform" && "ビジネスの基盤となる統合プラットフォーム"}
+                        {category.id === "ai" && "AIを活用した高度な分析と自動化"}
+                        {category.id === "cloud" && "柔軟でスケーラブルなクラウド基盤"}
+                        {category.id === "security" && "包括的なセキュリティ対策"}
+                        {category.id === "data" && "データの価値を最大化する基盤"}
+                        {category.id === "collaboration" && "チームの生産性を向上させるツール"}
                       </CardDescription>
                     </CardContent>
                   </Card>
@@ -363,9 +313,7 @@ function SolutionsPage(_props: Props) {
         </section>
 
         <section>
-          <h2 className="mb-8 text-center font-bold text-3xl">
-            詳細ソリューション
-          </h2>
+          <h2 className="mb-8 text-center font-bold text-3xl">詳細ソリューション</h2>
           <Tabs defaultValue="platform" className="w-full">
             <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6">
               {categories
@@ -380,11 +328,7 @@ function SolutionsPage(_props: Props) {
             {categories
               .filter((cat) => cat.id !== "all")
               .map((category) => (
-                <TabsContent
-                  key={category.id}
-                  value={category.id}
-                  className="mt-8"
-                >
+                <TabsContent key={category.id} value={category.id} className="mt-8">
                   {solutions
                     .filter((solution) => solution.category === category.id)
                     .map((solution) => {
@@ -395,9 +339,7 @@ function SolutionsPage(_props: Props) {
                             <div className="flex items-center gap-4">
                               <Icon className="h-12 w-12 text-primary" />
                               <div>
-                                <CardTitle className="text-2xl">
-                                  {solution.title}
-                                </CardTitle>
+                                <CardTitle className="text-2xl">{solution.title}</CardTitle>
                                 <CardDescription className="mt-1 text-base">
                                   {solution.description}
                                 </CardDescription>
@@ -406,15 +348,10 @@ function SolutionsPage(_props: Props) {
                           </CardHeader>
                           <CardContent className="space-y-6">
                             <div>
-                              <h4 className="mb-3 font-semibold">
-                                導入メリット
-                              </h4>
+                              <h4 className="mb-3 font-semibold">導入メリット</h4>
                               <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
                                 {solution.benefits.map((benefit, index) => (
-                                  <div
-                                    key={index}
-                                    className="flex items-start gap-2"
-                                  >
+                                  <div key={index} className="flex items-start gap-2">
                                     <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" />
                                     <span className="text-sm">{benefit}</span>
                                   </div>
@@ -426,13 +363,8 @@ function SolutionsPage(_props: Props) {
                               <h4 className="mb-3 font-semibold">主要機能</h4>
                               <div className="grid gap-4 md:grid-cols-2">
                                 {solution.features.map((feature, index) => (
-                                  <div
-                                    key={index}
-                                    className="rounded-lg border p-4"
-                                  >
-                                    <h5 className="mb-1 font-medium">
-                                      {feature.title}
-                                    </h5>
+                                  <div key={index} className="rounded-lg border p-4">
+                                    <h5 className="mb-1 font-medium">{feature.title}</h5>
                                     <p className="text-muted-foreground text-sm">
                                       {feature.description}
                                     </p>
@@ -470,9 +402,7 @@ function SolutionsPage(_props: Props) {
                                   <ArrowRight className="ml-2 h-4 w-4" />
                                 </Link>
                               </Button>
-                              <Button variant="outline">
-                                資料をダウンロード
-                              </Button>
+                              <Button variant="outline">資料をダウンロード</Button>
                             </div>
                           </CardContent>
                         </Card>
@@ -486,9 +416,7 @@ function SolutionsPage(_props: Props) {
         <section className="mt-16">
           <Card className="bg-gradient-to-r from-primary/10 to-primary/5">
             <CardContent className="py-12 text-center">
-              <h2 className="mb-4 font-bold text-3xl">
-                最適なソリューションをご提案します
-              </h2>
+              <h2 className="mb-4 font-bold text-3xl">最適なソリューションをご提案します</h2>
               <p className="mx-auto mb-8 max-w-[600px] text-muted-foreground">
                 お客様のビジネス課題や目標をお聞かせください。
                 専門のコンサルタントが最適なソリューションをご提案いたします。

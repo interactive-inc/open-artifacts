@@ -67,12 +67,12 @@ class FavoritesManager {
   subscribe(listener: () => void) {
     this.listeners.push(listener)
     return () => {
-      this.listeners = this.listeners.filter(l => l !== listener)
+      this.listeners = this.listeners.filter((l) => l !== listener)
     }
   }
 
   private notifyListeners() {
-    this.listeners.forEach(listener => listener())
+    this.listeners.forEach((listener) => listener())
   }
 }
 

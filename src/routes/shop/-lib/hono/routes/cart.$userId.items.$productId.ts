@@ -32,10 +32,7 @@ export const DELETE = factory.createHandlers((c) => {
   }
 
   cart.items = cart.items.filter((item) => item.productId !== productId)
-  cart.total = cart.items.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0,
-  )
+  cart.total = cart.items.reduce((sum, item) => sum + item.price * item.quantity, 0)
   cart.updatedAt = new Date().toISOString()
 
   carts.set(userId, cart)

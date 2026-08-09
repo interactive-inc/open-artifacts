@@ -112,9 +112,7 @@ function Orders() {
                   <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                     <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
                       <div>
-                        <p className="text-muted-foreground text-sm">
-                          注文番号
-                        </p>
+                        <p className="text-muted-foreground text-sm">注文番号</p>
                         <p className="font-semibold">{order.id}</p>
                       </div>
                       <div>
@@ -125,12 +123,8 @@ function Orders() {
                         </p>
                       </div>
                       <div>
-                        <p className="text-muted-foreground text-sm">
-                          合計金額
-                        </p>
-                        <p className="font-semibold">
-                          ¥{order.total.toLocaleString()}
-                        </p>
+                        <p className="text-muted-foreground text-sm">合計金額</p>
+                        <p className="font-semibold">¥{order.total.toLocaleString()}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-4">
@@ -148,18 +142,14 @@ function Orders() {
                 <div className="p-4">
                   <div className="space-y-3">
                     {order.items.map((item, index) => (
-                      <div
-                        key={`${order.id}-${item.productId}-${index}`}
-                        className="flex gap-4"
-                      >
+                      <div key={`${order.id}-${item.productId}-${index}`} className="flex gap-4">
                         <div className="h-16 w-16 shrink-0 overflow-hidden rounded bg-gray-100 flex items-center justify-center text-muted-foreground text-xs">
                           {item.productId}
                         </div>
                         <div className="flex-1">
                           <p className="font-medium">{item.productName}</p>
                           <p className="text-muted-foreground text-sm">
-                            数量: {item.quantity} × ¥
-                            {item.price.toLocaleString()}
+                            数量: {item.quantity} × ¥{item.price.toLocaleString()}
                           </p>
                         </div>
                       </div>

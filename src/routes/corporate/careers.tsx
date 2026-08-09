@@ -13,13 +13,7 @@ import {
 } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 type Props = {}
@@ -99,11 +93,7 @@ function CareersPage(_props: Props) {
         experience: "3年以上",
         salary: "500-900万円",
         description: "大手企業向けソリューション営業",
-        requirements: [
-          "法人営業経験3年以上",
-          "IT業界での営業経験（優遇）",
-          "提案型営業の経験",
-        ],
+        requirements: ["法人営業経験3年以上", "IT業界での営業経験（優遇）", "提案型営業の経験"],
         skills: ["B2B Sales", "Solution Selling", "CRM"],
       },
     ],
@@ -149,50 +139,29 @@ function CareersPage(_props: Props) {
     {
       icon: TrendingUp,
       title: "スキルアップ",
-      items: [
-        "技術書購入支援",
-        "カンファレンス参加費補助",
-        "資格取得支援制度",
-        "社内勉強会",
-      ],
+      items: ["技術書購入支援", "カンファレンス参加費補助", "資格取得支援制度", "社内勉強会"],
     },
     {
       icon: Coffee,
       title: "オフィス環境",
-      items: [
-        "フリードリンク",
-        "社内カフェ",
-        "リフレッシュルーム",
-        "最新機器の貸与",
-      ],
+      items: ["フリードリンク", "社内カフェ", "リフレッシュルーム", "最新機器の貸与"],
     },
     {
       icon: DollarSign,
       title: "金銭的サポート",
-      items: [
-        "通勤手当（全額支給）",
-        "住宅手当",
-        "確定拠出年金",
-        "従業員持株会",
-      ],
+      items: ["通勤手当（全額支給）", "住宅手当", "確定拠出年金", "従業員持株会"],
     },
     {
       icon: Plane,
       title: "その他",
-      items: [
-        "社員旅行（年1回）",
-        "クラブ活動支援",
-        "誕生日休暇",
-        "リフレッシュ休暇",
-      ],
+      items: ["社員旅行（年1回）", "クラブ活動支援", "誕生日休暇", "リフレッシュ休暇"],
     },
   ]
 
   const culture = [
     {
       title: "オープンな文化",
-      description:
-        "役職や部署の壁を越えて、自由に意見交換ができる風通しの良い環境です。",
+      description: "役職や部署の壁を越えて、自由に意見交換ができる風通しの良い環境です。",
     },
     {
       title: "挑戦を歓迎",
@@ -212,9 +181,7 @@ function CareersPage(_props: Props) {
     <div className="py-12 lg:py-16">
       <div className="container">
         <div className="mb-12 text-center">
-          <h1 className="mb-4 font-bold text-4xl tracking-tighter sm:text-5xl">
-            採用情報
-          </h1>
+          <h1 className="mb-4 font-bold text-4xl tracking-tighter sm:text-5xl">採用情報</h1>
           <p className="mx-auto max-w-[700px] text-muted-foreground">
             一緒に未来を創造する仲間を募集しています
           </p>
@@ -262,12 +229,8 @@ function CareersPage(_props: Props) {
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div>
-                        <CardTitle className="text-xl">
-                          {position.title}
-                        </CardTitle>
-                        <CardDescription className="mt-2">
-                          {position.description}
-                        </CardDescription>
+                        <CardTitle className="text-xl">{position.title}</CardTitle>
+                        <CardDescription className="mt-2">{position.description}</CardDescription>
                       </div>
                       <Badge>{position.type}</Badge>
                     </div>
@@ -315,12 +278,8 @@ function CareersPage(_props: Props) {
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div>
-                        <CardTitle className="text-xl">
-                          {position.title}
-                        </CardTitle>
-                        <CardDescription className="mt-2">
-                          {position.description}
-                        </CardDescription>
+                        <CardTitle className="text-xl">{position.title}</CardTitle>
+                        <CardDescription className="mt-2">{position.description}</CardDescription>
                       </div>
                       <Badge>{position.type}</Badge>
                     </div>
@@ -368,12 +327,8 @@ function CareersPage(_props: Props) {
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div>
-                        <CardTitle className="text-xl">
-                          {position.title}
-                        </CardTitle>
-                        <CardDescription className="mt-2">
-                          {position.description}
-                        </CardDescription>
+                        <CardTitle className="text-xl">{position.title}</CardTitle>
+                        <CardDescription className="mt-2">{position.description}</CardDescription>
                       </div>
                       <Badge variant="default">
                         <GraduationCap className="mr-1 h-3 w-3" />

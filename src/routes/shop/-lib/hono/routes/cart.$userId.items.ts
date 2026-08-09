@@ -30,9 +30,7 @@ export const POST = factory.createHandlers(async (c) => {
   }
 
   // 既存の商品があるか確認
-  const existingItem = cart.items.find(
-    (item) => item.productId === body.productId,
-  )
+  const existingItem = cart.items.find((item) => item.productId === body.productId)
 
   if (existingItem) {
     existingItem.quantity += body.quantity
@@ -45,10 +43,7 @@ export const POST = factory.createHandlers(async (c) => {
   }
 
   // 合計金額を再計算
-  cart.total = cart.items.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0,
-  )
+  cart.total = cart.items.reduce((sum, item) => sum + item.price * item.quantity, 0)
   cart.updatedAt = new Date().toISOString()
 
   carts.set(userId, cart)
@@ -75,9 +70,7 @@ export const PATCH = factory.createHandlers(async (c) => {
     return c.json({ error: "Cart not found" }, 404)
   }
 
-  const existingItem = cart.items.find(
-    (item) => item.productId === body.productId,
-  )
+  const existingItem = cart.items.find((item) => item.productId === body.productId)
 
   if (existingItem) {
     existingItem.quantity = body.quantity
@@ -86,10 +79,7 @@ export const PATCH = factory.createHandlers(async (c) => {
   }
 
   // 合計金額を再計算
-  cart.total = cart.items.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0,
-  )
+  cart.total = cart.items.reduce((sum, item) => sum + item.price * item.quantity, 0)
   cart.updatedAt = new Date().toISOString()
 
   carts.set(userId, cart)

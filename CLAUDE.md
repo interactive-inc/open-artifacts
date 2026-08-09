@@ -37,12 +37,14 @@ User request → Check existing sites
 ### Routing Rules
 
 #### Core Principles
+
 - All directories and files under `src/routes/` automatically become routes
 - **Hyphen Convention**: Directories/files starting with `-` are excluded from routing
   - `-lib/` : Library code
   - `-components/` : Components
 
 #### Site Structure
+
 ```
 src/routes/
 ├── shop/         # Shop site (/shop/*)
@@ -54,7 +56,9 @@ src/routes/
 ### API Architecture
 
 #### API File Placement Rules
+
 Each site has its own API:
+
 ```
 src/routes/{site}/
 ├── api.ts                    # API entry point (/{site}/api)
@@ -66,6 +70,7 @@ src/routes/{site}/
 ```
 
 #### RESTful Handler Structure
+
 **File names represent paths, export names represent HTTP methods**:
 
 ```typescript
@@ -85,22 +90,26 @@ export const PATCH = factory.createHandlers((c) => { ... })
 ### Data Management
 
 #### Static Data
+
 - Location: `src/routes/{site}/-data/*.json`
 - Import: Static import (`import data from "../-data/file.json"`)
 - Built into bundle at build time, no fs usage
 
 #### Dynamic Data
+
 - In-memory Map management (development)
 - Database expected in production
 
 ## Coding Conventions
 
 ### TypeScript Rules
+
 - Use `type` (avoid `interface`)
 - HTTP method names in uppercase (`GET`, `POST`, `DELETE`, etc.)
 - Always validate parameters
 
 ### Hono Factory Pattern
+
 ```typescript
 import { factory } from "./factory"
 
@@ -118,6 +127,7 @@ export const GET = factory.createHandlers((c) => {
 ```
 
 ### Directory Creation Guidelines
+
 - Non-routable: Add `-` prefix
 - Shared code: Place in `-lib/`
 - Data files: Place in `-data/`
@@ -126,12 +136,14 @@ export const GET = factory.createHandlers((c) => {
 ## Critical Constraints
 
 ### DO NOT
+
 - Use `fs` module (use static imports for JSON)
 - Create index.ts in root directories
 - Create global API routes (each site manages independently)
 - Use unchecked parameters
 
 ### MUST DO
+
 - Validate `c.req.param()` results
 - Set proper status codes for error responses
 - Use Factory Helper for handler creation
@@ -140,6 +152,7 @@ export const GET = factory.createHandlers((c) => {
 ## Site Independence
 
 Each site is completely independent:
+
 - Own API (`/{site}/api/*`)
 - Own data (`/{site}/-data/*`)
 - Own libraries (`/{site}/-lib/*`)
@@ -150,6 +163,7 @@ For cross-site code sharing, use explicit import paths.
 ## Type Safety
 
 ### Parameter Handling
+
 ```typescript
 // ❌ Bad
 const id = c.req.param("id")
@@ -166,6 +180,7 @@ const data = map.get(id) // id is string
 ## Debug and Troubleshooting
 
 ### Common Issues
+
 1. **Route not working**: Check if directory name has `-` prefix
 2. **Type error**: Check parameter null validation
 3. **JSON import error**: Verify `resolveJsonModule: true` in tsconfig.json
@@ -173,12 +188,12 @@ const data = map.get(id) // id is string
 
 ## Naming Convention Summary
 
-| Type | Convention | Example |
-|------|------------|---------|
-| Site directory | Lowercase | `shop`, `cafe` |
-| API handler file | resource.parameter | `products.$id.ts` |
-| HTTP method export | Uppercase | `export const GET` |
-| Non-routable | Hyphen prefix | `-lib/`, `-data/` |
-| Factory Helper | `factory.createHandlers` | Use in all handlers |
+| Type               | Convention               | Example             |
+| ------------------ | ------------------------ | ------------------- |
+| Site directory     | Lowercase                | `shop`, `cafe`      |
+| API handler file   | resource.parameter       | `products.$id.ts`   |
+| HTTP method export | Uppercase                | `export const GET`  |
+| Non-routable       | Hyphen prefix            | `-lib/`, `-data/`   |
+| Factory Helper     | `factory.createHandlers` | Use in all handlers |
 
 Follow these guidelines strictly for implementation.

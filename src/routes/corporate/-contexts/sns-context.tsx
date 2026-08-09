@@ -93,8 +93,7 @@ export function SNSProvider({ children }: { children: ReactNode }) {
     {
       id: "1",
       author: users[0],
-      content:
-        "React 19がリリースされました！新機能がたくさんあって楽しみです 🎉 #React #WebDev",
+      content: "React 19がリリースされました！新機能がたくさんあって楽しみです 🎉 #React #WebDev",
       timestamp: "2時間前",
       likes: 42,
       retweets: 12,
@@ -132,8 +131,7 @@ export function SNSProvider({ children }: { children: ReactNode }) {
     {
       id: "4",
       author: currentUser,
-      content:
-        "週末のハッカソンで優勝しました！チームメンバーに感謝 🎉\n\n#hackathon #webdev",
+      content: "週末のハッカソンで優勝しました！チームメンバーに感謝 🎉\n\n#hackathon #webdev",
       timestamp: "1日前",
       likes: 256,
       retweets: 45,

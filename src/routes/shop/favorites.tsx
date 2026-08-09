@@ -68,9 +68,7 @@ function FavoritesContent() {
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="mb-8">
           <h1 className="font-bold text-3xl">お気に入り</h1>
-          <p className="mt-2 text-muted-foreground">
-            {favoritesContext.favorites.size} 件の商品
-          </p>
+          <p className="mt-2 text-muted-foreground">{favoritesContext.favorites.size} 件の商品</p>
         </div>
 
         {loading ? (
@@ -80,9 +78,7 @@ function FavoritesContent() {
         ) : favoriteProducts.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16">
             <Heart className="mb-4 h-16 w-16 text-muted-foreground" />
-            <h2 className="mb-2 font-semibold text-xl">
-              お気に入りの商品はありません
-            </h2>
+            <h2 className="mb-2 font-semibold text-xl">お気に入りの商品はありません</h2>
             <p className="mb-6 text-center text-muted-foreground">
               商品ページでハートアイコンをクリックして、お気に入りに追加してください
             </p>
@@ -93,15 +89,9 @@ function FavoritesContent() {
         ) : (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {favoriteProducts.map((product) => (
-              <Card
-                key={product.id}
-                className="overflow-hidden transition-all hover:shadow-lg"
-              >
+              <Card key={product.id} className="overflow-hidden transition-all hover:shadow-lg">
                 <div className="relative">
-                  <Link
-                    to="/shop/products/$product"
-                    params={{ product: product.id }}
-                  >
+                  <Link to="/shop/products/$product" params={{ product: product.id }}>
                     <div className="aspect-square overflow-hidden bg-gray-100">
                       <img
                         src={product.images[0] || "/placeholder.jpg"}
@@ -121,10 +111,7 @@ function FavoritesContent() {
                 </div>
 
                 <CardContent className="p-4">
-                  <Link
-                    to="/shop/products/$product"
-                    params={{ product: product.id }}
-                  >
+                  <Link to="/shop/products/$product" params={{ product: product.id }}>
                     <h3 className="line-clamp-1 font-semibold hover:text-primary">
                       {product.name}
                     </h3>
@@ -132,9 +119,7 @@ function FavoritesContent() {
                   <p className="mt-1 line-clamp-2 text-muted-foreground text-sm">
                     {product.description}
                   </p>
-                  <p className="mt-2 font-bold text-lg">
-                    ¥{product.price.toLocaleString()}
-                  </p>
+                  <p className="mt-2 font-bold text-lg">¥{product.price.toLocaleString()}</p>
                 </CardContent>
 
                 <CardFooter className="p-4 pt-0">

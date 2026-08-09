@@ -14,13 +14,7 @@ import {
   Zap,
 } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 type Props = {}
 
@@ -86,23 +80,19 @@ function CulturePage(_props: Props) {
   const workStyle = [
     {
       title: "フレックスタイム制",
-      description:
-        "コアタイム10:00-15:00。ライフスタイルに合わせた柔軟な働き方が可能です。",
+      description: "コアタイム10:00-15:00。ライフスタイルに合わせた柔軟な働き方が可能です。",
     },
     {
       title: "リモートワーク",
-      description:
-        "週3日まで在宅勤務可能。全国どこからでも働ける環境を整えています。",
+      description: "週3日まで在宅勤務可能。全国どこからでも働ける環境を整えています。",
     },
     {
       title: "20%ルール",
-      description:
-        "業務時間の20%を自己研鑽や新しいプロジェクトに充てることができます。",
+      description: "業務時間の20%を自己研鑽や新しいプロジェクトに充てることができます。",
     },
     {
       title: "サバティカル休暇",
-      description:
-        "勤続5年以上で最長3ヶ月の長期休暇制度。自己充電や学習の機会として活用できます。",
+      description: "勤続5年以上で最長3ヶ月の長期休暇制度。自己充電や学習の機会として活用できます。",
     },
   ]
 
@@ -195,9 +185,7 @@ function CulturePage(_props: Props) {
     <div className="py-12 lg:py-16">
       <div className="container">
         <div className="mb-12 text-center">
-          <h1 className="mb-4 font-bold text-4xl tracking-tighter sm:text-5xl">
-            社風・文化
-          </h1>
+          <h1 className="mb-4 font-bold text-4xl tracking-tighter sm:text-5xl">社風・文化</h1>
           <p className="mx-auto max-w-[700px] text-muted-foreground">
             TechCorpは、イノベーションと成長を支える独自の企業文化を育んでいます
           </p>
@@ -209,21 +197,14 @@ function CulturePage(_props: Props) {
             {values.map((value) => {
               const Icon = value.icon
               return (
-                <Card
-                  key={value.title}
-                  className="transition-shadow hover:shadow-lg"
-                >
+                <Card key={value.title} className="transition-shadow hover:shadow-lg">
                   <CardHeader>
                     <Icon className={`mb-2 h-10 w-10 ${value.color}`} />
                     <CardTitle>{value.title}</CardTitle>
-                    <CardDescription className="font-medium">
-                      {value.subtitle}
-                    </CardDescription>
+                    <CardDescription className="font-medium">{value.subtitle}</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground text-sm">
-                      {value.description}
-                    </p>
+                    <p className="text-muted-foreground text-sm">{value.description}</p>
                   </CardContent>
                 </Card>
               )
@@ -242,14 +223,9 @@ function CulturePage(_props: Props) {
               </div>
               <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
                 {workStyle.map((item) => (
-                  <div
-                    key={item.title}
-                    className="rounded-lg bg-background p-6"
-                  >
+                  <div key={item.title} className="rounded-lg bg-background p-6">
                     <h3 className="mb-2 font-semibold">{item.title}</h3>
-                    <p className="text-muted-foreground text-sm">
-                      {item.description}
-                    </p>
+                    <p className="text-muted-foreground text-sm">{item.description}</p>
                   </div>
                 ))}
               </div>
@@ -258,9 +234,7 @@ function CulturePage(_props: Props) {
         </section>
 
         <section className="mb-16">
-          <h2 className="mb-8 text-center font-bold text-3xl">
-            社内活動・イベント
-          </h2>
+          <h2 className="mb-8 text-center font-bold text-3xl">社内活動・イベント</h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {activities.map((activity) => {
               const Icon = activity.icon
@@ -273,9 +247,7 @@ function CulturePage(_props: Props) {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground text-sm">
-                      {activity.description}
-                    </p>
+                    <p className="text-muted-foreground text-sm">{activity.description}</p>
                   </CardContent>
                 </Card>
               )
@@ -322,10 +294,7 @@ function CulturePage(_props: Props) {
                     <h3 className="mb-3 font-semibold">{feature.title}</h3>
                     <ul className="space-y-1">
                       {feature.items.map((item) => (
-                        <li
-                          key={item}
-                          className="text-muted-foreground text-sm"
-                        >
+                        <li key={item} className="text-muted-foreground text-sm">
                           • {item}
                         </li>
                       ))}
@@ -340,9 +309,7 @@ function CulturePage(_props: Props) {
         <section>
           <Card className="bg-primary text-primary-foreground">
             <CardContent className="py-12 text-center">
-              <h2 className="mb-4 font-bold text-3xl">
-                一緒に未来を創りましょう
-              </h2>
+              <h2 className="mb-4 font-bold text-3xl">一緒に未来を創りましょう</h2>
               <p className="mx-auto mb-8 max-w-[600px]">
                 TechCorpでは、情熱を持って挑戦する仲間を募集しています。
                 あなたの才能と情熱を、私たちと一緒に開花させませんか？

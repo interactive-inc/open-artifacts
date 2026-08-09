@@ -52,11 +52,9 @@ function Products() {
   }, [])
 
   const filteredProducts = products.filter((product) => {
-    const priceMatch =
-      product.price >= priceRange[0] && product.price <= priceRange[1]
+    const priceMatch = product.price >= priceRange[0] && product.price <= priceRange[1]
     const categoryMatch =
-      selectedCategories.length === 0 ||
-      selectedCategories.includes(product.category)
+      selectedCategories.length === 0 || selectedCategories.includes(product.category)
     return priceMatch && categoryMatch
   })
 
@@ -73,9 +71,7 @@ function Products() {
         <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
             <h1 className="font-bold text-3xl">すべての商品</h1>
-            <p className="mt-2 text-muted-foreground">
-              {filteredProducts.length} 件の商品
-            </p>
+            <p className="mt-2 text-muted-foreground">{filteredProducts.length} 件の商品</p>
           </div>
 
           <div className="flex gap-8">
@@ -87,32 +83,21 @@ function Products() {
                   <h3 className="mb-4 font-semibold">カテゴリ</h3>
                   <div className="space-y-2">
                     {categories.map((category) => (
-                      <div
-                        key={category.id}
-                        className="flex items-center space-x-2"
-                      >
+                      <div key={category.id} className="flex items-center space-x-2">
                         <Checkbox
                           id={category.id}
                           checked={selectedCategories.includes(category.id)}
                           onCheckedChange={(checked) => {
                             if (checked) {
-                              setSelectedCategories([
-                                ...selectedCategories,
-                                category.id,
-                              ])
+                              setSelectedCategories([...selectedCategories, category.id])
                             } else {
                               setSelectedCategories(
-                                selectedCategories.filter(
-                                  (c) => c !== category.id,
-                                ),
+                                selectedCategories.filter((c) => c !== category.id),
                               )
                             }
                           }}
                         />
-                        <Label
-                          htmlFor={category.id}
-                          className="cursor-pointer font-normal text-sm"
-                        >
+                        <Label htmlFor={category.id} className="cursor-pointer font-normal text-sm">
                           {category.name}
                         </Label>
                       </div>
@@ -182,9 +167,7 @@ function Products() {
 
               {sortedProducts.length === 0 && (
                 <div className="py-12 text-center">
-                  <p className="text-muted-foreground">
-                    該当する商品が見つかりませんでした
-                  </p>
+                  <p className="text-muted-foreground">該当する商品が見つかりませんでした</p>
                 </div>
               )}
             </div>

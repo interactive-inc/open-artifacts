@@ -15,9 +15,7 @@ function MessagePage(_props: Props) {
     <div className="py-12 lg:py-16">
       <div className="container max-w-4xl">
         <div className="mb-12 text-center">
-          <h1 className="mb-4 font-bold text-4xl tracking-tighter sm:text-5xl">
-            代表メッセージ
-          </h1>
+          <h1 className="mb-4 font-bold text-4xl tracking-tighter sm:text-5xl">代表メッセージ</h1>
           <p className="text-muted-foreground">代表取締役社長 山田 太郎</p>
         </div>
 
@@ -26,9 +24,7 @@ function MessagePage(_props: Props) {
             <div className="prose prose-gray dark:prose-invert max-w-none">
               <div className="mb-8 text-center">
                 <div className="mx-auto mb-4 flex h-48 w-48 items-center justify-center rounded-full bg-gradient-to-br from-primary/20 to-primary/10">
-                  <span className="font-bold text-6xl text-primary/60">
-                    山田
-                  </span>
+                  <span className="font-bold text-6xl text-primary/60">山田</span>
                 </div>
                 <h2 className="mb-1 font-semibold text-xl">山田 太郎</h2>
                 <p className="text-muted-foreground">代表取締役社長 CEO</p>
@@ -62,9 +58,7 @@ function MessagePage(_props: Props) {
                   技術ありきではなく、お客様のビジネス課題を解決するための最適なソリューションを提供することが、私たちの役割だと考えています。
                 </p>
 
-                <h3 className="mt-8 mb-4 font-bold text-2xl">
-                  イノベーションへの挑戦
-                </h3>
+                <h3 className="mt-8 mb-4 font-bold text-2xl">イノベーションへの挑戦</h3>
 
                 <p>
                   AI、クラウド、IoT、ブロックチェーン...新しい技術は次々と登場しています。
@@ -76,9 +70,7 @@ function MessagePage(_props: Props) {
                   真のデジタルトランスフォーメーションだと私たちは信じています。
                 </p>
 
-                <h3 className="mt-8 mb-4 font-bold text-2xl">
-                  人材こそが最大の資産
-                </h3>
+                <h3 className="mt-8 mb-4 font-bold text-2xl">人材こそが最大の資産</h3>
 
                 <p>
                   TechCorpの最大の強みは、情熱と専門性を持った1,200名を超える仲間たちです。
@@ -91,9 +83,7 @@ function MessagePage(_props: Props) {
                   異なる背景や視点を持つメンバーが協働することで、革新的なアイデアが生まれると信じているからです。
                 </p>
 
-                <h3 className="mt-8 mb-4 font-bold text-2xl">
-                  持続可能な未来へ
-                </h3>
+                <h3 className="mt-8 mb-4 font-bold text-2xl">持続可能な未来へ</h3>
 
                 <p>
                   企業活動は、社会に対する責任を伴います。私たちは、テクノロジーを通じて、
@@ -126,12 +116,8 @@ function MessagePage(_props: Props) {
                 <div className="mt-12 border-t pt-8">
                   <p className="text-right">
                     <span className="mb-2 block">TechCorp Inc.</span>
-                    <span className="block font-bold text-xl">
-                      代表取締役社長 CEO
-                    </span>
-                    <span className="mt-2 block font-bold text-2xl">
-                      山田 太郎
-                    </span>
+                    <span className="block font-bold text-xl">代表取締役社長 CEO</span>
+                    <span className="mt-2 block font-bold text-2xl">山田 太郎</span>
                   </p>
                 </div>
               </div>
@@ -157,9 +143,7 @@ function MessagePage(_props: Props) {
               </div>
               <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
                 <dt className="text-muted-foreground">2005年</dt>
-                <dd className="sm:col-span-2">
-                  米国MBA取得（スタンフォード大学）
-                </dd>
+                <dd className="sm:col-span-2">米国MBA取得（スタンフォード大学）</dd>
               </div>
               <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
                 <dt className="text-muted-foreground">2008年</dt>
@@ -167,15 +151,11 @@ function MessagePage(_props: Props) {
               </div>
               <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
                 <dt className="text-muted-foreground">2010年</dt>
-                <dd className="sm:col-span-2">
-                  TechCorp Inc. 創業、代表取締役社長就任
-                </dd>
+                <dd className="sm:col-span-2">TechCorp Inc. 創業、代表取締役社長就任</dd>
               </div>
               <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
                 <dt className="text-muted-foreground">現在</dt>
-                <dd className="sm:col-span-2">
-                  経済産業省 DX推進委員会委員、日本IT協会理事
-                </dd>
+                <dd className="sm:col-span-2">経済産業省 DX推進委員会委員、日本IT協会理事</dd>
               </div>
             </dl>
           </CardContent>

@@ -70,9 +70,7 @@ function CafeHomePage() {
 
   const prevSlide = () => {
     setIsAutoPlaying(false)
-    setCurrentSlide(
-      (prev) => (prev - 1 + heroSlides.length) % heroSlides.length,
-    )
+    setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)
   }
 
   const features = [
@@ -134,8 +132,7 @@ function CafeHomePage() {
       date: "2024.03.15",
       category: "新メニュー",
       title: "春のスペシャルブレンド登場",
-      description:
-        "桜の季節にぴったりな、華やかな香りのブレンドコーヒーが期間限定で登場。",
+      description: "桜の季節にぴったりな、華やかな香りのブレンドコーヒーが期間限定で登場。",
     },
     {
       date: "2024.03.10",
@@ -169,8 +166,7 @@ function CafeHomePage() {
     {
       name: "山田 花子",
       role: "近隣住民",
-      comment:
-        "お友達との待ち合わせにぴったり。ケーキも美味しくて、つい長居してしまいます。",
+      comment: "お友達との待ち合わせにぴったり。ケーキも美味しくて、つい長居してしまいます。",
       rating: 5,
     },
   ]
@@ -207,11 +203,7 @@ function CafeHomePage() {
                 {heroSlides[currentSlide].subtitle}
               </p>
               <div className="pt-4">
-                <Button
-                  size="lg"
-                  className="bg-amber-600 text-white hover:bg-amber-700"
-                  asChild
-                >
+                <Button size="lg" className="bg-amber-600 text-white hover:bg-amber-700" asChild>
                   <Link to={heroSlides[currentSlide].link}>
                     {heroSlides[currentSlide].cta}
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -249,9 +241,7 @@ function CafeHomePage() {
               }}
               className={cn(
                 "h-2 w-2 rounded-full transition-all",
-                index === currentSlide
-                  ? "w-8 bg-white"
-                  : "bg-white/50 hover:bg-white/70",
+                index === currentSlide ? "w-8 bg-white" : "bg-white/50 hover:bg-white/70",
               )}
               aria-label={`スライド ${index + 1}`}
             />
@@ -270,12 +260,8 @@ function CafeHomePage() {
                   <div className="mb-3 inline-flex h-14 w-14 items-center justify-center rounded-full bg-amber-50 transition-colors group-hover:bg-amber-100">
                     <Icon className="h-7 w-7 text-amber-600" />
                   </div>
-                  <h3 className="mb-1.5 font-medium text-base">
-                    {feature.title}
-                  </h3>
-                  <p className="text-sm text-stone-600">
-                    {feature.description}
-                  </p>
+                  <h3 className="mb-1.5 font-medium text-base">{feature.title}</h3>
+                  <p className="text-sm text-stone-600">{feature.description}</p>
                 </div>
               )
             })}
@@ -297,8 +283,7 @@ function CafeHomePage() {
                 </h2>
               </div>
               <p className="text-sm text-stone-600 leading-relaxed lg:text-base">
-                Artisan Coffee &
-                Roasteryは、世界中から厳選した最高品質のコーヒー豆を、
+                Artisan Coffee & Roasteryは、世界中から厳選した最高品質のコーヒー豆を、
                 熟練の焙煎士が丁寧に焙煎し、バリスタが一杯一杯心を込めて淹れています。
               </p>
               <p className="text-sm text-stone-600 leading-relaxed lg:text-base">
@@ -344,9 +329,7 @@ function CafeHomePage() {
             <span className="font-medium text-amber-600 text-xs uppercase tracking-wider">
               MENU
             </span>
-            <h2 className="mt-2 font-serif text-3xl text-stone-800 lg:text-4xl">
-              人気のメニュー
-            </h2>
+            <h2 className="mt-2 font-serif text-3xl text-stone-800 lg:text-4xl">人気のメニュー</h2>
           </div>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {menuHighlights.map((item) => (
@@ -369,9 +352,7 @@ function CafeHomePage() {
                 <CardContent className="p-4">
                   <div className="mb-1.5 flex items-start justify-between gap-2">
                     <h3 className="font-medium text-base">{item.name}</h3>
-                    <span className="font-bold text-amber-600 text-sm">
-                      {item.price}
-                    </span>
+                    <span className="font-bold text-amber-600 text-sm">{item.price}</span>
                   </div>
                   <p className="text-sm text-stone-600">{item.description}</p>
                 </CardContent>
@@ -379,10 +360,7 @@ function CafeHomePage() {
             ))}
           </div>
           <div className="mt-8 text-center">
-            <Button
-              className="bg-amber-600 text-white hover:bg-amber-700"
-              asChild
-            >
+            <Button className="bg-amber-600 text-white hover:bg-amber-700" asChild>
               <Link to="/cafe/menu">
                 全メニューを見る
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -399,9 +377,7 @@ function CafeHomePage() {
             <span className="font-medium text-amber-600 text-xs uppercase tracking-wider">
               NEWS
             </span>
-            <h2 className="mt-2 font-serif text-3xl text-stone-800 lg:text-4xl">
-              お知らせ
-            </h2>
+            <h2 className="mt-2 font-serif text-3xl text-stone-800 lg:text-4xl">お知らせ</h2>
           </div>
           <div className="mx-auto max-w-4xl space-y-4">
             {news.map((item, index) => (
@@ -409,18 +385,14 @@ function CafeHomePage() {
                 <CardContent className="p-5">
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                     <div className="flex items-center gap-3 text-sm">
-                      <span className="text-stone-500 text-xs">
-                        {item.date}
-                      </span>
+                      <span className="text-stone-500 text-xs">{item.date}</span>
                       <span className="rounded-full bg-amber-100 px-2.5 py-1 text-amber-700 text-xs">
                         {item.category}
                       </span>
                     </div>
                     <div className="flex-1">
                       <h3 className="mb-1 font-medium text-sm">{item.title}</h3>
-                      <p className="text-sm text-stone-600">
-                        {item.description}
-                      </p>
+                      <p className="text-sm text-stone-600">{item.description}</p>
                     </div>
                     <ArrowRight className="h-4 w-4 flex-shrink-0 text-stone-400" />
                   </div>
@@ -450,9 +422,7 @@ function CafeHomePage() {
             <span className="font-medium text-amber-600 text-xs uppercase tracking-wider">
               VOICE
             </span>
-            <h2 className="mt-2 font-serif text-3xl text-stone-800 lg:text-4xl">
-              お客様の声
-            </h2>
+            <h2 className="mt-2 font-serif text-3xl text-stone-800 lg:text-4xl">お客様の声</h2>
           </div>
           <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-3">
             {testimonials.map((testimonial, index) => (
@@ -502,9 +472,7 @@ function CafeHomePage() {
                 <span className="font-medium text-amber-600 text-xs uppercase tracking-wider">
                   SHOP INFO
                 </span>
-                <h2 className="mt-2 font-serif text-3xl text-stone-800 lg:text-4xl">
-                  店舗情報
-                </h2>
+                <h2 className="mt-2 font-serif text-3xl text-stone-800 lg:text-4xl">店舗情報</h2>
               </div>
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
@@ -533,17 +501,12 @@ function CafeHomePage() {
                   <Users className="mt-0.5 h-5 w-5 text-amber-600" />
                   <div>
                     <p className="mb-1 font-medium text-sm">席数</p>
-                    <p className="text-sm text-stone-600">
-                      店内 32席 / テラス 8席
-                    </p>
+                    <p className="text-sm text-stone-600">店内 32席 / テラス 8席</p>
                   </div>
                 </div>
               </div>
               <div className="flex flex-wrap gap-3">
-                <Button
-                  className="bg-amber-600 text-white hover:bg-amber-700"
-                  asChild
-                >
+                <Button className="bg-amber-600 text-white hover:bg-amber-700" asChild>
                   <Link to="/cafe/shop">
                     詳しい店舗情報
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -568,16 +531,11 @@ function CafeHomePage() {
       {/* CTA */}
       <section className="bg-stone-900 py-16 text-white">
         <div className="container px-4 text-center">
-          <h2 className="mb-4 font-serif text-3xl lg:text-4xl">
-            特別な一杯を、あなたに
-          </h2>
+          <h2 className="mb-4 font-serif text-3xl lg:text-4xl">特別な一杯を、あなたに</h2>
           <p className="mx-auto mb-6 max-w-2xl text-base text-stone-300 lg:text-lg">
             新規会員登録で、初回ドリンク20%OFF
           </p>
-          <Button
-            size="lg"
-            className="bg-amber-600 text-white hover:bg-amber-700"
-          >
+          <Button size="lg" className="bg-amber-600 text-white hover:bg-amber-700">
             会員登録する
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>

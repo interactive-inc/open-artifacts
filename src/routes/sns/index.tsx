@@ -1,13 +1,5 @@
 import { createFileRoute, Link, Outlet } from "@tanstack/react-router"
-import {
-  Bell,
-  Bookmark,
-  Home,
-  Mail,
-  MoreHorizontal,
-  Search,
-  User,
-} from "lucide-react"
+import { Bell, Bookmark, Home, Mail, MoreHorizontal, Search, User } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -104,15 +96,11 @@ function SNSLayout() {
                 <div className="flex items-center gap-3">
                   <Avatar className="h-10 w-10">
                     <AvatarImage src={currentUser.avatar} />
-                    <AvatarFallback>
-                      {currentUser.displayName[0]}
-                    </AvatarFallback>
+                    <AvatarFallback>{currentUser.displayName[0]}</AvatarFallback>
                   </Avatar>
                   <div className="text-left">
                     <p className="font-semibold">{currentUser.displayName}</p>
-                    <p className="text-muted-foreground text-sm">
-                      @{currentUser.username}
-                    </p>
+                    <p className="text-muted-foreground text-sm">@{currentUser.username}</p>
                   </div>
                 </div>
                 <MoreHorizontal className="h-5 w-5" />
@@ -147,9 +135,7 @@ function SNSLayout() {
                       className="cursor-pointer rounded p-2 transition-colors hover:bg-muted"
                     >
                       <p className="font-semibold text-primary">{topic.tag}</p>
-                      <p className="text-muted-foreground text-sm">
-                        {topic.posts} posts
-                      </p>
+                      <p className="text-muted-foreground text-sm">{topic.posts} posts</p>
                     </div>
                   ))}
                 </div>
@@ -160,10 +146,7 @@ function SNSLayout() {
                 <h3 className="mb-4 font-bold text-lg">おすすめユーザー</h3>
                 <div className="space-y-3">
                   {suggestedUsers.map((user) => (
-                    <div
-                      key={user.id}
-                      className="flex items-center justify-between"
-                    >
+                    <div key={user.id} className="flex items-center justify-between">
                       <Link
                         to={`/sns/profile/${user.username}`}
                         className="flex items-center gap-3 hover:opacity-80"
@@ -174,16 +157,10 @@ function SNSLayout() {
                         </Avatar>
                         <div>
                           <p className="font-semibold">{user.displayName}</p>
-                          <p className="text-muted-foreground text-sm">
-                            @{user.username}
-                          </p>
+                          <p className="text-muted-foreground text-sm">@{user.username}</p>
                         </div>
                       </Link>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="rounded-full"
-                      >
+                      <Button variant="outline" size="sm" className="rounded-full">
                         フォロー
                       </Button>
                     </div>

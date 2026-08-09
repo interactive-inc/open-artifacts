@@ -12,13 +12,7 @@ import {
 import { useState } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 type Props = {}
@@ -100,8 +94,7 @@ function CaseStudiesPage(_props: Props) {
         "年間コスト2,000万円削減",
       ],
       testimonial: {
-        quote:
-          "システム統合により、医師や看護師が本来の医療業務に集中できる環境が整いました。",
+        quote: "システム統合により、医師や看護師が本来の医療業務に集中できる環境が整いました。",
         author: "佐藤 美香",
         position: "理事長",
       },
@@ -154,8 +147,7 @@ function CaseStudiesPage(_props: Props) {
         "デジタルチャネル利用率が200%増加",
       ],
       testimonial: {
-        quote:
-          "真のデジタルトランスフォーメーションを実現し、競争力を大幅に強化できました。",
+        quote: "真のデジタルトランスフォーメーションを実現し、競争力を大幅に強化できました。",
         author: "高橋 次郎",
         position: "執行役員 デジタル戦略部長",
       },
@@ -208,8 +200,7 @@ function CaseStudiesPage(_props: Props) {
         "顧客クレームが60%減少",
       ],
       testimonial: {
-        quote:
-          "最適化システムにより、少ない人員でより多くの配送を正確に行えるようになりました。",
+        quote: "最適化システムにより、少ない人員でより多くの配送を正確に行えるようになりました。",
         author: "伊藤 健一",
         position: "物流本部長",
       },
@@ -243,9 +234,7 @@ function CaseStudiesPage(_props: Props) {
     <div className="py-12 lg:py-16">
       <div className="container">
         <div className="mb-12 text-center">
-          <h1 className="mb-4 font-bold text-4xl tracking-tighter sm:text-5xl">
-            導入事例
-          </h1>
+          <h1 className="mb-4 font-bold text-4xl tracking-tighter sm:text-5xl">導入事例</h1>
           <p className="mx-auto max-w-[700px] text-muted-foreground">
             TechCorpのソリューションを導入いただいた企業様の成功事例をご紹介します
           </p>
@@ -256,17 +245,11 @@ function CaseStudiesPage(_props: Props) {
             <h2 className="mb-6 font-bold text-2xl">注目の導入事例</h2>
             <div className="grid gap-6 md:grid-cols-2">
               {featuredCases.map((study) => (
-                <Card
-                  key={study.id}
-                  className="transition-shadow hover:shadow-lg"
-                >
+                <Card key={study.id} className="transition-shadow hover:shadow-lg">
                   <CardHeader>
                     <div className="mb-2 flex items-center justify-between">
                       <Badge variant="default">
-                        {
-                          industries.find((i) => i.value === study.industry)
-                            ?.label
-                        }
+                        {industries.find((i) => i.value === study.industry)?.label}
                       </Badge>
                       <Badge variant="outline">FEATURED</Badge>
                     </div>
@@ -278,19 +261,13 @@ function CaseStudiesPage(_props: Props) {
                   <CardContent className="space-y-4">
                     <div>
                       <p className="mb-1 font-medium text-sm">課題</p>
-                      <p className="text-muted-foreground text-sm">
-                        {study.challenge}
-                      </p>
+                      <p className="text-muted-foreground text-sm">{study.challenge}</p>
                     </div>
                     <div className="grid grid-cols-3 gap-4">
                       {study.metrics.map((metric, index) => (
                         <div key={index} className="text-center">
-                          <p className="font-bold text-2xl text-primary">
-                            {metric.value}
-                          </p>
-                          <p className="text-muted-foreground text-xs">
-                            {metric.improvement}
-                          </p>
+                          <p className="font-bold text-2xl text-primary">{metric.value}</p>
+                          <p className="text-muted-foreground text-xs">{metric.improvement}</p>
                         </div>
                       ))}
                     </div>
@@ -323,43 +300,26 @@ function CaseStudiesPage(_props: Props) {
                       <div className="flex-1 p-6">
                         <div className="mb-3 flex items-center gap-2">
                           <Badge variant="secondary">
-                            {
-                              industries.find((i) => i.value === study.industry)
-                                ?.label
-                            }
+                            {industries.find((i) => i.value === study.industry)?.label}
                           </Badge>
                           {study.tags.map((tag) => (
-                            <Badge
-                              key={tag}
-                              variant="outline"
-                              className="text-xs"
-                            >
+                            <Badge key={tag} variant="outline" className="text-xs">
                               {tag}
                             </Badge>
                           ))}
                         </div>
 
-                        <h3 className="mb-1 font-bold text-xl">
-                          {study.company}
-                        </h3>
-                        <p className="mb-4 font-medium text-lg text-primary">
-                          {study.title}
-                        </p>
+                        <h3 className="mb-1 font-bold text-xl">{study.company}</h3>
+                        <p className="mb-4 font-medium text-lg text-primary">{study.title}</p>
 
                         <div className="mb-4 space-y-3">
                           <div>
                             <p className="mb-1 font-medium text-sm">課題</p>
-                            <p className="text-muted-foreground text-sm">
-                              {study.challenge}
-                            </p>
+                            <p className="text-muted-foreground text-sm">{study.challenge}</p>
                           </div>
                           <div>
-                            <p className="mb-1 font-medium text-sm">
-                              ソリューション
-                            </p>
-                            <p className="text-muted-foreground text-sm">
-                              {study.solution}
-                            </p>
+                            <p className="mb-1 font-medium text-sm">ソリューション</p>
+                            <p className="text-muted-foreground text-sm">{study.solution}</p>
                           </div>
                         </div>
 
@@ -367,10 +327,7 @@ function CaseStudiesPage(_props: Props) {
                           <p className="mb-2 font-medium text-sm">成果</p>
                           <ul className="space-y-1">
                             {study.results.map((result, index) => (
-                              <li
-                                key={index}
-                                className="flex items-start gap-2 text-sm"
-                              >
+                              <li key={index} className="flex items-start gap-2 text-sm">
                                 <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" />
                                 <span>{result}</span>
                               </li>
@@ -380,12 +337,9 @@ function CaseStudiesPage(_props: Props) {
 
                         <Card className="mb-4 border-0 bg-muted">
                           <CardContent className="p-4">
-                            <p className="mb-2 text-sm italic">
-                              "{study.testimonial.quote}"
-                            </p>
+                            <p className="mb-2 text-sm italic">"{study.testimonial.quote}"</p>
                             <p className="text-muted-foreground text-xs">
-                              {study.testimonial.author} -{" "}
-                              {study.testimonial.position}
+                              {study.testimonial.author} - {study.testimonial.position}
                             </p>
                           </CardContent>
                         </Card>
@@ -407,9 +361,7 @@ function CaseStudiesPage(_props: Props) {
                                   {metric.improvement}
                                 </Badge>
                               </div>
-                              <p className="font-bold text-2xl text-primary">
-                                {metric.value}
-                              </p>
+                              <p className="font-bold text-2xl text-primary">{metric.value}</p>
                             </div>
                           ))}
                         </div>
@@ -425,9 +377,7 @@ function CaseStudiesPage(_props: Props) {
         <section className="mt-16">
           <Card className="bg-primary text-primary-foreground">
             <CardContent className="py-12 text-center">
-              <h2 className="mb-4 font-bold text-3xl">
-                あなたのビジネスも変革しませんか？
-              </h2>
+              <h2 className="mb-4 font-bold text-3xl">あなたのビジネスも変革しませんか？</h2>
               <p className="mx-auto mb-8 max-w-[600px]">
                 TechCorpは、お客様の課題に合わせた最適なソリューションを提供します。
                 まずはお気軽にご相談ください。

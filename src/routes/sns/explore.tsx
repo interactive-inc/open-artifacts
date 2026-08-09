@@ -59,10 +59,7 @@ function Explore() {
       <div className="p-4">
         <div className="relative">
           <Search className="-translate-y-1/2 absolute top-1/2 left-3 h-5 w-5 transform text-muted-foreground" />
-          <Input
-            placeholder="検索"
-            className="rounded-full border-none bg-muted pl-10"
-          />
+          <Input placeholder="検索" className="rounded-full border-none bg-muted pl-10" />
         </div>
       </div>
       <Tabs defaultValue="trending" className="w-full">
@@ -107,12 +104,8 @@ function Explore() {
                       <span>{topic.rank}位 · トレンド</span>
                     </div>
                     <h3 className="font-bold text-lg">{topic.tag}</h3>
-                    <p className="text-muted-foreground text-sm">
-                      {topic.description}
-                    </p>
-                    <p className="text-muted-foreground text-sm">
-                      {topic.posts} posts
-                    </p>
+                    <p className="text-muted-foreground text-sm">{topic.description}</p>
+                    <p className="text-muted-foreground text-sm">{topic.posts} posts</p>
                   </div>
                 </div>
               </div>

@@ -1,14 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router"
-import {
-  Award,
-  Building,
-  Calendar,
-  Globe,
-  Rocket,
-  TrendingUp,
-  Trophy,
-  Users,
-} from "lucide-react"
+import { Award, Building, Calendar, Globe, Rocket, TrendingUp, Trophy, Users } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
@@ -22,13 +13,7 @@ type HistoryItem = {
   year: string
   month?: string
   event: string
-  category:
-    | "founding"
-    | "expansion"
-    | "product"
-    | "award"
-    | "partnership"
-    | "milestone"
+  category: "founding" | "expansion" | "product" | "award" | "partnership" | "milestone"
   description?: string
   icon?: any
 }
@@ -294,17 +279,13 @@ function HistoryPage(_props: Props) {
     {} as Record<string, HistoryItem[]>,
   )
 
-  const years = Object.keys(groupedHistory).sort(
-    (a, b) => Number(b) - Number(a),
-  )
+  const years = Object.keys(groupedHistory).sort((a, b) => Number(b) - Number(a))
 
   return (
     <div className="py-12 lg:py-16">
       <div className="container">
         <div className="mb-12 text-center">
-          <h1 className="mb-4 font-bold text-4xl tracking-tighter sm:text-5xl">
-            沿革
-          </h1>
+          <h1 className="mb-4 font-bold text-4xl tracking-tighter sm:text-5xl">沿革</h1>
           <p className="mx-auto max-w-[700px] text-muted-foreground">
             2010年の創業から現在まで、TechCorpの歩みをご紹介します
           </p>
@@ -348,13 +329,9 @@ function HistoryPage(_props: Props) {
                               {getCategoryLabel(item.category)}
                             </Badge>
                           </div>
-                          <h3 className="font-semibold text-lg">
-                            {item.event}
-                          </h3>
+                          <h3 className="font-semibold text-lg">{item.event}</h3>
                           {item.description && (
-                            <p className="text-muted-foreground text-sm">
-                              {item.description}
-                            </p>
+                            <p className="text-muted-foreground text-sm">{item.description}</p>
                           )}
                         </div>
                       </div>
@@ -369,12 +346,9 @@ function HistoryPage(_props: Props) {
         <div className="mt-16 text-center">
           <Card className="bg-primary text-primary-foreground">
             <CardContent className="py-12">
-              <h2 className="mb-4 font-bold text-3xl">
-                これからも、挑戦は続く
-              </h2>
+              <h2 className="mb-4 font-bold text-3xl">これからも、挑戦は続く</h2>
               <p className="mx-auto mb-8 max-w-[600px]">
-                創業から15年、私たちは常に新しい技術と向き合い、
-                お客様とともに成長してきました。
+                創業から15年、私たちは常に新しい技術と向き合い、 お客様とともに成長してきました。
                 これからも革新的なソリューションで、未来を創造していきます。
               </p>
               <div className="mx-auto grid max-w-[600px] grid-cols-3 gap-8">

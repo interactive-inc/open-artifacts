@@ -35,15 +35,16 @@ function Cart() {
     fetchProducts()
   }, [])
 
-  const cartItems = cart?.items.map((item) => {
-    const product = products.find((p) => p.id === item.productId)
-    return {
-      ...item,
-      name: product?.name || "Unknown Product",
-      image: product?.images[0] || "/placeholder.jpg",
-      color: "Standard", // Mock for now as API doesn't support variants yet
-    }
-  }) || []
+  const cartItems =
+    cart?.items.map((item) => {
+      const product = products.find((p) => p.id === item.productId)
+      return {
+        ...item,
+        name: product?.name || "Unknown Product",
+        image: product?.images[0] || "/placeholder.jpg",
+        color: "Standard", // Mock for now as API doesn't support variants yet
+      }
+    }) || []
 
   const subtotal = cart?.total || 0
   const shipping = subtotal >= 5000 ? 0 : 500
@@ -99,13 +100,8 @@ function Cart() {
                       <div className="flex-1">
                         <div className="flex justify-between">
                           <div>
-                            <Link
-                              to="/shop/products/$product"
-                              params={{ product: item.productId }}
-                            >
-                              <h3 className="font-semibold hover:text-primary">
-                                {item.name}
-                              </h3>
+                            <Link to="/shop/products/$product" params={{ product: item.productId }}>
+                              <h3 className="font-semibold hover:text-primary">{item.name}</h3>
                             </Link>
                             <div className="mt-1 text-muted-foreground text-sm">
                               {item.color && <span>カラー: {item.color}</span>}
@@ -126,23 +122,17 @@ function Cart() {
                               size="icon"
                               variant="outline"
                               className="h-8 w-8"
-                              onClick={() =>
-                                updateQuantity(item.productId, item.quantity - 1)
-                              }
+                              onClick={() => updateQuantity(item.productId, item.quantity - 1)}
                               disabled={item.quantity <= 1}
                             >
                               <Minus className="h-3 w-3" />
                             </Button>
-                            <span className="w-12 text-center">
-                              {item.quantity}
-                            </span>
+                            <span className="w-12 text-center">{item.quantity}</span>
                             <Button
                               size="icon"
                               variant="outline"
                               className="h-8 w-8"
-                              onClick={() =>
-                                updateQuantity(item.productId, item.quantity + 1)
-                              }
+                              onClick={() => updateQuantity(item.productId, item.quantity + 1)}
                             >
                               <Plus className="h-3 w-3" />
                             </Button>
@@ -177,11 +167,7 @@ function Cart() {
                   </div>
                   <div className="flex justify-between">
                     <span>配送料</span>
-                    <span>
-                      {shipping === 0
-                        ? "無料"
-                        : `¥${shipping.toLocaleString()}`}
-                    </span>
+                    <span>{shipping === 0 ? "無料" : `¥${shipping.toLocaleString()}`}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>消費税</span>
@@ -204,10 +190,7 @@ function Cart() {
 
                 {/* Coupon */}
                 <div className="mt-6">
-                  <label
-                    htmlFor={couponId}
-                    className="mb-2 block font-medium text-sm"
-                  >
+                  <label htmlFor={couponId} className="mb-2 block font-medium text-sm">
                     クーポンコード
                   </label>
                   <div className="flex gap-2">

@@ -1,21 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router"
-import {
-  ArrowRight,
-  BarChart,
-  Globe,
-  Lightbulb,
-  Rocket,
-  Shield,
-  Users,
-} from "lucide-react"
+import { ArrowRight, BarChart, Globe, Lightbulb, Rocket, Shield, Users } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 type Props = {}
 
@@ -31,8 +17,7 @@ function CorporateHome(_props: Props) {
     {
       icon: Globe,
       title: "グローバル展開",
-      description:
-        "世界30カ国以上でサービスを展開。国際的なビジネスをサポートします。",
+      description: "世界30カ国以上でサービスを展開。国際的なビジネスをサポートします。",
     },
     {
       icon: Shield,
@@ -136,10 +121,7 @@ function CorporateHome(_props: Props) {
             {services.map((service) => {
               const Icon = service.icon
               return (
-                <Card
-                  key={service.title}
-                  className="group transition-shadow hover:shadow-lg"
-                >
+                <Card key={service.title} className="group transition-shadow hover:shadow-lg">
                   <CardHeader>
                     <Icon className="mb-2 h-10 w-10 text-primary" />
                     <CardTitle>{service.title}</CardTitle>
@@ -175,9 +157,7 @@ function CorporateHome(_props: Props) {
             <div className="grid grid-cols-2 gap-6">
               {achievements.map((item) => (
                 <div key={item.label} className="space-y-2 text-center">
-                  <p className="font-bold text-4xl text-primary">
-                    {item.value}
-                  </p>
+                  <p className="font-bold text-4xl text-primary">{item.value}</p>
                   <p className="text-muted-foreground text-sm">{item.label}</p>
                 </div>
               ))}
@@ -191,9 +171,7 @@ function CorporateHome(_props: Props) {
           <div className="mb-12 flex items-center justify-between">
             <div className="space-y-2">
               <h2 className="font-bold text-3xl tracking-tighter">最新情報</h2>
-              <p className="text-muted-foreground">
-                プレスリリース、お知らせ、イベント情報
-              </p>
+              <p className="text-muted-foreground">プレスリリース、お知らせ、イベント情報</p>
             </div>
             <Button variant="outline" asChild>
               <Link to="/corporate/news">

@@ -53,9 +53,7 @@ function ProductDetail() {
       })
       if (res.ok) {
         const data = await res.json()
-        setRelatedProducts(
-          data.filter((p) => p.id !== product.id).slice(0, 3)
-        )
+        setRelatedProducts(data.filter((p) => p.id !== product.id).slice(0, 3))
       }
     }
     fetchRelatedProducts()
@@ -105,9 +103,7 @@ function ProductDetail() {
                   <>
                     <button
                       type="button"
-                      onClick={() =>
-                        setSelectedImage(Math.max(0, selectedImage - 1))
-                      }
+                      onClick={() => setSelectedImage(Math.max(0, selectedImage - 1))}
                       className="-translate-y-1/2 absolute top-1/2 left-4 rounded-full bg-white/80 p-2 shadow-md hover:bg-white"
                       disabled={selectedImage === 0}
                     >
@@ -116,9 +112,7 @@ function ProductDetail() {
                     <button
                       type="button"
                       onClick={() =>
-                        setSelectedImage(
-                          Math.min(product.images.length - 1, selectedImage + 1)
-                        )
+                        setSelectedImage(Math.min(product.images.length - 1, selectedImage + 1))
                       }
                       className="-translate-y-1/2 absolute top-1/2 right-4 rounded-full bg-white/80 p-2 shadow-md hover:bg-white"
                       disabled={selectedImage === product.images.length - 1}
@@ -164,18 +158,12 @@ function ProductDetail() {
 
               <div className="mb-6">
                 <div className="flex items-baseline gap-2">
-                  <span className="font-bold text-3xl">
-                    ¥{product.price.toLocaleString()}
-                  </span>
+                  <span className="font-bold text-3xl">¥{product.price.toLocaleString()}</span>
                 </div>
-                <p className="mt-2 text-muted-foreground text-sm">
-                  税込・送料無料
-                </p>
+                <p className="mt-2 text-muted-foreground text-sm">税込・送料無料</p>
               </div>
 
-              <p className="mb-6 text-muted-foreground">
-                {product.description}
-              </p>
+              <p className="mb-6 text-muted-foreground">{product.description}</p>
 
               {/* Quantity */}
               <div className="mb-6">

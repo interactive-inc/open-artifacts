@@ -137,17 +137,14 @@ function TermsPage(_props: Props) {
     <div className="py-12 lg:py-16">
       <div className="container max-w-4xl">
         <div className="mb-12 text-center">
-          <h1 className="mb-4 font-bold text-4xl tracking-tighter sm:text-5xl">
-            利用規約
-          </h1>
+          <h1 className="mb-4 font-bold text-4xl tracking-tighter sm:text-5xl">利用規約</h1>
           <p className="text-muted-foreground">最終更新日：2024年1月1日</p>
         </div>
 
         <Card className="mb-8">
           <CardContent className="pt-6">
             <p className="text-muted-foreground">
-              本利用規約（以下「本規約」といいます）は、TechCorp
-              Inc.（以下「当社」といいます）が
+              本利用規約（以下「本規約」といいます）は、TechCorp Inc.（以下「当社」といいます）が
               提供するサービス（以下「本サービス」といいます）の利用条件を定めるものです。
               本サービスを利用されるすべてのユーザーの皆様は、本規約に同意したものとみなされます。
             </p>

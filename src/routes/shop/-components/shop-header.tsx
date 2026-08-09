@@ -87,11 +87,7 @@ export function ShopHeader() {
 
           <div className="flex items-center gap-4">
             <div className="hidden items-center gap-2 md:flex">
-              <Input
-                type="search"
-                placeholder="商品を検索..."
-                className="w-[200px] lg:w-[300px]"
-              />
+              <Input type="search" placeholder="商品を検索..." className="w-[200px] lg:w-[300px]" />
               <Button size="icon" variant="ghost">
                 <Search className="h-4 w-4" />
               </Button>

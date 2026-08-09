@@ -20,8 +20,7 @@ export const Route = createFileRoute("/shop/category/$category")({
 const categoryData = {
   electronics: {
     name: "エレクトロニクス",
-    description:
-      "最新のテクノロジー製品。スマートフォン、PC周辺機器、オーディオ機器など。",
+    description: "最新のテクノロジー製品。スマートフォン、PC周辺機器、オーディオ機器など。",
     image: "/placeholder.jpg",
     products: [
       {
@@ -123,8 +122,7 @@ const categoryData = {
   },
   sports: {
     name: "スポーツ＆アウトドア",
-    description:
-      "アクティブなライフスタイルをサポートするスポーツ用品とフィットネス機器。",
+    description: "アクティブなライフスタイルをサポートするスポーツ用品とフィットネス機器。",
     image: "/placeholder.jpg",
     products: [
       {
@@ -189,9 +187,7 @@ function Category() {
             <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8">
               <div className="text-white">
                 <h1 className="font-bold text-4xl">{category.name}</h1>
-                <p className="mt-2 text-lg opacity-90">
-                  {category.description}
-                </p>
+                <p className="mt-2 text-lg opacity-90">{category.description}</p>
               </div>
             </div>
           </div>
@@ -214,9 +210,7 @@ function Category() {
 
             {/* Results and Sort */}
             <div className="mb-6 flex items-center justify-between">
-              <p className="text-muted-foreground">
-                {category.products.length} 件の商品
-              </p>
+              <p className="text-muted-foreground">{category.products.length} 件の商品</p>
 
               <div className="flex items-center gap-4">
                 <Button

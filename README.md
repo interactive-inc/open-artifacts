@@ -6,16 +6,21 @@ ClaudeCodeを用いたサイト制作の学習用リポジトリ。ClaudeCodeで
 
 ```bash
 # セットアップ
-bun install
+vp install
 
 # 開発サーバー
-bun dev
+vp dev
+
+# lint / format / test
+vp lint
+vp fmt
+vp test
 
 # 型チェック
-bun run check
+vp run check
 
 # ビルド
-bun run build
+vp build
 ```
 
 ## 現在のサンプル

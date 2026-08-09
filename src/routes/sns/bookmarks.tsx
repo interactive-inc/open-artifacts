@@ -1,12 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router"
-import {
-  Bookmark,
-  Heart,
-  MessageCircle,
-  MoreHorizontal,
-  Repeat2,
-  Share,
-} from "lucide-react"
+import { Bookmark, Heart, MessageCircle, MoreHorizontal, Repeat2, Share } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import {
@@ -105,65 +98,40 @@ function Bookmarks() {
         {bookmarkedPosts.length === 0 ? (
           <div className="p-8 text-center">
             <Bookmark className="mx-auto mb-4 h-12 w-12 text-muted-foreground opacity-50" />
-            <h3 className="mb-2 font-bold text-lg">
-              まだブックマークがありません
-            </h3>
-            <p className="text-muted-foreground">
-              後で読みたい投稿を保存しましょう
-            </p>
+            <h3 className="mb-2 font-bold text-lg">まだブックマークがありません</h3>
+            <p className="text-muted-foreground">後で読みたい投稿を保存しましょう</p>
           </div>
         ) : (
           bookmarkedPosts.map((post) => (
-            <article
-              key={post.id}
-              className="border-b transition-colors hover:bg-muted/30"
-            >
+            <article key={post.id} className="border-b transition-colors hover:bg-muted/30">
               <div className="p-4">
                 <div className="flex gap-3">
                   <Avatar className="h-12 w-12">
                     <AvatarImage src={post.author.avatar} />
-                    <AvatarFallback>
-                      {post.author.displayName[0]}
-                    </AvatarFallback>
+                    <AvatarFallback>{post.author.displayName[0]}</AvatarFallback>
                   </Avatar>
                   <div className="flex-1">
                     <div className="flex items-start justify-between">
                       <div>
-                        <span className="font-semibold">
-                          {post.author.displayName}
-                        </span>
-                        <span className="ml-1 text-muted-foreground">
-                          @{post.author.username}
-                        </span>
+                        <span className="font-semibold">{post.author.displayName}</span>
+                        <span className="ml-1 text-muted-foreground">@{post.author.username}</span>
                         <span className="ml-1 text-muted-foreground">·</span>
-                        <span className="ml-1 text-muted-foreground">
-                          {post.timestamp}
-                        </span>
+                        <span className="ml-1 text-muted-foreground">{post.timestamp}</span>
                       </div>
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-8 w-8"
-                          >
+                          <Button variant="ghost" size="icon" className="h-8 w-8">
                             <MoreHorizontal className="h-4 w-4" />
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
-                          <DropdownMenuItem>
-                            ブックマークから削除
-                          </DropdownMenuItem>
-                          <DropdownMenuItem>
-                            このポストを埋め込む
-                          </DropdownMenuItem>
+                          <DropdownMenuItem>ブックマークから削除</DropdownMenuItem>
+                          <DropdownMenuItem>このポストを埋め込む</DropdownMenuItem>
                           <DropdownMenuItem>ポストを報告</DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
                     </div>
-                    <div className="mt-1 whitespace-pre-wrap">
-                      {post.content}
-                    </div>
+                    <div className="mt-1 whitespace-pre-wrap">{post.content}</div>
                     <div className="-ml-2 mt-3 flex items-center gap-1">
                       <Button
                         variant="ghost"
@@ -186,9 +154,7 @@ function Bookmarks() {
                         size="sm"
                         className={`gap-2 ${post.isLiked ? "text-red-600" : "text-muted-foreground"} hover:text-red-600`}
                       >
-                        <Heart
-                          className={`h-4 w-4 ${post.isLiked ? "fill-current" : ""}`}
-                        />
+                        <Heart className={`h-4 w-4 ${post.isLiked ? "fill-current" : ""}`} />
                         <span className="text-sm">{post.likes}</span>
                       </Button>
                       <Button

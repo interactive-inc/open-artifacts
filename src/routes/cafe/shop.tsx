@@ -66,10 +66,7 @@ function ShopPage() {
     {
       type: "お車",
       icon: Car,
-      routes: [
-        "明治通り沿い、神宮前交差点より1分",
-        "提携駐車場あり（2時間まで無料）",
-      ],
+      routes: ["明治通り沿い、神宮前交差点より1分", "提携駐車場あり（2時間まで無料）"],
     },
   ]
 
@@ -155,9 +152,7 @@ function ShopPage() {
                         <Mail className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-600" />
                         <div>
                           <p className="mb-1 font-medium">メール</p>
-                          <p className="text-sm text-stone-600">
-                            info@artisan-coffee.jp
-                          </p>
+                          <p className="text-sm text-stone-600">info@artisan-coffee.jp</p>
                         </div>
                       </div>
                       <div className="flex items-start gap-3">
@@ -183,22 +178,14 @@ function ShopPage() {
                         <div
                           key={item.day}
                           className={`flex items-center justify-between rounded px-3 py-2 ${
-                            item.isToday
-                              ? "border border-amber-200 bg-amber-50"
-                              : ""
+                            item.isToday ? "border border-amber-200 bg-amber-50" : ""
                           }`}
                         >
-                          <span
-                            className={`text-sm ${item.isToday ? "font-medium" : ""}`}
-                          >
+                          <span className={`text-sm ${item.isToday ? "font-medium" : ""}`}>
                             {item.day}
-                            {item.isToday && (
-                              <Badge className="ml-2 bg-amber-600">本日</Badge>
-                            )}
+                            {item.isToday && <Badge className="ml-2 bg-amber-600">本日</Badge>}
                           </span>
-                          <span className="text-sm text-stone-600">
-                            {item.hours}
-                          </span>
+                          <span className="text-sm text-stone-600">{item.hours}</span>
                         </div>
                       ))}
                     </div>
@@ -219,9 +206,7 @@ function ShopPage() {
       <section className="bg-stone-50 py-16">
         <div className="container">
           <div className="mb-12 text-center">
-            <h2 className="mb-2 font-serif text-3xl text-stone-800">
-              アクセス
-            </h2>
+            <h2 className="mb-2 font-serif text-3xl text-stone-800">アクセス</h2>
             <p className="text-stone-600">各線からのアクセス方法</p>
           </div>
           <div className="mx-auto max-w-4xl">
@@ -257,9 +242,7 @@ function ShopPage() {
                     <p className="text-stone-600">地図を表示</p>
                     <Button
                       className="mt-4 bg-amber-600 text-white hover:bg-amber-700"
-                      onClick={() =>
-                        window.open("https://maps.google.com", "_blank")
-                      }
+                      onClick={() => window.open("https://maps.google.com", "_blank")}
                     >
                       <Navigation className="mr-2 h-4 w-4" />
                       Google Maps で開く
@@ -276,9 +259,7 @@ function ShopPage() {
       <section className="bg-white py-16">
         <div className="container">
           <div className="mb-12 text-center">
-            <h2 className="mb-2 font-serif text-3xl text-stone-800">
-              設備・サービス
-            </h2>
+            <h2 className="mb-2 font-serif text-3xl text-stone-800">設備・サービス</h2>
             <p className="text-stone-600">快適にお過ごしいただくための設備</p>
           </div>
           <div className="mx-auto max-w-3xl">
@@ -303,9 +284,7 @@ function ShopPage() {
               })}
             </div>
             <div className="mt-8 rounded-lg bg-amber-50 p-6">
-              <h3 className="mb-3 font-medium text-amber-800">
-                その他のサービス
-              </h3>
+              <h3 className="mb-3 font-medium text-amber-800">その他のサービス</h3>
               <ul className="space-y-2 text-amber-700 text-sm">
                 <li>• テイクアウト可能</li>
                 <li>• 電源席あり（カウンター席）</li>
@@ -322,12 +301,8 @@ function ShopPage() {
       <section className="bg-stone-50 py-16">
         <div className="container">
           <div className="mb-12 text-center">
-            <h2 className="mb-2 font-serif text-3xl text-stone-800">
-              店内の様子
-            </h2>
-            <p className="text-stone-600">
-              落ち着いた空間で、ゆったりとした時間を
-            </p>
+            <h2 className="mb-2 font-serif text-3xl text-stone-800">店内の様子</h2>
+            <p className="text-stone-600">落ち着いた空間で、ゆったりとした時間を</p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {images.map((image, index) => (
@@ -355,15 +330,10 @@ function ShopPage() {
         <div className="container text-center">
           <h2 className="mb-4 font-serif text-3xl">ご予約・お問い合わせ</h2>
           <p className="mx-auto mb-8 max-w-2xl text-white/90">
-            団体でのご利用や、イベントの開催なども承っております。
-            お気軽にお問い合わせください。
+            団体でのご利用や、イベントの開催なども承っております。 お気軽にお問い合わせください。
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <Button
-              size="lg"
-              className="bg-white text-amber-600 hover:bg-stone-50"
-              asChild
-            >
+            <Button size="lg" className="bg-white text-amber-600 hover:bg-stone-50" asChild>
               <a href="tel:03-1234-5678">
                 <Phone className="mr-2 h-5 w-5" />
                 電話で予約

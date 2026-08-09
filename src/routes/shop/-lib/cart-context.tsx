@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  type ReactNode,
-} from "react"
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react"
 import { client } from "./client"
 
 type CartItem = {
@@ -95,9 +89,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     if (!userId) return
 
     try {
-      const res = await client.shop.api.cart[":userId"].items[
-        ":productId"
-      ].$delete({
+      const res = await client.shop.api.cart[":userId"].items[":productId"].$delete({
         param: { userId, productId },
       })
       if (res.ok) {

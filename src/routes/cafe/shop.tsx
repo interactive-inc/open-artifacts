@@ -107,7 +107,10 @@ function ShopPage() {
     <div className="min-h-screen bg-white">
       {/* Hero */}
       <section className="relative h-[50vh] min-h-[400px] bg-stone-900">
-        <div className="absolute inset-0 bg-[url('/api/placeholder/1920/600')] bg-center bg-cover opacity-40" />
+        <div
+          className="absolute inset-0 bg-center bg-cover opacity-40"
+          style={{ backgroundImage: "url('/api/placeholder/1920/600')" }}
+        />
         <div className="relative flex h-full items-center justify-center text-white">
           <div className="text-center">
             <h1 className="mb-4 font-serif text-5xl md:text-6xl">Shop Info</h1>

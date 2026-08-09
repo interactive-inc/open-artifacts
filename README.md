@@ -1,6 +1,6 @@
 # Open Artifacts
 
-ClaudeCodeを用いたサイト制作の学習用リポジトリ。ClaudeCodeで自由にサイトを作成し、実装例として残すことで参考資料にもなります。
+TanStack Start、Hono、React、shadcn/ui で構築したサイト実装例のコレクション。
 
 ## 開発
 
@@ -35,32 +35,29 @@ vp build
 ```
 src/routes/
 ├── shop/                 # サンプル: ショップサイト
-│   ├── api.ts           # APIエントリーポイント
-│   ├── -lib/            # ライブラリ（ルーティング対象外）
-│   └── -data/           # データ（ルーティング対象外）
+│   ├── api.$.ts         # /shop/api/* を Hono に転送
+│   └── -lib/            # UI・API・サンプルデータ
 ├── cafe/                # サンプル: カフェサイト
 ├── corporate/           # サンプル: コーポレートサイト
-└── sns/                 # サンプル: SNSサイト
+├── sns/                 # サンプル: SNSサイト
+└── api/placeholder/$.ts # 検証済みサイズの SVG プレースホルダー
 ```
 
 `-`で始まるディレクトリはルーティング対象外。
 
-## API設計
+## API 設計
 
-ファイル名 = パス、エクスポート名 = HTTPメソッド
+各サンプルの `api.$.ts` が TanStack Start の server route として全サブパスを受け、`-lib/hono/app.ts` の Hono アプリへ転送します。
 
 ```typescript
-// products.ts → /products
-export const GET = factory.createHandlers((c) => { ... })
-
-// products.$id.ts → /products/:id
-export const GET = factory.createHandlers((c) => { ... })
-export const DELETE = factory.createHandlers((c) => { ... })
+// src/routes/shop/-lib/hono/app.ts
+hono.get("/shop/api/products", ...products.GET)
+hono.post("/shop/api/cart", ...cart.POST)
 ```
 
 ## 新しいサンプルの追加
 
 1. `src/routes/`に新規ディレクトリ作成
-2. `api.ts`でAPIエントリーポイント定義
-3. `-lib/hono/`にAPIハンドラー実装
-4. 必要に応じて`-data/`にサンプルデータ配置
+2. API が必要なら `api.$.ts` で Hono へ転送
+3. `-lib/hono/` に API ハンドラーとテストを実装
+4. UI は `src/components/ui/` の共通 shadcn/ui コンポーネントを使用

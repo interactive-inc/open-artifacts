@@ -220,14 +220,14 @@ function Profile() {
             </div>
 
             <div className="flex gap-4 text-sm">
-              <Link to="#" className="hover:underline">
+              <button type="button" className="hover:underline">
                 <span className="font-bold">{user.following}</span>
                 <span className="text-muted-foreground"> フォロー中</span>
-              </Link>
-              <Link to="#" className="hover:underline">
+              </button>
+              <button type="button" className="hover:underline">
                 <span className="font-bold">{user.followers}</span>
                 <span className="text-muted-foreground"> フォロワー</span>
-              </Link>
+              </button>
             </div>
           </div>
         </div>

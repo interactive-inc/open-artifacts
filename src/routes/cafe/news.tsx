@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router"
-import { ArrowRight, Calendar, Clock, Coffee, Gift, Sparkles, Users } from "lucide-react"
+import { ArrowRight, Calendar, Clock, Coffee, Gift, Phone, Sparkles, Users } from "lucide-react"
 import { useState } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -173,7 +173,10 @@ function NewsPage() {
     <div className="min-h-screen bg-white">
       {/* Hero */}
       <section className="relative h-[40vh] min-h-[350px] bg-stone-900">
-        <div className="absolute inset-0 bg-[url('/api/placeholder/1920/600')] bg-center bg-cover opacity-40" />
+        <div
+          className="absolute inset-0 bg-center bg-cover opacity-40"
+          style={{ backgroundImage: "url('/api/placeholder/1920/600')" }}
+        />
         <div className="relative flex h-full items-center justify-center text-white">
           <div className="text-center">
             <h1 className="mb-4 font-serif text-5xl md:text-6xl">News & Events</h1>

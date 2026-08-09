@@ -1,73 +1,74 @@
-import ordersData from "../../resources/orders.json"
+import { zValidator } from "@hono/zod-validator"
+import { z } from "zod"
 import { factory } from "../factory"
+import { orders, products, type Order } from "../store"
 
-type OrderItem = {
-  productId: string
-  productName: string
-  quantity: number
-  price: number
-  subtotal: number
-}
-
-type Order = {
-  id: string
-  userId: string
-  items: OrderItem[]
-  total: number
-  status: "pending" | "processing" | "shipped" | "delivered" | "cancelled"
-  shippingAddress: {
-    name: string
-    address: string
-    city: string
-    postalCode: string
-    phone: string
-  }
-  createdAt: string
-  updatedAt: string
-}
-
-// メモリ内で注文を管理（実際のアプリではDBを使用）
-const dynamicOrders = new Map<string, Order>()
-
-// 初期データをメモリに読み込み
-for (const order of ordersData as Order[]) {
-  dynamicOrders.set(order.id, order)
-}
+const createOrderSchema = z.object({
+  userId: z.string().min(1),
+  items: z
+    .array(
+      z.object({
+        productId: z.string().min(1),
+        quantity: z.number().int().min(1).max(99),
+      }),
+    )
+    .min(1),
+  shippingAddress: z.object({
+    name: z.string().min(1),
+    address: z.string().min(1),
+    city: z.string().min(1),
+    postalCode: z.string().min(1),
+    phone: z.string().min(1),
+  }),
+})
 
 // GET /orders - 注文一覧取得
 export const GET = factory.createHandlers((c) => {
   const userId = c.req.query("userId")
 
-  let orders = Array.from(dynamicOrders.values())
+  let orderList = Array.from(orders.values())
 
   // userIdが指定されている場合はフィルタリング
   if (userId) {
-    orders = orders.filter((order) => order.userId === userId)
+    orderList = orderList.filter((order) => order.userId === userId)
   }
 
-  return c.json(orders)
+  return c.json(orderList)
 })
 
 // POST /orders - 注文作成
-export const POST = factory.createHandlers(async (c) => {
-  const body = (await c.req.json()) as {
-    userId: string
-    items: OrderItem[]
-    shippingAddress: Order["shippingAddress"]
+export const POST = factory.createHandlers(zValidator("json", createOrderSchema), (c) => {
+  const body = c.req.valid("json")
+  const items: Order["items"] = []
+
+  for (const requestedItem of body.items) {
+    const product = products.find((candidate) => candidate.id === requestedItem.productId)
+    if (!product) {
+      return c.json({ error: `Product not found: ${requestedItem.productId}` }, 404)
+    }
+    items.push({
+      productId: product.id,
+      productName: product.name,
+      quantity: requestedItem.quantity,
+      price: product.price,
+      subtotal: product.price * requestedItem.quantity,
+    })
   }
 
+  const subtotal = items.reduce((sum, item) => sum + item.subtotal, 0)
+
   const newOrder: Order = {
-    id: `order-${Date.now()}`,
+    id: `order-${crypto.randomUUID()}`,
     userId: body.userId,
-    items: body.items,
-    total: body.items.reduce((sum, item) => sum + item.subtotal, 0),
+    items,
+    total: subtotal + Math.floor(subtotal * 0.1),
     status: "pending",
     shippingAddress: body.shippingAddress,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   }
 
-  dynamicOrders.set(newOrder.id, newOrder)
+  orders.set(newOrder.id, newOrder)
 
   return c.json(newOrder, 201)
 })

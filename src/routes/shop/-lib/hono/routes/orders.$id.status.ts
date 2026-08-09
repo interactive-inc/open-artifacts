@@ -1,48 +1,22 @@
-import ordersData from "../../resources/orders.json"
+import { zValidator } from "@hono/zod-validator"
+import { z } from "zod"
 import { factory } from "../factory"
+import { orders } from "../store"
 
-type Order = {
-  id: string
-  userId: string
-  items: {
-    productId: string
-    productName: string
-    quantity: number
-    price: number
-    subtotal: number
-  }[]
-  total: number
-  status: "pending" | "processing" | "shipped" | "delivered" | "cancelled"
-  shippingAddress: {
-    name: string
-    address: string
-    city: string
-    postalCode: string
-    phone: string
-  }
-  createdAt: string
-  updatedAt: string
-}
-
-// メモリ内で注文を管理（実際のアプリではDBを使用）
-const dynamicOrders = new Map<string, Order>()
-
-// 初期データをメモリに読み込み
-for (const order of ordersData as Order[]) {
-  dynamicOrders.set(order.id, order)
-}
+const orderStatusSchema = z.object({
+  status: z.enum(["pending", "processing", "shipped", "delivered", "cancelled"]),
+})
 
 // PATCH /orders/:id/status - 注文ステータス更新
-export const PATCH = factory.createHandlers(async (c) => {
+export const PATCH = factory.createHandlers(zValidator("json", orderStatusSchema), (c) => {
   const id = c.req.param("id")
 
   if (!id) {
     return c.json({ error: "Missing order ID" }, 400)
   }
 
-  const body = (await c.req.json()) as { status: Order["status"] }
-
-  const order = dynamicOrders.get(id)
+  const body = c.req.valid("json")
+  const order = orders.get(id)
 
   if (!order) {
     return c.json({ error: "Order not found" }, 404)
@@ -51,7 +25,7 @@ export const PATCH = factory.createHandlers(async (c) => {
   order.status = body.status
   order.updatedAt = new Date().toISOString()
 
-  dynamicOrders.set(id, order)
+  orders.set(id, order)
 
   return c.json(order)
 })

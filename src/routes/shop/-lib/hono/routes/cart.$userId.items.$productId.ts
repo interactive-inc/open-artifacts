@@ -1,20 +1,5 @@
 import { factory } from "../factory"
-
-type Cart = {
-  id: string
-  userId: string
-  items: {
-    productId: string
-    quantity: number
-    price: number
-  }[]
-  total: number
-  createdAt: string
-  updatedAt: string
-}
-
-// メモリ内でカート情報を管理（実際のアプリではセッションやDBを使用）
-const carts = new Map<string, Cart>()
+import { carts } from "../store"
 
 // DELETE /cart/:userId/items/:productId - カートから商品削除
 export const DELETE = factory.createHandlers((c) => {
@@ -29,6 +14,10 @@ export const DELETE = factory.createHandlers((c) => {
 
   if (!cart) {
     return c.json({ error: "Cart not found" }, 404)
+  }
+
+  if (!cart.items.some((item) => item.productId === productId)) {
+    return c.json({ error: "Item not found in cart" }, 404)
   }
 
   cart.items = cart.items.filter((item) => item.productId !== productId)

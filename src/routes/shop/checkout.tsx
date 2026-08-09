@@ -60,15 +60,11 @@ function Checkout() {
     setIsSubmitting(true)
     try {
       const res = await client.shop.api.orders.$post({
-        // @ts-expect-error - Hono client type inference issue with json property
         json: {
           userId: cart.userId,
           items: cart.items.map((item) => ({
             productId: item.productId,
-            productName: `Product ${item.productId}`,
             quantity: item.quantity,
-            price: item.price,
-            subtotal: item.price * item.quantity,
           })),
           shippingAddress: {
             name: `${shippingInfo.lastName} ${shippingInfo.firstName}`,

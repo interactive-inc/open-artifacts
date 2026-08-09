@@ -6,6 +6,7 @@ import {
   Cpu,
   Database,
   Layers,
+  type LucideIcon,
   Shield,
   Users,
   Zap,
@@ -26,7 +27,7 @@ type Solution = {
   title: string
   category: string
   description: string
-  icon: any
+  icon: LucideIcon
   benefits: string[]
   features: {
     title: string

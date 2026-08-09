@@ -75,9 +75,9 @@ const res = await client.shop.api.products.$get()
 const products = await res.json() // 型推論される
 ```
 
-### 共有カートストア
+### 共有ストア
 
-API間でカートデータの一貫性を保つための共有ストレージ:
+API間で商品、カート、注文データの一貫性を保つための共有ストレージ。商品価格と注文金額はサーバー側の商品データから計算する。
 
 ```typescript
 // src/routes/shop/-lib/hono/store.ts
@@ -104,15 +104,23 @@ export const carts = new Map<string, Cart>()
 
 - `GET /shop/api/orders?userId=:userId` - 注文履歴取得
 - `POST /shop/api/orders` - 注文作成
+- `GET /shop/api/orders/:id` - 注文詳細取得
+- `PATCH /shop/api/orders/:id/status` - 注文ステータス更新
 
 ## 開発
 
 ```bash
 # 開発サーバー起動
-npm run dev
+vp dev
 
 # ビルド
-npm run build
+vp build
+
+# 検証
+vp lint
+vp fmt
+vp test
+vp run check
 ```
 
 ## 今後の改善案

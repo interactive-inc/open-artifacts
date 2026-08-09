@@ -21,7 +21,7 @@ hono.get("/health", (c) => {
   })
 })
 
-export const Route = createFileRoute("/cafe/api")({
+export const Route = createFileRoute("/cafe/api/$")({
   server: {
     handlers: {
       GET(props) {

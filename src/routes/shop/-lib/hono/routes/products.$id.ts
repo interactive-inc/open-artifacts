@@ -1,18 +1,5 @@
-import productsData from "../../resources/products.json"
 import { factory } from "../factory"
-
-type Product = {
-  id: string
-  name: string
-  description: string
-  price: number
-  category: string
-  images: string[]
-  stock: number
-  featured: boolean
-}
-
-const products = productsData as Product[]
+import { products } from "../store"
 
 // GET /products/:id - 商品詳細取得
 export const GET = factory.createHandlers((c) => {

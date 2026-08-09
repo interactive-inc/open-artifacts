@@ -517,10 +517,10 @@ function CafeHomePage() {
                   className="border-amber-600 text-amber-600 hover:bg-amber-50"
                   asChild
                 >
-                  <Link to="/cafe/reservation">
+                  <a href="tel:0312345678">
                     <Calendar className="mr-2 h-4 w-4" />
                     予約する
-                  </Link>
+                  </a>
                 </Button>
               </div>
             </div>

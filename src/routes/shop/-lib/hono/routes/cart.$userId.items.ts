@@ -1,19 +1,26 @@
+import { zValidator } from "@hono/zod-validator"
+import { z } from "zod"
 import { factory } from "../factory"
+import { carts, products } from "../store"
 
-import { carts } from "../store"
+const cartItemSchema = z.object({
+  productId: z.string().min(1),
+  quantity: z.number().int().min(1).max(99),
+})
 
 // POST /cart/:userId/items - カートに商品追加
-export const POST = factory.createHandlers(async (c) => {
+export const POST = factory.createHandlers(zValidator("json", cartItemSchema), (c) => {
   const userId = c.req.param("userId")
 
   if (!userId) {
     return c.json({ error: "Missing userId parameter" }, 400)
   }
 
-  const body = (await c.req.json()) as {
-    productId: string
-    quantity: number
-    price: number
+  const body = c.req.valid("json")
+  const product = products.find((candidate) => candidate.id === body.productId)
+
+  if (!product) {
+    return c.json({ error: "Product not found" }, 404)
   }
 
   let cart = carts.get(userId)
@@ -38,7 +45,7 @@ export const POST = factory.createHandlers(async (c) => {
     cart.items.push({
       productId: body.productId,
       quantity: body.quantity,
-      price: body.price,
+      price: product.price,
     })
   }
 
@@ -52,17 +59,14 @@ export const POST = factory.createHandlers(async (c) => {
 })
 
 // PATCH /cart/:userId/items - カートの商品数量更新
-export const PATCH = factory.createHandlers(async (c) => {
+export const PATCH = factory.createHandlers(zValidator("json", cartItemSchema), (c) => {
   const userId = c.req.param("userId")
 
   if (!userId) {
     return c.json({ error: "Missing userId parameter" }, 400)
   }
 
-  const body = (await c.req.json()) as {
-    productId: string
-    quantity: number
-  }
+  const body = c.req.valid("json")
 
   const cart = carts.get(userId)
 

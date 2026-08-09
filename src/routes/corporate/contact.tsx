@@ -136,7 +136,12 @@ function ContactPage(_props: Props) {
                     <Label htmlFor="inquiryType">お問い合わせ種別 *</Label>
                     <Select
                       value={watch("inquiryType")}
-                      onValueChange={(value) => setValue("inquiryType", value as any)}
+                      onValueChange={(value) => {
+                        const inquiryType = contactSchema.shape.inquiryType.safeParse(value)
+                        if (inquiryType.success) {
+                          setValue("inquiryType", inquiryType.data)
+                        }
+                      }}
                     >
                       <SelectTrigger>
                         <SelectValue placeholder="選択してください" />

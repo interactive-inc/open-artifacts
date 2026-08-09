@@ -1,5 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router"
-import { Award, Building, Calendar, Globe, Rocket, TrendingUp, Trophy, Users } from "lucide-react"
+import {
+  Award,
+  Building,
+  Calendar,
+  Globe,
+  type LucideIcon,
+  Rocket,
+  TrendingUp,
+  Trophy,
+  Users,
+} from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
@@ -15,7 +25,7 @@ type HistoryItem = {
   event: string
   category: "founding" | "expansion" | "product" | "award" | "partnership" | "milestone"
   description?: string
-  icon?: any
+  icon?: LucideIcon
 }
 
 /**

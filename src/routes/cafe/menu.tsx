@@ -10,6 +10,22 @@ export const Route = createFileRoute("/cafe/menu")({
   component: MenuPage,
 })
 
+type MenuItem = {
+  name: string
+  nameEn: string
+  description: string
+  price: {
+    hot?: string
+    ice?: string | null
+    single?: string
+  }
+  tags: string[]
+  image: string
+  origin?: string
+  altitude?: string
+  process?: string
+}
+
 /**
  * Menu Page
  */
@@ -244,7 +260,10 @@ function MenuPage() {
     <div className="min-h-screen bg-white">
       {/* Hero */}
       <section className="relative h-[40vh] min-h-[400px] bg-stone-900">
-        <div className="absolute inset-0 bg-[url('/api/placeholder/1920/600')] bg-center bg-cover opacity-40" />
+        <div
+          className="absolute inset-0 bg-center bg-cover opacity-40"
+          style={{ backgroundImage: "url('/api/placeholder/1920/600')" }}
+        />
         <div className="relative flex h-full items-center justify-center text-white">
           <div className="text-center">
             <h1 className="mb-4 font-serif text-5xl md:text-6xl">Menu</h1>
@@ -396,7 +415,7 @@ function MenuPage() {
   )
 }
 
-function MenuCard({ item, showOrigin = false }: { item: any; showOrigin?: boolean }) {
+function MenuCard({ item, showOrigin = false }: { item: MenuItem; showOrigin?: boolean }) {
   return (
     <Card className="overflow-hidden transition-shadow hover:shadow-lg">
       <div className="aspect-[3/2] overflow-hidden">

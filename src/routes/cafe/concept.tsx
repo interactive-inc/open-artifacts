@@ -120,7 +120,10 @@ function ConceptPage() {
     <div className="min-h-screen bg-white">
       {/* Hero */}
       <section className="relative h-[60vh] min-h-[500px] bg-stone-900">
-        <div className="absolute inset-0 bg-[url('/api/placeholder/1920/800')] bg-center bg-cover opacity-40" />
+        <div
+          className="absolute inset-0 bg-center bg-cover opacity-40"
+          style={{ backgroundImage: "url('/api/placeholder/1920/800')" }}
+        />
         <div className="relative flex h-full items-center justify-center text-white">
           <div className="max-w-3xl px-6 text-center">
             <h1 className="mb-6 font-serif text-5xl md:text-7xl">{philosophy.title}</h1>

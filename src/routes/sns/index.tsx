@@ -148,7 +148,8 @@ function SNSLayout() {
                   {suggestedUsers.map((user) => (
                     <div key={user.id} className="flex items-center justify-between">
                       <Link
-                        to={`/sns/profile/${user.username}`}
+                        to="/sns/profile/$username"
+                        params={{ username: user.username }}
                         className="flex items-center gap-3 hover:opacity-80"
                       >
                         <Avatar className="h-10 w-10">

@@ -74,7 +74,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
     try {
       const res = await client.shop.api.cart[":userId"].items.$post({
         param: { userId },
-        // @ts-expect-error - Hono client type inference issue with json property
         json: { productId, quantity },
       })
       if (res.ok) {
@@ -106,7 +105,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
     try {
       const res = await client.shop.api.cart[":userId"].items.$patch({
         param: { userId },
-        // @ts-expect-error - Hono client type inference issue with json property
         json: { productId, quantity },
       })
       if (res.ok) {
